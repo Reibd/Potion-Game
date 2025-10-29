@@ -16,4 +16,4 @@ function Mushroom(name, R, G, B){
   this.B = B;
 }
 
-const pShroom = new DawnSinger(dawnSinger, 0.85, 0.24, 0.34);
+const pShroom = new DawnSinger(dawnSinger, 0.84, 0.24, 0.58);
