@@ -1,10 +1,9 @@
 let bg;
-let MArray;
-let recipeIngredients;
-let ingredientTypeNum = Math.floor(Math.random() * 4) + 3;
-let ingredientQuantNum;
-let ingredientLog;
-let ingredientList;
+let recipeIngredients= "string";
+let ingredientTypeNum = 0;
+let ingredientQuantNum = 0;
+let ingredientLog = 0;
+let ingredientList = "string";
 
 function setup() {
   bg = loadImage('Game Sprites/Bar Pack/individual sprite/shelf.png');
@@ -12,7 +11,7 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(220);
 }
 
 function Mushroom(name, R, G, B, ID){
@@ -36,6 +35,8 @@ const StarlitShroom = new Mushroom("Starlit Shroom", 0.82, 0.50, 0.92, 9); //mus
 const MossyGill = new Mushroom("Mossy Gill", 0.52, 0.76, 0.11, 10); //mushroom 29
 const FeatherShroom = new Mushroom("Feather Shroom", 0.96, 0.78, 0.36, 11); //mushroom 34
 
+ingredientTypeNum = Math.floor(Math.random() * 4) + 3;
+
 for (let i = 0; i < ingredientTypeNum; i++){
   ingredientQuantNum[i] = Math.floor(Math.random() * 3) + 1;
 }
@@ -54,5 +55,5 @@ for (let i = 0; i < ingredientTypeNum; i++){
   FeatherShroom.name = ingredientList[FeatherShroom.ID];
 
   for (let i = 0; i < 12; i++){
-    document.getElementById("demo").innerHTML = ingredientList[i];
+
 }
