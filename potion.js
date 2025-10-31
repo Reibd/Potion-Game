@@ -1,6 +1,7 @@
 let bg;
 let recipeIngredients= "string";
 let ingredientTypeNum = 0;
+let ingredientTypeList = "string";
 let ingredientQuantNum = 0;
 let ingredientLog = 0;
 let ingredientList = "string";
@@ -41,19 +42,27 @@ for (let i = 0; i < ingredientTypeNum; i++){
   ingredientQuantNum[i] = Math.floor(Math.random() * 3) + 1;
 }
 
-  DawnSinger.name = ingredientList[DawnSinger.ID];
-  MidnightFungus.name = ingredientList[MidnightFungus.ID];
-  Puffglow.name = ingredientList[Puffglow.ID];
-  Capling.name = ingredientList[Capling.ID];
-  ScarletSpore.name = ingredientList[ScarletSpore.ID];
-  SporeSpark.name = ingredientList[SporeSpark.ID];
-  Glowtop.name = ingredientList[Glowtop.ID];
-  BarkShine.name = ingredientList[BarkShine.ID];
-  CrimsonCap.name = ingredientList[CrimsonCap.ID];
-  StarlitShroom.name = ingredientList[StarlitShroom.ID];
-  MossyGill.name = ingredientList[MossyGill.ID];
-  FeatherShroom.name = ingredientList[FeatherShroom.ID];
+DawnSinger.name = ingredientList[DawnSinger.ID];
+MidnightFungus.name = ingredientList[MidnightFungus.ID];
+Puffglow.name = ingredientList[Puffglow.ID];
+Capling.name = ingredientList[Capling.ID];
+ScarletSpore.name = ingredientList[ScarletSpore.ID];
+SporeSpark.name = ingredientList[SporeSpark.ID];
+Glowtop.name = ingredientList[Glowtop.ID];
+BarkShine.name = ingredientList[BarkShine.ID];
+CrimsonCap.name = ingredientList[CrimsonCap.ID];
+StarlitShroom.name = ingredientList[StarlitShroom.ID];
+MossyGill.name = ingredientList[MossyGill.ID];
+FeatherShroom.name = ingredientList[FeatherShroom.ID];
 
-  for (let i = 0; i < 12; i++){
-
+for (let i = 0; i < ingredientTypeNum; i++){
+  let temp = Math.floor(Math.random() * 12);
+  for (let j = 0; j < ingredientLog.length; j++){
+      if (temp == ingredientLog[j]){
+          temp = Math.floor(Math.random() * 12);
+          j = 0;
+      }
+  }
+  ingredientTypeList[i] = ingredientList[temp];
+  ingredientLog[i] = temp;
 }
