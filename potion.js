@@ -1,10 +1,10 @@
 let shelf;
-let MArray;
-let recipeIngredients;
-let ingredientTypeNum = Math.floor(Math.random() * 4) + 3;
-let ingredientQuantNum;
-let ingredientLog;
-let ingredientList;
+let recipeIngredients= ["string"];
+let ingredientTypeNum = 0;
+let ingredientTypeList = ["string"];
+let ingredientQuantNum = [0];
+let ingredientLog = [0];
+let ingredientList = ["string"];
 
 function setup() {
   shelf = loadImage('Game Sprites/Bar Pack/individual sprite/shelf.png');
@@ -66,4 +66,10 @@ for (let i = 0; i < ingredientTypeNum; i++){
   }
   ingredientTypeList[i] = ingredientList[temp];
   ingredientLog[i] = temp;
+}
+
+for (let i = 0; i < ingredientTypeList.length; i++){
+  for (let j = 0; j < ingredientQuantNum[i]; j++){
+    recipeIngredients[j] = ingredientTypeList[i];
+  }
 }
