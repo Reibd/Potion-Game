@@ -1,18 +1,19 @@
-let bg;
-let recipeIngredients= "string";
-let ingredientTypeNum = 0;
-let ingredientTypeList = "string";
-let ingredientQuantNum = 0;
-let ingredientLog = 0;
-let ingredientList = "string";
+let shelf;
+let MArray;
+let recipeIngredients;
+let ingredientTypeNum = Math.floor(Math.random() * 4) + 3;
+let ingredientQuantNum;
+let ingredientLog;
+let ingredientList;
 
 function setup() {
-  bg = loadImage('Game Sprites/Bar Pack/individual sprite/shelf.png');
+  shelf = loadImage('Game Sprites/Bar Pack/individual sprite/shelf.png');
   createCanvas(391, 114);
 }
 
 function draw() {
-  background(220);
+  background(0);
+  image(shelf, 0, 0, width, height);
 }
 
 function Mushroom(name, R, G, B, ID){
