@@ -1,4 +1,5 @@
 let shelf;
+
 let recipeIngredients= [];
 let ingredientList = [];
 let bottleList = [];
@@ -14,7 +15,11 @@ let RoundPotionList = [];
 let SmallBottleList = [];
 let SmallElixirList = [];
 let SmallVialList = [];
-let potionIngredient = [];
+var potionIngredients = [];
+var pIngredientsNum = potionIngredients.length;
+var pColorR = 0.0;
+var pColorG = 0.0;
+var pColorB = 0.0;
 
 function setup() {
   shelf = loadImage('Game Sprites/Bar Pack/individual sprite/shelf.png');
@@ -461,6 +466,149 @@ function recipe(ingredientList, bottleList){
   return recipeIngredients;
 }
 
+function DawnSingerB(){
+  potionIngredients[potionIngredients.length] = DawnSinger.name;
+
+  pIngredientsNum = potionIngredients.length;
+
+  pColorR = (pColorR + DawnSinger.R) / (255 * pIngredientsNum);
+
+  pColorG = (pColorG + DawnSinger.G) / (255 * pIngredientsNum);
+
+  pColorB = (pColorB + DawnSinger.B) / (255 * pIngredientsNum);
+}
+
+function MidnightFungusB(){
+  potionIngredients[potionIngredients.length] = MidnightFungus.name;
+
+  pIngredientsNum = potionIngredients.length;
+  
+  pColorR = (pColorR + MidnightFungus.R) / (255 * pIngredientsNum);
+
+  pColorG = (pColorG + MidnightFungus.G) / (255 * pIngredientsNum);
+
+  pColorB = (pColorB + MidnightFungus.B) / (255 * pIngredientsNum);
+}
+
+function PuffglowB(){
+  potionIngredients[potionIngredients.length] = Puffglow.name;
+
+  pIngredientsNum = potionIngredients.length;
+  
+  pColorR = (pColorR + Puffglow.R) / (255 * pIngredientsNum);
+
+  pColorG = (pColorG + Puffglow.G) / (255 * pIngredientsNum);
+
+  pColorB = (pColorB + Puffglow.B) / (255 * pIngredientsNum);
+}
+
+function CaplingB(){
+  potionIngredients[potionIngredients.length] = Capling.name;
+
+  pIngredientsNum = potionIngredients.length;
+  
+  pColorR = (pColorR + Capling.R) / (255 * pIngredientsNum);
+
+  pColorG = (pColorG + Capling.G) / (255 * pIngredientsNum);
+
+  pColorB = (pColorB + Capling.B) / (255 * pIngredientsNum);
+}
+
+function ScarletSporeB(){
+  potionIngredients[potionIngredients.length] = ScarletSpore.name;
+
+  pIngredientsNum = potionIngredients.length;
+  
+  pColorR = (pColorR + ScarletSpore.R) / (255 * pIngredientsNum);
+
+  pColorG = (pColorG + ScarletSpore.G) / (255 * pIngredientsNum);
+
+  pColorB = (pColorB + ScarletSpore.B) / (255 * pIngredientsNum);
+}
+
+function SporeSparkB(){
+  potionIngredients[potionIngredients.length] = SporeSpark.name;
+
+  pIngredientsNum = potionIngredients.length;
+  
+  pColorR = (pColorR + SporeSpark.R) / (255 * pIngredientsNum);
+
+  pColorG = (pColorG + SporeSpark.G) / (255 * pIngredientsNum);
+
+  pColorB = (pColorB + SporeSpark.B) / (255 * pIngredientsNum);
+}
+
+function GlowtopB(){
+  potionIngredients[potionIngredients.length] = Glowtop.name;
+
+  pIngredientsNum = potionIngredients.length;
+  
+  pColorR = (pColorR + Glowtop.R) / (255 * pIngredientsNum);
+
+  pColorG = (pColorG + Glowtop.G) / (255 * pIngredientsNum);
+
+  pColorB = (pColorB + Glowtop.B) / (255 * pIngredientsNum);
+}
+
+function BarkShineB(){
+  potionIngredients[potionIngredients.length] = BarkShine.name;
+
+  pIngredientsNum = potionIngredients.length;
+  
+  pColorR = (pColorR + BarkShine.R) / (255 * pIngredientsNum);
+
+  pColorG = (pColorG + BarkShine.G) / (255 * pIngredientsNum);
+
+  pColorB = (pColorB + BarkShine.B) / (255 * pIngredientsNum);
+}
+
+function CrimsonCapB(){
+  potionIngredients[potionIngredients.length] = CrimsonCap.name;
+
+  pIngredientsNum = potionIngredients.length;
+  
+  pColorR = (pColorR + CrimsonCap.R) / (255 * pIngredientsNum);
+
+  pColorG = (pColorG + CrimsonCap.G) / (255 * pIngredientsNum);
+
+  pColorB = (pColorB + CrimsonCap.B) / (255 * pIngredientsNum);
+}
+
+function StarlitShroomB(){
+  potionIngredients[potionIngredients.length] = StarlitShroom.name;
+
+  pIngredientsNum = potionIngredients.length;
+  
+  pColorR = (pColorR + StarlitShroom.R) / (255 * pIngredientsNum);
+
+  pColorG = (pColorG + StarlitShroom.G) / (255 * pIngredientsNum);
+
+  pColorB = (pColorB + StarlitShroom.B) / (255 * pIngredientsNum);
+}
+
+function MossyGillB(){
+  potionIngredients[potionIngredients.length] = MossyGill.name;
+
+  pIngredientsNum = potionIngredients.length;
+  
+  pColorR = (pColorR + MossyGill.R) / (255 * pIngredientsNum);
+
+  pColorG = (pColorG + MossyGill.G) / (255 * pIngredientsNum);
+
+  pColorB = (pColorB + MossyGill.B) / (255 * pIngredientsNum);
+}
+
+function FeatherShroomB(){
+  potionIngredients[potionIngredients.length] = FeatherShroom.name;
+
+  pIngredientsNum = potionIngredients.length;
+  
+  pColorR = (pColorR + FeatherShroom.R) / (255 * pIngredientsNum);
+
+  pColorG = (pColorG + FeatherShroom.G) / (255 * pIngredientsNum);
+
+  pColorB = (pColorB + FeatherShroom.B) / (255 * pIngredientsNum);
+}
 
 ingredientList = setMushrooms();
 
