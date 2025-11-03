@@ -1,24 +1,20 @@
 let shelf;
-let recipeIngredients= ["string"];
-let recipeBottle = "string";
-let ingredientTypeNum = 0;
-let ingredientTypeList = ["string"];
-let ingredientQuantNum = [0];
-let ingredientLog = [0];
-let ingredientList = ["string"];
-let bottleList = [0];
-let BigVialList = ["String"];
-let BubblyBrewBottleRisingList = ["String"];
-let ClassicJarList = ["String"];
-let EncasedPotionList = ["String"];
-let GlowingPotionList = ["String"];
-let LargeBottleList = ["String"];
-let LargeJarList = ["String"];
-let LargeTonicList = ["String"];
-let RoundPotionList = ["String"];
-let SmallBottleList = ["String"];
-let SmallElixirList = ["String"];
-let SmallVialList = ["String"];
+let recipeIngredients= [];
+let ingredientList = [];
+let bottleList = [];
+let BigVialList = [];
+let BubblyBrewBottleRisingList = [];
+let ClassicJarList = [];
+let EncasedPotionList = [];
+let GlowingPotionList = [];
+let LargeBottleList = [];
+let LargeJarList = [];
+let LargeTonicList = [];
+let RoundPotionList = [];
+let SmallBottleList = [];
+let SmallElixirList = [];
+let SmallVialList = [];
+let potionIngredient = [];
 
 function setup() {
   shelf = loadImage('Game Sprites/Bar Pack/individual sprite/shelf.png');
@@ -26,18 +22,23 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(220);
   image(shelf, 0, 0, width, height);
 }
 
 function Mushroom(name, R, G, B, ID){
-  name = "name";
-  R = 0.0;
-  G = 0.0;
-  B = 0.0;
-  ID = 0;
+  this.name = name;
+  this.R = R;
+  this.G = G;
+  this.B = B;
+  this.ID = ID;
 }
 
+function Bottle(type, colour, ID){
+  this.type = type;
+  this.colour = colour;
+  this.ID = ID;
+}
 
   const DawnSinger = new Mushroom("Dawn Singer", 0.84, 0.24, 0.58, 0); //mushroom 35
   const MidnightFungus = new Mushroom("Midnight Fungus", 0.58, 0.68, 0.84, 1); //mushroom 19
@@ -51,28 +52,6 @@ function Mushroom(name, R, G, B, ID){
   const StarlitShroom = new Mushroom("Starlit Shroom", 0.82, 0.50, 0.92, 9); //mushroom 22
   const MossyGill = new Mushroom("Mossy Gill", 0.52, 0.76, 0.11, 10); //mushroom 29
   const FeatherShroom = new Mushroom("Feather Shroom", 0.96, 0.78, 0.36, 11); //mushroom 34
-
-
-function setMushrooms(){
-  ingredientList[DawnSinger.ID] = DawnSinger.name;
-  ingredientList[MidnightFungus.ID] = MidnightFungus.name;
-  ingredientList[Puffglow.ID] = Puffglow.name;
-  ingredientList[Capling.ID] = Capling.name;
-  ingredientList[ScarletSpore.ID] = ScarletSpore.name;
-  ingredientList[SporeSpark.ID] = SporeSpark.name;
-  ingredientList[Glowtop.ID] = Glowtop.name;
-  ingredientList[BarkShine.ID] = BarkShine.name;
-  ingredientList[CrimsonCap.ID] = CrimsonCap.name;
-  ingredientList[StarlitShroom.ID] = StarlitShroom.name;
-  ingredientList[MossyGill.ID] = MossyGill.name;
-  ingredientList[FeatherShroom.ID] = FeatherShroom.name;
-}
-
-function Bottle(type, colour, ID){
-  type = "name";
-  colour = "colour";
-  ID = 0;
-}
 
   const BVialBlack = new Bottle("Big Vial", "Black", 0);
   const BVialBlue = new Bottle("Big Vial", "Blue", 1);
@@ -198,8 +177,29 @@ function Bottle(type, colour, ID){
   const SVialTurquoise = new Bottle("Small Vial", "Turquoise", 122);
   const SVialYellow = new Bottle("Small Vial", "Yellow", 123);
 
+  
+function setMushrooms(){
+  let ingredientList = [];
+
+  ingredientList[DawnSinger.ID] = DawnSinger.name;
+  ingredientList[MidnightFungus.ID] = MidnightFungus.name;
+  ingredientList[Puffglow.ID] = Puffglow.name;
+  ingredientList[Capling.ID] = Capling.name;
+  ingredientList[ScarletSpore.ID] = ScarletSpore.name;
+  ingredientList[SporeSpark.ID] = SporeSpark.name;
+  ingredientList[Glowtop.ID] = Glowtop.name;
+  ingredientList[BarkShine.ID] = BarkShine.name;
+  ingredientList[CrimsonCap.ID] = CrimsonCap.name;
+  ingredientList[StarlitShroom.ID] = StarlitShroom.name;
+  ingredientList[MossyGill.ID] = MossyGill.name;
+  ingredientList[FeatherShroom.ID] = FeatherShroom.name;
+
+  return ingredientList;
+}
 
 function setBottleList(){
+  let bottleList = [];
+
   bottleList[0] = "Big Vial";
   bottleList[1] = "Bubbly Brew Bottle";
   bottleList[2] = "Classic Jar";
@@ -212,9 +212,13 @@ function setBottleList(){
   bottleList[9] = "Small Bottle";
   bottleList[10] = "Small Elixir";
   bottleList[11] = "Small Vial";
+
+  return bottleList;
 }
 
 function setBigVialList(){
+  let BigVialList = [];
+
   BigVialList[0] = BVialBlack.name;
   BigVialList[1] = BVialBlue.name;
   BigVialList[2] = BVialGold.name;
@@ -226,9 +230,13 @@ function setBigVialList(){
   BigVialList[8] = BVialRed.name;
   BigVialList[9] = BVialTurquise.name;
   BigVialList[10] = BVialYellow.name;
+
+  return BigVialList;
 }
 
 function setBubblyBrewBottleRisingList(){
+  let BubblyBrewBottleRisingList = [];
+
   BubblyBrewBottleRisingList[0] = BBBRBlack.name;
   BubblyBrewBottleRisingList[1] = BBBRBlue.name;
   BubblyBrewBottleRisingList[2] = BBBRBrown.name;
@@ -240,9 +248,13 @@ function setBubblyBrewBottleRisingList(){
   BubblyBrewBottleRisingList[8] = BBBRPurple.name;
   BubblyBrewBottleRisingList[9] = BBBRRed.name;
   BubblyBrewBottleRisingList[10] = BBBRYellow.name;
+
+  return BubblyBrewBottleRisingList;
 }
 
 function setClassicJarList(){
+  let ClassicJarList = [];
+
   ClassicJarList[0] = CJarBlack_Gold.name;
   ClassicJarList[1] = CJarBlue_Gold.name;
   ClassicJarList[2] = CJarGold.name;
@@ -253,18 +265,26 @@ function setClassicJarList(){
   ClassicJarList[7] = CJarTeal.name;
   ClassicJarList[8] = CJarTurquoise_Gold.name;
   ClassicJarList[9] = CJarYellow.name;
+
+  return ClassicJarList;
 }
 
 function setEncasedPotionList(){
+  let EncasedPotionList = [];
+
   EncasedPotionList[0] = EPotionBlack_Gold.name;
   EncasedPotionList[1] = EPotionBrown_Purple;
   EncasedPotionList[2] = EPotionBrown_Green;
   EncasedPotionList[3] = EPotionGold.name;
   EncasedPotionList[4] = EPotionLime_Purple.name;
   EncasedPotionList[5] = EPotionYellow_Red.name;
+
+  return EncasedPotionList;
 }
 
 function setGlowingPotionList(){
+  let GlowingPotionList = [];
+
   GlowingPotionList[0] = GPotionBlack.name;
   GlowingPotionList[1] = GPotionBlue.name;
   GlowingPotionList[2] = GPotionCyan.name;
@@ -275,9 +295,13 @@ function setGlowingPotionList(){
   GlowingPotionList[7] = GPotionPurple.name;
   GlowingPotionList[8] = GPotionRed.name;
   GlowingPotionList[9] = GPotionYellow.name;
+
+  return GlowingPotionList;
 }
 
 function setLargeBottleList(){
+  let LargeBottleList = [];
+
   LargeBottleList[0] = LBottleBlack.name;
   LargeBottleList[1] = LBottleBlue.name;
   LargeBottleList[2] = LBottleBrown.name;
@@ -287,9 +311,13 @@ function setLargeBottleList(){
   LargeBottleList[6] = LBottlePurple.name;
   LargeBottleList[7] = LBottleRed.name;
   LargeBottleList[8] = LBottleTurquoise.name;
+
+  return LargeBottleList;
 }
 
 function setLargeJarList(){
+  let LargeJarList = [];
+
   LargeJarList[0] = LJarBlack_Gold.name;
   LargeJarList[1] = LJarBlue_Gold.name;
   LargeJarList[0] = LJarGold.name;
@@ -300,9 +328,13 @@ function setLargeJarList(){
   LargeJarList[7] = LJarTeal.name;
   LargeJarList[8] = LJarTurquoise_Gold.name;
   LargeJarList[9] = LJarYellow.name;
+
+  return LargeJarList;
 }
 
 function setLargeTonicList(){
+  let LargeTonicList = [];
+
   LargeTonicList[0] = LTonicBlack.name;
   LargeTonicList[1] = LTonicBlue.name;
   LargeTonicList[2] = LTonicGold.name;
@@ -313,9 +345,13 @@ function setLargeTonicList(){
   LargeTonicList[7] = LTonicRed.name;
   LargeTonicList[8] = LTonicTurquoise.name;
   LargeTonicList[9] = LTonicYellow.name;
+
+  return LargeTonicList;
 }
 
 function setRoundPotionList(){
+  let RoundPotionList = [];
+
   RoundPotionList[0] = RPotionBlack.name;
   RoundPotionList[1] = RPotionBlue.name;
   RoundPotionList[2] = RPotionGold.name;
@@ -327,9 +363,13 @@ function setRoundPotionList(){
   RoundPotionList[8] = RPotionRed.name;
   RoundPotionList[9] = RPotionTurquoise.name;
   RoundPotionList[10] = RPotionYellow.name;
+
+  return RoundPotionList;
 }
 
 function setSmallBottleList(){
+  let SmallBottleList = [];
+
   SmallBottleList[0] = SBottleBlack_Gold.name;
   SmallBottleList[1] = SBottleBlue.name;
   SmallBottleList[2] = SBottleGold.name;
@@ -340,9 +380,13 @@ function setSmallBottleList(){
   SmallBottleList[7] = SBottleRed_Yellow.name;
   SmallBottleList[8] = SBottleTeal_Gold.name;
   SmallBottleList[9] = SBottleYellow.name;
+
+  return SmallBottleList;
 }
 
 function setSmallElixirList(){
+  let SmallElixirList = [];
+
   SmallElixirList[0] = SElixirBlack.name;
   SmallElixirList[1] = SElixirBlue.name;
   SmallElixirList[2] = SElixirCyan.name;
@@ -353,9 +397,13 @@ function setSmallElixirList(){
   SmallElixirList[7] = SElixirPurple.name;
   SmallElixirList[8] = SElixirRed.name;
   SmallElixirList[9] = SElixirYellow.name;
+
+  return SmallElixirList;
 }
 
 function setSmallVialList(){
+  let SmallVialList = [];
+
   SmallVialList[0] = SVialBlack.name;
   SmallVialList[1] = SVialBlue.name;
   SmallVialList[2] = SVialBrown.name;
@@ -370,9 +418,18 @@ function setSmallVialList(){
   SmallVialList[11] = SVialTeal.name;
   SmallVialList[12] = SVialTurquoise.name;
   SmallVialList[13] = SVialYellow.name;
+
+  return SmallVialList;
 }
 
-function recipe(){
+function recipe(ingredientList, bottleList){
+  let recipeIngredients = [];
+  let ingredientLog = [];
+  let ingredientTypeNum = 0;
+  let ingredientQuantNum = [];
+  let ingredientTypeList = [];
+  let recipeBottle = "string";
+
   ingredientTypeNum = Math.floor(Math.random() * 4) + 3;
 
   recipeBottle = bottleList[Math.floor(Math.random() * 12)];
@@ -400,4 +457,15 @@ function recipe(){
   }
 
   recipeIngredients[recipeIngredients.length + 1] = recipeBottle;
+
+  return recipeIngredients;
 }
+
+
+ingredientList = setMushrooms();
+
+bottleList = setBottleList();
+
+recipeIngredients = recipe(ingredientList, bottleList);
+
+
