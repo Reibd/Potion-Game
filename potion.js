@@ -639,6 +639,88 @@ function checkPotion(recipeIngredients){
   return points;
 }
 
+function BigVialB(){
+  potionIngredients[potionIngredients.length] = bottleList[0];
+
+  if (pColorR < 0.4 && pColorG < 0.4 && pColorB < 0.4){
+    return BVialBlack.name;
+  } 
+  else if ((pColorG > 0.4 && pColorG < 0.7) && pColorR > 0.4 && pColorB < 0.6){
+    return BVialRed.name;
+  }
+  else if (pColorB < 0.6 && (pColorG > 0.6 && pColorG < 0.7) && pColorR > 0.6){
+    return BVialOrange.name;
+  } 
+  else if ((pColorG > 0.7 && pColorG < 0.9) && pColorR > 0.4 && pColorB < 0.6){
+    return BVialGold.name;
+  }
+  else if (pColorG > 0.9 && pColorR > 0.9 && pColorB > 0.6){
+    return BVialYellow.name;
+  }
+  else if (pColorG > 0.9 && (pColorR < 0.9 && pColorR > 0.51) && pColorB > 0.6){
+    return BVialLime.name;
+  }
+  else if (pColorB < 0.6 && pColorG > 0.4 && pColorR < 0.51){
+    return BVialGreen.name;
+  }
+  else if (pColorB > 0.6 && pColorG > 0.6 && pColorR < 0.51){
+    return BVialTurquise.name;
+  }
+  else if (pColorB > 0.6 && pColorG < 0.6 && pColorR < 0.4){
+    return BVialBlue.name;
+  }
+  else if (pColorB > 0.6 && pColorG < 0.6 && pColorR > 0.4){
+    return BVialPurple.name;
+  }
+  else if (pColorB < 0.6 && pColorG < 0.6 && pColorR > 0.4){
+    return BVialPink.name;
+  }
+  else {
+    return BVialBlack.name;
+  }
+}
+
+function BubblyBrewBottleRisingB(){
+  potionIngredients[potionIngredients.length] = bottleList[1];
+
+  if (pColorR < 0.4 && pColorG < 0.4 && pColorB < 0.4){
+    return BBBRBlack.name;
+  }
+  else if ((pColorG > 0.2 && pColorG < 0.5) && (pColorR > 0.4 && pColorR < 0.8) && pColorB < 0.6){
+    return BBBRBrown.name;
+  } 
+  else if ((pColorG > 0.4 && pColorG < 0.7) && pColorR > 0.4 && pColorB < 0.6){
+    return BBBRRed.name;
+  }
+  else if (pColorB < 0.6 && (pColorG > 0.6 && pColorG < 0.7) && pColorR > 0.6){
+    return BBBROrange.name;
+  } 
+  else if ((pColorG > 0.7 && pColorG < 0.9) && pColorR > 0.4 && pColorB < 0.6){
+    return BBBRGold.name;
+  }
+  else if (pColorG > 0.9 && pColorR > 0.9 && pColorB > 0.6){
+    return BBBRYellow.name;
+  }
+  else if (pColorB < 1 && pColorG > 0.4 && pColorR < 0.51){
+    return BBBRGreen.name;
+  }
+  else if (pColorB > 0.6 && pColorG > 0.6 && pColorR < 0.51){
+    return BBBRCyan.name;
+  }
+  else if (pColorB > 0.6 && pColorG < 0.6 && pColorR < 0.4){
+    return BBBRBlue.name;
+  }
+  else if (pColorB > 0.6 && pColorG < 0.6 && pColorR > 0.4){
+    return BBBRPurple.name;
+  }
+  else if (pColorB < 0.6 && pColorG < 0.6 && pColorR > 0.4){
+    return BBBRPink.name;
+  }
+  else {
+    return BBBRBlack.name;
+  }
+}
+
 
 
 BigVialList = setBigVialList();
