@@ -20,6 +20,7 @@ var pIngredientsNum = potionIngredients.length;
 var pColorR = 0.0;
 var pColorG = 0.0;
 var pColorB = 0.0;
+var gamePoints = 0;
 
 function setup() {
   shelf = loadImage('Game Sprites/Bar Pack/individual sprite/shelf.png');
@@ -27,7 +28,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(0);
   image(shelf, 0, 0, width, height);
 }
 
@@ -610,10 +611,54 @@ function FeatherShroomB(){
   pColorB = (pColorB + FeatherShroom.B) / (255 * pIngredientsNum);
 }
 
+function checkPotion(recipeIngredients){
+  let check = [false];
+  let trueCount = 0;
+  let points = 0;
+
+  for (let i = 0; i < potionIngredients.length; i++){
+    check[i] = false;
+  }
+
+  for (let i = 0; i < potionIngredients.length; i++){
+    for (let j = 0; j < recipeIngredients.length; j++){
+      if (potionIngredients[i] == recipeIngredients[j]){
+        check[i] = true;
+      }
+    }
+  }
+
+  for (let i = 0; i < potionIngredients.length; i++){
+    if (check[i] == true){
+      trueCount++;
+    }
+  }
+
+  points = (trueCount/potionIngredients.length) * 1000;
+
+  return points;
+}
+
+
+
+BigVialList = setBigVialList();
+BubblyBrewBottleRisingList = setBubblyBrewBottleRisingList();
+ClassicJarList = setClassicJarList();
+EncasedPotionList = setEncasedPotionList();
+GlowingPotionList = setGlowingPotionList();
+LargeBottleList = setLargeBottleList();
+LargeJarList = setLargeJarList();
+LargeTonicList = setLargeTonicList();
+RoundPotionList = setRoundPotionList();
+SmallBottleList = setSmallBottleList();
+SmallElixirList = setSmallElixirList();
+SmallVialList = setSmallVialList();
+
 ingredientList = setMushrooms();
 
 bottleList = setBottleList();
 
 recipeIngredients = recipe(ingredientList, bottleList);
 
+gamePoints += checkPotion(recipeIngredients);
 
