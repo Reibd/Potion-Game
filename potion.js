@@ -5,6 +5,7 @@ let bgDown;
 let board;
 let cauldren;
 
+
 let selectB = [];
 let ingredientSprite = [];
 let recipeIngredients= [];
@@ -38,10 +39,77 @@ function Mushroom(name, R, G, B, ID){
   this.ID = ID;
 }
 
-function Bottle(type, colour, ID){
-  this.type = type;
-  this.colour = colour;
-  this.ID = ID;
+class Bottle {
+  type = "Big Vial";
+  brandID = 0;
+  colourList = ["Black", "Blue", "Gold", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Turquoise", "Yellow"];
+  constructor(ID) {
+  this.colour = colourList[ID];
+  this.ID = ID + BrandID;
+  }
+}
+
+class Bottle extends BVial {
+  type = "Big Vial";
+  brandID = 0;
+  colourList = ["Black", "Blue", "Gold", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Turquoise", "Yellow"];
+  constructor(ID) {
+    super(ID);
+  }
+}
+
+class Bottle extends BBBR {
+  type = "Bubbly Brew Bottle Rising";
+  brandID = 11;
+  colourList = ["Black", "Blue", "Brown", "Cyan", "Gold", "Green", "Orange", "Pink", "Purple", "Red", "Yellow"];
+  constructor(ID) {
+    super(ID);
+  }
+}
+
+class Bottle extends CJar {
+  type = "Classic Jar";
+  brandID = 22;
+  colourList = ["Black_Gold", "Blue_Gold", "Gold", "Green", "Pink", "Purple", "Red_Gold", "Teal", "Turquoise_Gold", "Yellow"];
+  constructor(ID) {
+    super(ID);
+  }
+}
+
+class Bottle extends EPotion {
+  type = "Encased Potion";
+  brandID = 32;
+  colourList = ["Black_Gold", "Brown_Purple", "Brown_Green", "Gold", "Lime_Purple", "Yellow_Red"];
+  constructor(ID) {
+    super(ID);
+  }
+}
+
+class Bottle extends GPotion {
+  type = "Glowing Potion";
+  brandID = 38;
+  colourList = ["Black", "Blue", "Cyan", "Gold", "Green", "Lime", "Pink", "Purple", "Red", "Yellow"];
+  constructor(ID) {
+    super(ID);
+  }
+}
+
+class Bottle extends LBottle {
+  type = "LArge Bottle";
+  brandID = 48;
+  colourList = ["Black", "Blue", "Brown", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Turquoise", "Yellow"];
+  constructor(ID) {
+    super(ID);
+  }
+}
+
+class Bottle extends LJar {
+  type = "Large Jar";
+  brandID = 59;
+  colourList = ["Black_Gold", "Blue_Gold", "Gold", "Green", "Pink", "Purple", "Red_Gold", "Teal", "Turquoise_Gold", "Yellow"];
+  constructor(ID) {
+    super(ID);
+  }
 }
 
   const DawnSinger = new Mushroom("Dawn Singer", 0.84, 0.24, 0.58, 0); //mushroom 35
@@ -124,7 +192,7 @@ function Bottle(type, colour, ID){
   const LJarRed_Gold = new Bottle("Large Jar", "Red_Gold", 65);
   const LJarTeal = new Bottle("Large Jar", "Teal", 66);
   const LJarTurquoise_Gold = new Bottle("Large Jar", "Turquoise_Gold", 67);
-  const LJarYellow = new Bottle("Large Jar", "Yellow", 68);
+  const LJarYellow = new Bottle("Large Jar", "Yellow", 68); // Reworked up to this point
   const LTonicBlack = new Bottle("Large Tonic", "Black", 69);
   const LTonicBlue = new Bottle("Large Tonic", "Blue", 70);
   const LTonicGold = new Bottle("Large Tonic", "Gold", 71);
@@ -182,6 +250,15 @@ function Bottle(type, colour, ID){
   const SVialYellow = new Bottle("Small Vial", "Yellow", 123);
 
   
+function setPotionList() {
+
+  for (i = 0; i < 11; i++) {
+    BigVialList[i] = new BVial(i);
+  }
+
+}
+
+
 function setMushrooms(){
   let ingredientList = [];
 
@@ -844,6 +921,23 @@ function drawIngredientButtons() {
 
 }
 
+function selectIngredient() {
+
+  selectB[0].mousePressed(DawnSingerB());
+  selectB[1].mousePressed(MidnightFungusB());
+  selectB[2].mousePressed(PuffglowB());
+  selectB[3].mousePressed(CaplingB());
+  selectB[4].mousePressed(ScarletSporeB());
+  selectB[5].mousePressed(SporeSparkB());
+  selectB[6].mousePressed(GlowtopB());
+  selectB[7].mousePressed(BarkShineB());
+  selectB[8].mousePressed(CrimsonCapB());
+  selectB[9].mousePressed(StarlitShroomB());
+  selectB[10].mousePressed(MossyGillB());
+  selectB[11].mousePressed(FeatherShroomB());
+
+}
+
 function setup() {
 
   loadRoom();
@@ -858,5 +952,10 @@ function draw() {
   drawRoom();
   drawIngredients();
   drawIngredientButtons();
+
+}
+
+function game() {
+  selectIngredient();
 
 }
