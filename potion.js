@@ -412,7 +412,7 @@ bottleList = setBottleList();
 
 recipeIngredients = recipe(ingredientNameList, bottleList);
 
-gamePoints += checkPotion(recipeIngredients);
+gamePoints += checkPotion(recipeIngredients); 
 
 function loadRoom() {
 
@@ -427,18 +427,18 @@ function loadRoom() {
 
 function loadIngredients() {
 
-  ingredientSprite[DawnSinger.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom035.png');
-  ingredientSprite[MidnightFungus.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom019.png');
-  ingredientSprite[Puffglow.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom014.png');
-  ingredientSprite[Capling.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom000.png');
-  ingredientSprite[ScarletSpore.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom002.png');
-  ingredientSprite[SporeSpark.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom004.png');
-  ingredientSprite[Glowtop.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom005.png');
-  ingredientSprite[BarkShine.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom011.png');
-  ingredientSprite[CrimsonCap.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom016.png');
-  ingredientSprite[StarlitShroom.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom022.png');
-  ingredientSprite[MossyGill.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom029.png');
-  ingredientSprite[FeatherShroom.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom034.png');
+  ingredientSprite[0] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom035.png');
+  ingredientSprite[1] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom019.png');
+  ingredientSprite[2] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom014.png');
+  ingredientSprite[3] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom000.png');
+  ingredientSprite[4] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom002.png');
+  ingredientSprite[5] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom004.png');
+  ingredientSprite[6] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom005.png');
+  ingredientSprite[7] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom011.png');
+  ingredientSprite[8] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom016.png');
+  ingredientSprite[9] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom022.png');
+  ingredientSprite[10] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom029.png');
+  ingredientSprite[11] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom034.png');
 
 }
 
