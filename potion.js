@@ -3,7 +3,9 @@ let bar;
 let bgUp;
 let bgDown;
 let board;
+let cauldren;
 
+let selectB = [];
 let ingredientSprite = [];
 let recipeIngredients= [];
 let ingredientList = [];
@@ -747,6 +749,7 @@ function loadRoom() {
   bgUp = loadImage('Game Sprites/Bar Pack/individuals sprite/wall_bar.png');
   board = loadImage('Game Sprites/Bar Pack/individuals sprite/Greenboard_weird_writing.png');
   bgDown = loadImage('Game Sprites/Bar Pack/individuals sprite/floor_bar.png');
+  //cauldren = loadGif('Game Sprites/Cauldren Set/Red Cauldren Gif.gif');
 
 }
 
@@ -774,6 +777,7 @@ function drawRoom() {
   image(shelf, 0, 95, 585, 405);
   image(bar, 615, 265, 635, 235);
   image(board, width - 285, 0, 235, 145);
+  //image(cauldren, 600, 100, 96, 96);
 
 }
 
@@ -791,17 +795,68 @@ function drawIngredients() {
   image(ingredientSprite[9], 40, 415, 64, 64);
   image(ingredientSprite[10], 230, 415, 64, 64);
   image(ingredientSprite[11], 415, 415, 64, 64);
+
+}
+
+function createIngredientButtons() {
+
+  selectB[DawnSinger.ID] = createButton("Dawn\nSinger");
+  selectB[MidnightFungus.ID] = createButton("Mignight\nFungus");
+  selectB[Puffglow.ID] = createButton("Puffglow");
+  selectB[Capling.ID] = createButton("Capling");
+  selectB[ScarletSpore.ID] = createButton("Scarlet\nSpore");
+  selectB[SporeSpark.ID] = createButton("Spore\nSpark");
+  selectB[Glowtop.ID] = createButton("Glowtop");
+  selectB[BarkShine.ID] = createButton("Bark\nShine");
+  selectB[CrimsonCap.ID] = createButton("Crimson\nCap");
+  selectB[StarlitShroom.ID] = createButton("Starlit\nShroom");
+  selectB[MossyGill.ID] = createButton("Mossy\nGill");
+  selectB[FeatherShroom.ID] = createButton("Feather\nShroom");
   
 }
+
+function drawIngredientButtons() {
+
+  selectB[0].position(115, 155);
+  selectB[0].size(60, 60);
+  selectB[1].position(305, 155);
+  selectB[1].size(60, 60);
+  selectB[2].position(490, 155);
+  selectB[2].size(60, 60);
+  selectB[3].position(115, 245);
+  selectB[3].size(60, 60);
+  selectB[4].position(305, 245);
+  selectB[4].size(60, 60);
+  selectB[5].position(490, 245);
+  selectB[5].size(60, 60);
+  selectB[6].position(115, 335);
+  selectB[6].size(60, 60);
+  selectB[7].position(305, 335);
+  selectB[7].size(60, 60);
+  selectB[8].position(490, 335);
+  selectB[8].size(60, 60);
+  selectB[9].position(115, 430);
+  selectB[9].size(60, 60);
+  selectB[10].position(305, 430);
+  selectB[10].size(60, 60);
+  selectB[11].position(490, 430);
+  selectB[11].size(60, 60);
+
+}
+
 function setup() {
+
   loadRoom();
   loadIngredients();
   createCanvas(1250, 550);
+  createIngredientButtons();
+
 }
 
 function draw() {
   
   drawRoom();
   drawIngredients();
-  
+  drawIngredientButtons();
+
 }
