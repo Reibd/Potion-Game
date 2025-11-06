@@ -1,5 +1,10 @@
 let shelf;
+let bar;
+let bgUp;
+let bgDown;
+let board;
 
+let ingredientSprite = [];
 let recipeIngredients= [];
 let ingredientList = [];
 let bottleList = [];
@@ -22,15 +27,6 @@ var pColorG = 0.0;
 var pColorB = 0.0;
 var gamePoints = 0;
 
-function setup() {
-  shelf = loadImage('Game Sprites/Bar Pack/individual sprite/shelf.png');
-  createCanvas(391, 114);
-}
-
-function draw() {
-  background(0);
-  image(shelf, 0, 0, width, height);
-}
 
 function Mushroom(name, R, G, B, ID){
   this.name = name;
@@ -744,3 +740,68 @@ recipeIngredients = recipe(ingredientList, bottleList);
 
 gamePoints += checkPotion(recipeIngredients);
 
+function loadRoom() {
+
+  shelf = loadImage('Game Sprites/Bar Pack/individuals sprite/shelf.png');
+  bar = loadImage('Game Sprites/Bar Pack/individuals sprite/bar.png');
+  bgUp = loadImage('Game Sprites/Bar Pack/individuals sprite/wall_bar.png');
+  board = loadImage('Game Sprites/Bar Pack/individuals sprite/Greenboard_weird_writing.png');
+  bgDown = loadImage('Game Sprites/Bar Pack/individuals sprite/floor_bar.png');
+
+}
+
+function loadIngredients() {
+
+  ingredientSprite[DawnSinger.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom035.png');
+  ingredientSprite[MidnightFungus.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom019.png');
+  ingredientSprite[Puffglow.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom014.png');
+  ingredientSprite[Capling.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom000.png');
+  ingredientSprite[ScarletSpore.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom002.png');
+  ingredientSprite[SporeSpark.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom004.png');
+  ingredientSprite[Glowtop.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom005.png');
+  ingredientSprite[BarkShine.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom011.png');
+  ingredientSprite[CrimsonCap.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom016.png');
+  ingredientSprite[StarlitShroom.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom022.png');
+  ingredientSprite[MossyGill.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom029.png');
+  ingredientSprite[FeatherShroom.ID] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom034.png');
+
+}
+
+function drawRoom() {
+
+  image(bgUp, 0, 0, width, height - 150);
+  image(bgDown, -235, height - 150, width + 470, 150);
+  image(shelf, 0, 95, 585, 405);
+  image(bar, 615, 265, 635, 235);
+  image(board, width - 285, 0, 235, 145);
+
+}
+
+function drawIngredients() {
+
+  image(ingredientSprite[0], 40, 140, 64, 64);
+  image(ingredientSprite[1], 230, 140, 64, 64);
+  image(ingredientSprite[2], 415, 140, 64, 64);
+  image(ingredientSprite[3], 40, 235, 64, 64);
+  image(ingredientSprite[4], 230, 235, 64, 64);
+  image(ingredientSprite[5], 415, 235, 64, 64);
+  image(ingredientSprite[6], 40, 325, 64, 64);
+  image(ingredientSprite[7], 230, 325, 64, 64);
+  image(ingredientSprite[8], 415, 325, 64, 64);
+  image(ingredientSprite[9], 40, 415, 64, 64);
+  image(ingredientSprite[10], 230, 415, 64, 64);
+  image(ingredientSprite[11], 415, 415, 64, 64);
+  
+}
+function setup() {
+  loadRoom();
+  loadIngredients();
+  createCanvas(1250, 550);
+}
+
+function draw() {
+  
+  drawRoom();
+  drawIngredients();
+  
+}
