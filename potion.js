@@ -6,24 +6,29 @@ let board;
 let cauldren;
 
 
-let mushroom = [];
+const mushroom = [];
+const fruit = [];
+const veg = [];
 let selectB = [];
 let ingredientSprite = [];
 let recipeIngredients= [];
 let ingredientNameList = [];
 let bottleList = [];
-let BigVialList = [];
-let BubblyBrewBottleRisingList = [];
-let ClassicJarList = [];
-let EncasedPotionList = [];
-let GlowingPotionList = [];
-let LargeBottleList = [];
-let LargeJarList = [];
-let LargeTonicList = [];
-let RoundPotionList = [];
-let SmallBottleList = [];
-let SmallElixirList = [];
-let SmallVialList = [];
+let mushroomNameList = [];
+let fruitNameList = [];
+let vegNameList = [];
+var BigVialList = [];
+var BubblyBrewBottleRisingList = [];
+var ClassicJarList = [];
+var EncasedPotionList = [];
+var GlowingPotionList = [];
+var LargeBottleList = [];
+var LargeJarList = [];
+var LargeTonicList = [];
+var RoundPotionList = [];
+var SmallBottleList = [];
+var SmallElixirList = [];
+var SmallVialList = [];
 var potionIngredients = [];
 var pIngredientsNum = potionIngredients.length;
 var pColorR = 0.0;
@@ -33,6 +38,26 @@ var gamePoints = 0;
 
 
 class Mushroom {
+  constructor(name, R, G, B, ID) {
+  this.name = name;
+  this.R = R;
+  this.G = G;
+  this.B = B;
+  this.ID = ID;
+  }
+}
+
+class Fruit {
+  constructor(name, R, G, B, ID) {
+  this.name = name;
+  this.R = R;
+  this.G = G;
+  this.B = B;
+  this.ID = ID;
+  }
+}
+
+class Veg {
   constructor(name, R, G, B, ID) {
   this.name = name;
   this.R = R;
@@ -52,7 +77,7 @@ class Bottle {
   }
 }
 
-class Bvial extends Bottle {
+class BVial extends Bottle {
   type = "Big Vial";
   brandID = 0;
   colourList = ["Black", "Blue", "Gold", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Turquoise", "Yellow"];
@@ -172,6 +197,19 @@ class SVial extends Bottle {
   mushroom[9] = new Mushroom("Starlit\nShroom", 0.82, 0.50, 0.92, 9); //mushroom 22
   mushroom[10] = new Mushroom("Mossy\nGill", 0.52, 0.76, 0.11, 10); //mushroom 29
   mushroom[11] = new Mushroom("Feather\nShroom", 0.96, 0.78, 0.36, 11); //mushroom 34
+
+  fruit[0] = new Fruit("Pomegranate", 0, 0, 0, 12); //slice
+  fruit[1] = new Fruit("Passion\nFruit", 0, 0, 0, 13); //slice
+  fruit[2] = new Fruit("Dragon\nFruit", 0, 0, 0, 14); //slice
+  fruit[3] = new Fruit("Pineapple", 0, 0, 0, 15); //slice
+  fruit[4] = new Fruit("Lemon", 0, 0, 0, 16); //slice
+  fruit[5] = new Fruit("Kiwi", 0, 0, 0, 17); //slice
+  fruit[6] = new Fruit("Lychee", 0, 0, 0, 18); //full
+  fruit[7] = new Fruit("Raspberry", 0, 0, 0, 19); //full
+  fruit[8] = new Fruit("Blackcurrant", 0, 0, 0, 20); //full
+  fruit[9] = new Fruit("Star\nFruit", 0, 0, 0, 21); //full
+  fruit[10] = new Fruit("Papaya", 0, 0, 0, 22); //full
+  fruit[11] = new Fruit("Jack\nFruit", 0, 0, 0, 23); //full
   
 function setPotionList() {
 
@@ -184,11 +222,11 @@ function setPotionList() {
   }
 
   for (let i = 0; i < 10; i++) {
-    ClassicJarListList[i] = new CJar(i);
+    ClassicJarList[i] = new CJar(i);
   }
 
   for (let i = 0; i < 6; i++) {
-    EncasedPotionList[i] = new Epotion(i);
+    EncasedPotionList[i] = new EPotion(i);
   }
 
   for (let i = 0; i < 10; i++) {
@@ -204,7 +242,7 @@ function setPotionList() {
   }
 
   for (let i = 0; i < 11; i++) {
-    LargeTonicList[i] = new Ltonic(i);
+    LargeTonicList[i] = new LTonic(i);
   }
 
   for (let i = 0; i < 11; i++) {
@@ -225,14 +263,37 @@ function setPotionList() {
 
 }
 
-
 function setMushrooms(){
 
   for (let i = 0; i < 12; i++) {
 
-    ingredientNameList[i] = mushroom[i].name;
+    mushroomNameList[i] = mushroom[i].name;
   }
 
+  return mushroomNameList;
+}
+
+function setFruits(){
+
+  for (let i = 0; i < 12; i++) {
+
+    fruitNameList[i] = fruit[i].name;
+  }
+
+  return fruitNameList;
+}
+
+function setVegs(){
+
+  for (let i = 0; i < 12; i++) {
+
+    vegNameList[i] = veg[i].name;
+  }
+
+  return vegNameList;
+}
+
+function setIngedientList(){
 
 }
 
@@ -294,8 +355,6 @@ function ingredientButton(ID){
   pColorB = (pColorB + mushroom[ID].B) / (255 * pIngredientsNum);
 }
 
-
-
 function checkPotion(recipeIngredients){
   let check = [false];
   let trueCount = 0;
@@ -328,13 +387,13 @@ function BigVialB(){
   potionIngredients[potionIngredients.length] = bottleList[0];
 
   if (pColorR < 0.4 && pColorG < 0.4 && pColorB < 0.4){
-    return BVialBlack.name;
+    return BVial.colourList[0];
   } 
   else if ((pColorG > 0.4 && pColorG < 0.7) && pColorR > 0.4 && pColorB < 0.6){
-    return BVialRed.name;
+    return BVial.colourList[8];
   }
   else if (pColorB < 0.6 && (pColorG > 0.6 && pColorG < 0.7) && pColorR > 0.6){
-    return BVialOrange.name;
+    return BVial.colourList[5];
   } 
   else if ((pColorG > 0.7 && pColorG < 0.9) && pColorR > 0.4 && pColorB < 0.6){
     return BVialGold.name;
@@ -405,14 +464,6 @@ function BubblyBrewBottleRisingB(){
     return BBBRBlack.name;
   }
 }
-
-ingredientNameList = setMushrooms();
-
-bottleList = setBottleList();
-
-recipeIngredients = recipe(ingredientNameList, bottleList);
-
-gamePoints += checkPotion(recipeIngredients); 
 
 function loadRoom() {
 
@@ -525,7 +576,27 @@ function draw() {
 
 }
 
+function cauldrenColor(){
+  //the cauldron color is pColorR, pColorG, pColorB in RGB values
+}
+
 function game() {
+  setup();
+
+  draw();
+
+  ingredientNameList = setMushrooms();
+
+  bottleList = setBottleList();
+
+  recipeIngredients = recipe(ingredientNameList, bottleList);
+
   selectIngredient();
 
+  
+
+  
+  gamePoints += checkPotion(recipeIngredients); 
 }
+
+
