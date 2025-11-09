@@ -10,7 +10,14 @@ const mushroom = [];
 const fruit = [];
 const veg = [];
 let selectB = [];
+for (let i = 0; i < 3; i++) {
+  selectB[i] = [];
+}
 let ingredientSprite = [];
+for (let i = 0; i < 3; i++) {
+  ingredientSprite[i] = [];
+}
+let roomB = [];
 let recipeIngredients= [];
 let ingredientNameList = [];
 let bottleList = [];
@@ -38,32 +45,35 @@ var gamePoints = 0;
 
 
 class Mushroom {
-  constructor(name, R, G, B, ID) {
+  constructor(name, R, G, B, ID, sprite) {
   this.name = name;
   this.R = R;
   this.G = G;
   this.B = B;
   this.ID = ID;
+  this.sprite = sprite;
   }
 }
 
 class Fruit {
-  constructor(name, R, G, B, ID) {
+  constructor(name, R, G, B, ID, sprite) {
   this.name = name;
   this.R = R;
   this.G = G;
   this.B = B;
   this.ID = ID;
+  this.sprite = sprite;
   }
 }
 
 class Veg {
-  constructor(name, R, G, B, ID) {
+  constructor(name, R, G, B, ID, sprite) {
   this.name = name;
   this.R = R;
   this.G = G;
   this.B = B;
   this.ID = ID;
+  this.sprite = sprite;
   }
 }
 
@@ -185,31 +195,31 @@ class SVial extends Bottle {
   }
 }
 
-  mushroom[0] = new Mushroom("Dawn\nSinger", 0.84, 0.24, 0.58, 0); //mushroom 35
-  mushroom[1] = new Mushroom("Midnight\nFungus", 0.58, 0.68, 0.84, 1); //mushroom 19
-  mushroom[2] = new Mushroom("Puffglow", 0.54, 0.67, 0.73, 2); //mushroom 14
-  mushroom[3] = new Mushroom("Capling", 0.86, 0.71, 0.62, 3); //mushroom 00
-  mushroom[4] = new Mushroom("Scarlet\nSpore", 0.99, 0.34, 0.26, 4); //mushroom 02
-  mushroom[5] = new Mushroom("Spore\nSpark", 0.83, 0.78, 0.73, 5); //mushroom 04
-  mushroom[6] = new Mushroom("Glowtop", 0.94, 0.92, 0.34, 6); //mushroom 05
-  mushroom[7] = new Mushroom("Bark\nShine", 0.63, 0.38, 0.15, 7); //mushroom 11
-  mushroom[8] = new Mushroom("Crimson\nCap", 0.78, 0.14, 0.03, 8); //mushroom 16
-  mushroom[9] = new Mushroom("Starlit\nShroom", 0.82, 0.50, 0.92, 9); //mushroom 22
-  mushroom[10] = new Mushroom("Mossy\nGill", 0.52, 0.76, 0.11, 10); //mushroom 29
-  mushroom[11] = new Mushroom("Feather\nShroom", 0.96, 0.78, 0.36, 11); //mushroom 34
+  mushroom[0] = new Mushroom("Dawn\nSinger", 0.84, 0.24, 0.58, 0, 'Game Sprites/Pixel Mushroom Pack/Mushroom035.png'); //mushroom 35
+  mushroom[1] = new Mushroom("Midnight\nFungus", 0.58, 0.68, 0.84, 1, 'Game Sprites/Pixel Mushroom Pack/Mushroom019.png'); //mushroom 19
+  mushroom[2] = new Mushroom("Puffglow", 0.54, 0.67, 0.73, 2, 'Game Sprites/Pixel Mushroom Pack/Mushroom014.png'); //mushroom 14
+  mushroom[3] = new Mushroom("Capling", 0.86, 0.71, 0.62, 3, 'Game Sprites/Pixel Mushroom Pack/Mushroom000.png'); //mushroom 00
+  mushroom[4] = new Mushroom("Scarlet\nSpore", 0.99, 0.34, 0.26, 4, 'Game Sprites/Pixel Mushroom Pack/Mushroom002.png'); //mushroom 02
+  mushroom[5] = new Mushroom("Spore\nSpark", 0.83, 0.78, 0.73, 5, 'Game Sprites/Pixel Mushroom Pack/Mushroom004.png'); //mushroom 04
+  mushroom[6] = new Mushroom("Glowtop", 0.94, 0.92, 0.34, 6, 'Game Sprites/Pixel Mushroom Pack/Mushroom005.png'); //mushroom 05
+  mushroom[7] = new Mushroom("Bark\nShine", 0.63, 0.38, 0.15, 7, 'Game Sprites/Pixel Mushroom Pack/Mushroom011.png'); //mushroom 11
+  mushroom[8] = new Mushroom("Crimson\nCap", 0.78, 0.14, 0.03, 8, 'Game Sprites/Pixel Mushroom Pack/Mushroom016.png'); //mushroom 16
+  mushroom[9] = new Mushroom("Starlit\nShroom", 0.82, 0.50, 0.92, 9, 'Game Sprites/Pixel Mushroom Pack/Mushroom022.png'); //mushroom 22
+  mushroom[10] = new Mushroom("Mossy\nGill", 0.52, 0.76, 0.11, 10, 'Game Sprites/Pixel Mushroom Pack/Mushroom029.png'); //mushroom 29
+  mushroom[11] = new Mushroom("Feather\nShroom", 0.96, 0.78, 0.36, 11, 'Game Sprites/Pixel Mushroom Pack/Mushroom034.png'); //mushroom 34
 
-  fruit[0] = new Fruit("Pomegranate", 0, 0, 0, 12); //slice
-  fruit[1] = new Fruit("Passion\nFruit", 0, 0, 0, 13); //slice
-  fruit[2] = new Fruit("Dragon\nFruit", 0, 0, 0, 14); //slice
-  fruit[3] = new Fruit("Pineapple", 0, 0, 0, 15); //slice
-  fruit[4] = new Fruit("Lemon", 0, 0, 0, 16); //slice
-  fruit[5] = new Fruit("Kiwi", 0, 0, 0, 17); //slice
-  fruit[6] = new Fruit("Lychee", 0, 0, 0, 18); //full
-  fruit[7] = new Fruit("Raspberry", 0, 0, 0, 19); //full
-  fruit[8] = new Fruit("Blackcurrant", 0, 0, 0, 20); //full
-  fruit[9] = new Fruit("Star\nFruit", 0, 0, 0, 21); //full
-  fruit[10] = new Fruit("Papaya", 0, 0, 0, 22); //full
-  fruit[11] = new Fruit("Jack\nFruit", 0, 0, 0, 23); //full
+  fruit[0] = new Fruit("Pome-\ngranate", 0, 0, 0, 12, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/PomegranateSLICE.png'); //slice
+  fruit[1] = new Fruit("Passion\nFruit", 0, 0, 0, 13, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/PassionfruitSLICE.png'); //slice
+  fruit[2] = new Fruit("Dragon\nFruit", 0, 0, 0, 14, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/DragonFruitSLICE.png'); //slice
+  fruit[3] = new Fruit("Pine-\napple", 0, 0, 0, 15, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/PineappleSLICE.png'); //slice
+  fruit[4] = new Fruit("Lemon", 0, 0, 0, 16, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/LemonSLICE.png'); //slice
+  fruit[5] = new Fruit("Kiwi", 0, 0, 0, 17, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/kiwiSLICE.png'); //slice
+  fruit[6] = new Fruit("Lychee", 0, 0, 0, 18, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Lychee.png'); //full
+  fruit[7] = new Fruit("Rasp-\nberry", 0, 0, 0, 19, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Raspberry.png'); //full
+  fruit[8] = new Fruit("Black-\ncurrant", 0, 0, 0, 20, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Blackcurrant.png'); //full
+  fruit[9] = new Fruit("Starfruit", 0, 0, 0, 21, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Starfruit.png'); //full
+  fruit[10] = new Fruit("Papaya", 0, 0, 0, 22, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Papaya.png'); //full
+  fruit[11] = new Fruit("Jackfruit", 0, 0, 0, 23, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Jackfruit.png'); //full
   
 function setPotionList() {
 
@@ -478,18 +488,13 @@ function loadRoom() {
 
 function loadIngredients() {
 
-  ingredientSprite[0] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom035.png');
-  ingredientSprite[1] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom019.png');
-  ingredientSprite[2] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom014.png');
-  ingredientSprite[3] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom000.png');
-  ingredientSprite[4] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom002.png');
-  ingredientSprite[5] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom004.png');
-  ingredientSprite[6] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom005.png');
-  ingredientSprite[7] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom011.png');
-  ingredientSprite[8] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom016.png');
-  ingredientSprite[9] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom022.png');
-  ingredientSprite[10] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom029.png');
-  ingredientSprite[11] = loadImage('Game Sprites/Pixel Mushroom Pack/Mushroom034.png');
+  for (let i = 0; i < 12; i++) {
+    ingredientSprite[0][i] = loadImage(mushroom[i].sprite);
+  }
+
+  for (let i = 0; i < 12; i++) {
+    ingredientSprite[1][i] = loadImage(fruit[i].sprite);
+  }
 
 }
 
@@ -504,35 +509,47 @@ function drawRoom() {
 
 }
 
-function drawIngredients() {
+function drawIngredients(shelf) {
 
-  image(ingredientSprite[0], 40, 140, 64, 64);
-  image(ingredientSprite[1], 230, 140, 64, 64);
-  image(ingredientSprite[2], 415, 140, 64, 64);
-  image(ingredientSprite[3], 40, 235, 64, 64);
-  image(ingredientSprite[4], 230, 235, 64, 64);
-  image(ingredientSprite[5], 415, 235, 64, 64);
-  image(ingredientSprite[6], 40, 325, 64, 64);
-  image(ingredientSprite[7], 230, 325, 64, 64);
-  image(ingredientSprite[8], 415, 325, 64, 64);
-  image(ingredientSprite[9], 40, 415, 64, 64);
-  image(ingredientSprite[10], 230, 415, 64, 64);
-  image(ingredientSprite[11], 415, 415, 64, 64);
+  image(ingredientSprite[shelf][0], 40, 140, 64, 64);
+  image(ingredientSprite[shelf][1], 230, 140, 64, 64);
+  image(ingredientSprite[shelf][2], 415, 140, 64, 64);
+  image(ingredientSprite[shelf][3], 40, 235, 64, 64);
+  image(ingredientSprite[shelf][4], 230, 235, 64, 64);
+  image(ingredientSprite[shelf][5], 415, 235, 64, 64);
+  image(ingredientSprite[shelf][6], 40, 325, 64, 64);
+  image(ingredientSprite[shelf][7], 230, 325, 64, 64);
+  image(ingredientSprite[shelf][8], 415, 325, 64, 64);
+  image(ingredientSprite[shelf][9], 40, 415, 64, 64);
+  image(ingredientSprite[shelf][10], 230, 415, 64, 64);
+  image(ingredientSprite[shelf][11], 415, 415, 64, 64);
+
+}
+
+function hideIngredients(shelf) {
+
+  for (let i = 0; i < 12; i++) {
+    ingredientSprite[shelf][i].hide();
+  }
 
 }
 
 function createIngredientButtons() {
 
   for (let i = 0; i < 12; i++) {
-    selectB[i] = createButton(mushroom[i].name);
+    selectB[0][i] = createButton(mushroom[i].name);
+  }
+
+  for (let i = 0; i < 12; i++) {
+    selectB[1][i] = createButton(fruit[i].name);
   }
   
 }
 
-function drawIngredientButtons() {
+function drawIngredientButtons(shelf) {
 
   for (let i = 0; i < 12; i++) {
-    selectB[i].size(60, 60);
+    selectB[shelf][i].size(60, 60);
   }
 
   for (let i = 0; i < 4; i++) {
@@ -543,18 +560,57 @@ function drawIngredientButtons() {
       }
       let y = 155 + i * 90;
       if (i == 3) {
-        y -= 5;
+        y += 5;
       }
-      selectB[i * 3 + j].position(x, y);
+      selectB[shelf][i * 3 + j].position(x, y);
     }
   }
 
 }
 
-function selectIngredient() {
+function hideIngredientButtons(shelf) {
 
   for (let i = 0; i < 12; i++) {
-    selectB[i].mousePressed(ingredientButton[i]);
+    selectB[shelf][i].hide();
+  }
+
+}
+
+function selectIngredient(shelf) {
+
+  for (let i = 0; i < 12; i++) {
+    selectB[shelf][i].mousePressed(ingredientButton[shelf][i]);
+  }
+
+}
+
+function createShelfButton() {
+
+  roomB[0] = createButton("See Mushrooms");
+  roomB[1] = createButton("See Fruits");
+  roomB[2] = createButton("See Vegetables");
+
+}
+
+function drawShelfButtons(shelf) {
+
+  for (let i = 0; i < 3; i++) {
+    roomB[i].size(100, 40);
+    roomB[i].style('background-color', 'white');
+  }
+
+  roomB[shelf].style('background-color', 'yellow');
+
+  roomB[0].position(65, 520);
+  roomB[1].position(250, 520);
+  roomB[2].position(435, 520);
+
+}
+
+function selectShelfButton() {
+
+  for (let i = 0; i < 3; i++) {
+    roomB[i].mousePressed(drawShelfButtons(i));
   }
 
 }
@@ -565,14 +621,21 @@ function setup() {
   loadIngredients();
   createCanvas(1250, 550);
   createIngredientButtons();
+  createShelfButton();
+  drawShelfButtons(0);
+  drawIngredients(0);
+  drawIngredientButtons(0);
 
 }
 
 function draw() {
   
   drawRoom();
-  drawIngredients();
-  drawIngredientButtons();
+  drawIngredients(0);
+  drawIngredientButtons(0);
+  
+  hideIngredientButtons(1);
+  selectShelfButton();
 
 }
 
@@ -593,10 +656,10 @@ function game() {
 
   selectIngredient();
 
+  selectShelfButton();
+
   
 
   
   gamePoints += checkPotion(recipeIngredients); 
 }
-
-
