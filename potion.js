@@ -396,31 +396,31 @@ function BigVialB(){
     return BVial.colourList[5];
   } 
   else if ((pColorG > 0.7 && pColorG < 0.9) && pColorR > 0.4 && pColorB < 0.6){
-    return BVialGold.name;
+    return BVial.colourList[2];
   }
   else if (pColorG > 0.9 && pColorR > 0.9 && pColorB > 0.6){
-    return BVialYellow.name;
+    return BVial.colourList[10];
   }
   else if (pColorG > 0.9 && (pColorR < 0.9 && pColorR > 0.51) && pColorB > 0.6){
-    return BVialLime.name;
+    return BVial.colourList[4];
   }
   else if (pColorB < 0.6 && pColorG > 0.4 && pColorR < 0.51){
-    return BVialGreen.name;
+    return BVial.colourList[3];
   }
   else if (pColorB > 0.6 && pColorG > 0.6 && pColorR < 0.51){
-    return BVialTurquise.name;
+    return BVial.colourList[9];
   }
   else if (pColorB > 0.6 && pColorG < 0.6 && pColorR < 0.4){
-    return BVialBlue.name;
+    return BVial.colourList[1];
   }
   else if (pColorB > 0.6 && pColorG < 0.6 && pColorR > 0.4){
-    return BVialPurple.name;
+    return BVial.colourList[7];
   }
   else if (pColorB < 0.6 && pColorG < 0.6 && pColorR > 0.4){
-    return BVialPink.name;
+    return BVial.colourList[6];
   }
   else {
-    return BVialBlack.name;
+    return BVial.colourList[0];
   }
 }
 
