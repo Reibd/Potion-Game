@@ -10,6 +10,7 @@ const mushroom = [];
 const fruit = [];
 const veg = [];
 let selectB = [];
+
 for (let i = 0; i < 3; i++) {
   selectB[i] = [];
 }
@@ -17,6 +18,7 @@ let ingredientSprite = [];
 for (let i = 0; i < 3; i++) {
   ingredientSprite[i] = [];
 }
+
 let roomB = [];
 let recipeIngredients= [];
 let ingredientNameList = [];
