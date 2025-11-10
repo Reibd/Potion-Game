@@ -6,6 +6,7 @@ let board;
 let cauldren;
 
 
+var shelfNumber = 0;
 const mushroom = [];
 const fruit = [];
 const veg = [];
@@ -576,6 +577,7 @@ function drawIngredients(shelf) {
 
 function hideIngredients(shelf) {
 
+
   for (let i = 0; i < 12; i++) {
     ingredientSprite[shelf][i].hide();
   }
@@ -598,10 +600,11 @@ function createIngredientButtons() {
   
 }
 
-function drawIngredientButtons(shelf) {
+function drawIngredientButtons(shelfNumber) {
 
   for (let i = 0; i < 12; i++) {
-    selectB[shelf][i].size(60, 60);
+    selectB[shelfNumber][i].size(60, 60);
+    selectB[shelfNumber][i].show();
   }
 
   for (let i = 0; i < 4; i++) {
@@ -614,17 +617,32 @@ function drawIngredientButtons(shelf) {
       if (i == 3) {
         y += 5;
       }
-      selectB[shelf][i * 3 + j].position(x, y);
+      selectB[shelfNumber][i * 3 + j].position(x, y);
     }
   }
 
 }
 
-function hideIngredientButtons(shelf) {
+function hideIngredientButtons(shelfNumber) {
 
-  for (let i = 0; i < 12; i++) {
-    selectB[shelf][i].hide();
+  if (shelfNumber != 0) {
+    for (let i = 0; i < 12; i++) {
+    selectB[shelfNumber][0].hide();
+    }
   }
+
+  if (shelfNumber != 1) {
+    for (let i = 0; i < 12; i++) {
+    selectB[shelfNumber][1].hide();
+    }
+  }
+
+  if (shelfNumber != 2) {
+    for (let i = 0; i < 12; i++) {
+    selectB[shelfNumber][2].hide();
+    }
+  }
+  
 
 }
 
@@ -636,7 +654,7 @@ function selectIngredient(shelf) {
 
 }
 
-function createShelfButton() {
+function createShelfButtons() {
 
   roomB[0] = createButton("See Mushrooms");
   roomB[1] = createButton("See Fruits");
@@ -661,13 +679,9 @@ function drawShelfButtons(shelf) {
 
 function selectShelfButton() {
 
-  roomB[0].mousePressed(drawShelfButtons(0));
-  roomB[1].mousePressed(drawShelfButtons(1));
-  //roomB[2].mousePressed(drawShelfButtons(2));
-
-  /*for (let i = 0; i < 3; i++) {
-    roomB[i].mousePressed(drawShelfButtons(i));
-  }*/
+  for (let i = 0; i < 3; i++) {
+    roomB[i].mousePressed(() => shelfNumber = i);
+  }
 
 }
 
@@ -677,22 +691,20 @@ function setup() {
   loadIngredients();
   createCanvas(1250, 550);
   createIngredientButtons();
-  createShelfButton();
+  createShelfButtons();
   
-  drawShelfButtons(0);
-  drawIngredients(2);
-  drawIngredientButtons(2);
   selectShelfButton();
-  hideIngredientButtons(0);
 
 }
 
 function draw() {
   
   
-drawRoom();
-  drawIngredients(2);
-
+  drawRoom();
+  drawShelfButtons(shelfNumber);
+  drawIngredients(shelfNumber);
+  drawIngredientButtons(shelfNumber);
+  hideIngredientButtons(shelfNumber);
 
 
 }
