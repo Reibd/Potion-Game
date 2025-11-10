@@ -609,9 +609,13 @@ function drawShelfButtons(shelf) {
 
 function selectShelfButton() {
 
-  for (let i = 0; i < 3; i++) {
+  roomB[0].mousePressed(drawShelfButtons(0));
+  roomB[1].mousePressed(drawShelfButtons(1));
+  //roomB[2].mousePressed(drawShelfButtons(2));
+
+  /*for (let i = 0; i < 3; i++) {
     roomB[i].mousePressed(drawShelfButtons(i));
-  }
+  }*/
 
 }
 
@@ -622,20 +626,22 @@ function setup() {
   createCanvas(1250, 550);
   createIngredientButtons();
   createShelfButton();
+  
   drawShelfButtons(0);
-  drawIngredients(0);
-  drawIngredientButtons(0);
+  drawIngredients(1);
+  drawIngredientButtons(1);
+  selectShelfButton();
+  hideIngredientButtons(0);
 
 }
 
 function draw() {
   
-  drawRoom();
-  drawIngredients(0);
-  drawIngredientButtons(0);
   
-  hideIngredientButtons(1);
-  selectShelfButton();
+drawRoom();
+  drawIngredients(1);
+
+
 
 }
 
@@ -644,9 +650,6 @@ function cauldrenColor(){
 }
 
 function game() {
-  setup();
-
-  draw();
 
   ingredientNameList = setMushrooms();
 
