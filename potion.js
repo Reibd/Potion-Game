@@ -221,6 +221,19 @@ class SVial extends Bottle {
   fruit[10] = new Fruit("Papaya", 0, 0, 0, 22, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Papaya.png'); //full
   fruit[11] = new Fruit("Jackfruit", 0, 0, 0, 23, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Jackfruit.png'); //full
   
+  veg[0] - new Veg("Beetroot", 0, 0, 0, 24);
+  veg[0] - new Veg("Garlic", 0, 0, 0, 25);
+  veg[0] - new Veg("Ginger", 0, 0, 0, 26);
+  veg[0] - new Veg("Kohlrabi", 0, 0, 0, 27);
+  veg[0] - new Veg("Leek", 0, 0, 0, 28);
+  veg[0] - new Veg("Turnip", 0, 0, 0, 29);
+  veg[0] - new Veg("Radish", 0, 0, 0, 30);
+  veg[0] - new Veg("Parsnip", 0, 0, 0, 31);
+  veg[0] - new Veg("Olive", 0, 0, 0, 32);
+  veg[0] - new Veg("Onion", 0, 0, 0, 33);
+  veg[0] - new Veg("Red\nCabbage", 0, 0, 0, 34);
+  veg[0] - new Veg("Hot\nPepper", 0, 0, 0, 35);
+  
 function setPotionList() {
 
   for (let i = 0; i < 11; i++) {
