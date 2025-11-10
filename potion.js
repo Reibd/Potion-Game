@@ -221,18 +221,18 @@ class SVial extends Bottle {
   fruit[10] = new Fruit("Papaya", 0.93, 0.38, 0.24, 22, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Papaya.png'); //full
   fruit[11] = new Fruit("Jackfruit", 0.57, 0.59, 0.25, 23, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Jackfruit.png'); //full
   
-  veg[0] - new Veg("Beetroot", 0, 0, 0, 24);
-  veg[0] - new Veg("Garlic", 0, 0, 0, 25);
-  veg[0] - new Veg("Ginger", 0, 0, 0, 26);
-  veg[0] - new Veg("Kohlrabi", 0, 0, 0, 27);
-  veg[0] - new Veg("Leek", 0, 0, 0, 28);
-  veg[0] - new Veg("Turnip", 0, 0, 0, 29);
-  veg[0] - new Veg("Radish", 0, 0, 0, 30);
-  veg[0] - new Veg("Parsnip", 0, 0, 0, 31);
-  veg[0] - new Veg("Olive", 0, 0, 0, 32);
-  veg[0] - new Veg("Onion", 0, 0, 0, 33);
-  veg[0] - new Veg("Red\nCabbage", 0, 0, 0, 34);
-  veg[0] - new Veg("Hot\nPepper", 0, 0, 0, 35);
+  veg[0] = new Veg("Beetroot", 0, 0, 0, 24, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Beetroot.png');
+  veg[1] = new Veg("Garlic", 0, 0, 0, 25, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Garlic.png');
+  veg[2] = new Veg("Ginger", 0, 0, 0, 26, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Ginger.png');
+  veg[3] = new Veg("Kohlrabi", 0, 0, 0, 27, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Kohlrabi.png');
+  veg[4] = new Veg("Leek", 0, 0, 0, 28, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Leek.png');
+  veg[5] = new Veg("Turnip", 0, 0, 0, 29, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Turnip.png');
+  veg[6] = new Veg("Radish", 0, 0, 0, 30, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Radish.png');
+  veg[7] = new Veg("Parsnip", 0, 0, 0, 31, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Parsnip.png');
+  veg[8] = new Veg("Olive", 0, 0, 0, 32, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Olive.png');
+  veg[9] = new Veg("Onion", 0, 0, 0, 33, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/RedOnion.png'); //red onion
+  veg[10] = new Veg("Red\nCabbage", 0, 0, 0, 34, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/RedCabbage.png');
+  veg[11] = new Veg("Hot\nPepper", 0, 0, 0, 35, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/HotPepper.png');
   
 function setPotionList() {
 
@@ -540,6 +540,10 @@ function loadIngredients() {
     ingredientSprite[1][i] = loadImage(fruit[i].sprite);
   }
 
+  for (let i = 0; i < 12; i++) {
+    ingredientSprite[2][i] = loadImage(veg[i].sprite);
+  }
+
 }
 
 function drawRoom() {
@@ -586,6 +590,10 @@ function createIngredientButtons() {
 
   for (let i = 0; i < 12; i++) {
     selectB[1][i] = createButton(fruit[i].name);
+  }
+
+  for (let i = 0; i < 12; i++) {
+    selectB[2][i] = createButton(veg[i].name);
   }
   
 }
@@ -672,8 +680,8 @@ function setup() {
   createShelfButton();
   
   drawShelfButtons(0);
-  drawIngredients(1);
-  drawIngredientButtons(1);
+  drawIngredients(2);
+  drawIngredientButtons(2);
   selectShelfButton();
   hideIngredientButtons(0);
 
@@ -683,7 +691,7 @@ function draw() {
   
   
 drawRoom();
-  drawIngredients(1);
+  drawIngredients(2);
 
 
 
