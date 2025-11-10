@@ -208,18 +208,18 @@ class SVial extends Bottle {
   mushroom[10] = new Mushroom("Mossy\nGill", 0.52, 0.76, 0.11, 10, 'Game Sprites/Pixel Mushroom Pack/Mushroom029.png'); //mushroom 29
   mushroom[11] = new Mushroom("Feather\nShroom", 0.96, 0.78, 0.36, 11, 'Game Sprites/Pixel Mushroom Pack/Mushroom034.png'); //mushroom 34
 
-  fruit[0] = new Fruit("Pome-\ngranate", 0, 0, 0, 12, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/PomegranateSLICE.png'); //slice
-  fruit[1] = new Fruit("Passion\nFruit", 0, 0, 0, 13, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/PassionfruitSLICE.png'); //slice
-  fruit[2] = new Fruit("Dragon\nFruit", 0, 0, 0, 14, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/DragonFruitSLICE.png'); //slice
-  fruit[3] = new Fruit("Pine-\napple", 0, 0, 0, 15, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/PineappleSLICE.png'); //slice
-  fruit[4] = new Fruit("Lemon", 0, 0, 0, 16, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/LemonSLICE.png'); //slice
-  fruit[5] = new Fruit("Kiwi", 0, 0, 0, 17, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/kiwiSLICE.png'); //slice
-  fruit[6] = new Fruit("Lychee", 0, 0, 0, 18, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Lychee.png'); //full
-  fruit[7] = new Fruit("Rasp-\nberry", 0, 0, 0, 19, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Raspberry.png'); //full
-  fruit[8] = new Fruit("Black-\ncurrant", 0, 0, 0, 20, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Blackcurrant.png'); //full
-  fruit[9] = new Fruit("Starfruit", 0, 0, 0, 21, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Starfruit.png'); //full
-  fruit[10] = new Fruit("Papaya", 0, 0, 0, 22, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Papaya.png'); //full
-  fruit[11] = new Fruit("Jackfruit", 0, 0, 0, 23, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Jackfruit.png'); //full
+  fruit[0] = new Fruit("Pome-\ngranate", 0.87, 0.22, 0.23, 12, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/PomegranateSLICE.png'); //slice
+  fruit[1] = new Fruit("Passion\nFruit", 0.98, 0.76, 0.17, 13, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/PassionfruitSLICE.png'); //slice
+  fruit[2] = new Fruit("Dragon\nFruit", 0.99, 0.82, 0.87, 14, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/DragonFruitSLICE.png'); //slice
+  fruit[3] = new Fruit("Pine-\napple", 0.98, 0.83, 0.17, 15, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/PineappleSLICE.png'); //slice
+  fruit[4] = new Fruit("Lemon", 0.98, 0.97, 0.71, 16, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/LemonSLICE.png'); //slice
+  fruit[5] = new Fruit("Kiwi", 0.56, 0.85, 0.41, 17, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/kiwiSLICE.png'); //slice
+  fruit[6] = new Fruit("Lychee", 0.87, 0.26, 0.43, 18, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Lychee.png'); //full
+  fruit[7] = new Fruit("Rasp-\nberry", 0.53, 0.02, 0.18, 19, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Raspberry.png'); //full
+  fruit[8] = new Fruit("Black-\ncurrant", 0.27, 0.35, 0.63, 20, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Blackcurrant.png'); //full
+  fruit[9] = new Fruit("Starfruit", 0.93, 0.94, 0.32, 21, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Starfruit.png'); //full
+  fruit[10] = new Fruit("Papaya", 0.93, 0.38, 0.24, 22, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Papaya.png'); //full
+  fruit[11] = new Fruit("Jackfruit", 0.57, 0.59, 0.25, 23, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Jackfruit.png'); //full
   
   veg[0] - new Veg("Beetroot", 0, 0, 0, 24);
   veg[0] - new Veg("Garlic", 0, 0, 0, 25);
@@ -316,8 +316,21 @@ function setVegs(){
   return vegNameList;
 }
 
-function setIngedientList(){
+function setIngedientList(mushroomNameList, fruitNameList, vegNameList){
 
+  for (let i = 0; i < mushroomNameList.length; i++){
+    ingredientNameList[i] = mushroomNameList[i];
+  }
+
+  for (let i = mushroomNameList.length; i < fruitNameList.length; i++){
+    ingredientNameList[i] = fruitNameList[i];
+  }
+
+  for (let i = mushroomNameList.length + fruitNameList.length; i < vegNameList.length; i++){
+    ingredientNameList[i] = vegNameList[i];
+  }
+
+  return ingredientNameList;
 }
 
 function setBottleList(){
@@ -367,15 +380,33 @@ function recipe(ingredientNameList, bottleList){
 }
 
 function ingredientButton(ID){
-  potionIngredients[potionIngredients.length] = mushroom[ID].name;
+  potionIngredients[potionIngredients.length] = ingredientNameList[ID];
 
   pIngredientsNum = potionIngredients.length;
 
+  if (ID < 12){
   pColorR = (pColorR + mushroom[ID].R) / (255 * pIngredientsNum);
 
   pColorG = (pColorG + mushroom[ID].G) / (255 * pIngredientsNum);
 
   pColorB = (pColorB + mushroom[ID].B) / (255 * pIngredientsNum);
+  }
+
+  if (ID < 24 && ID > 11){
+  pColorR = (pColorR + fruit[ID].R) / (255 * pIngredientsNum);
+
+  pColorG = (pColorG + fruit[ID].G) / (255 * pIngredientsNum);
+
+  pColorB = (pColorB + fruit[ID].B) / (255 * pIngredientsNum);
+  }
+
+  if (ID > 23){
+  pColorR = (pColorR + veg[ID].R) / (255 * pIngredientsNum);
+
+  pColorG = (pColorG + veg[ID].G) / (255 * pIngredientsNum);
+
+  pColorB = (pColorB + veg[ID].B) / (255 * pIngredientsNum);
+  }
 }
 
 function checkPotion(recipeIngredients){
@@ -660,6 +691,22 @@ drawRoom();
 
 function cauldrenColor(){
   //the cauldron color is pColorR, pColorG, pColorB in RGB values
+}
+
+function deleteLast(){
+  let pos = 0;
+  
+  pos = potionIngredients.length - 1;
+
+  potionIngredients.splice(pos, 1);
+
+  pIngredientsNum = potionIngredients.length;
+}
+
+function deleteAll(){
+  potionIngredients.splice(0);
+
+  pIngredientsNum = potionIngredients.length;
 }
 
 function game() {
