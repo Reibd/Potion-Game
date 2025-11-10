@@ -5,7 +5,6 @@ let bgDown;
 let board;
 let cauldren;
 
-
 var shelfNumber = 0;
 const mushroom = [];
 const fruit = [];
@@ -15,6 +14,7 @@ let selectB = [];
 for (let i = 0; i < 3; i++) {
   selectB[i] = [];
 }
+
 let ingredientSprite = [];
 for (let i = 0; i < 3; i++) {
   ingredientSprite[i] = [];
@@ -360,10 +360,10 @@ function recipe(ingredientNameList, bottleList){
   }
 
   for (let i = 0; i < ingredientTypeNum; i++){
-    let temp = Math.floor(Math.random() * 12);
+    let temp = Math.floor(Math.random() * 36);
     for (let j = 0; j < ingredientLog.length; j++){
         if (temp == ingredientLog[j]){
-            temp = Math.floor(Math.random() * 12);
+            temp = Math.floor(Math.random() * 36);
             j = 0;
         }
     }
@@ -733,7 +733,7 @@ function deleteAll(){
 
 function game() {
 
-  ingredientNameList = setMushrooms();
+  ingredientNameList(mushroomNameList, fruitNameList, vegNameList)
 
   bottleList = setBottleList();
 
