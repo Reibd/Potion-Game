@@ -231,7 +231,7 @@ class SVial extends Bottle {
   veg[6] = new Veg("Radish", 0.68, 0.14, 0.20, 30, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Radish.png');
   veg[7] = new Veg("Parsnip", 0.94, 0.84, 0.55, 31, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Parsnip.png');
   veg[8] = new Veg("Olive", 0.78, 0.71, 0.01, 32, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Olive.png');
-  veg[9] = new Veg("Onion", 0, 0, 0, 33, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/RedOnion.png'); //red onion
+  veg[9] = new Veg("Onion", 0.83, 0.82, 0.64, 33, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/RedOnion.png'); //red onion
   veg[10] = new Veg("Red\nCabbage", 0.99, 0.42, 0.97, 34, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/RedCabbage.png');
   veg[11] = new Veg("Hot\nPepper", 0.68, 0.14, 0.20, 35, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/HotPepper.png');
   
@@ -386,27 +386,27 @@ function ingredientButton(ID){
   pIngredientsNum = potionIngredients.length;
 
   if (ID < 12){
-  pColorR = (pColorR + mushroom[ID].R) / (255 * pIngredientsNum);
+  pColorR = (pColorR + mushroom[ID].R) / (pIngredientsNum) * 255;
 
-  pColorG = (pColorG + mushroom[ID].G) / (255 * pIngredientsNum);
+  pColorG = (pColorG + mushroom[ID].G) / (pIngredientsNum) * 255;
 
-  pColorB = (pColorB + mushroom[ID].B) / (255 * pIngredientsNum);
+  pColorB = (pColorB + mushroom[ID].B) / (pIngredientsNum) * 255;
   }
 
   if (ID < 24 && ID > 11){
-  pColorR = (pColorR + fruit[ID].R) / (255 * pIngredientsNum);
+  pColorR = (pColorR + fruit[ID].R) / (pIngredientsNum) * 255;
 
-  pColorG = (pColorG + fruit[ID].G) / (255 * pIngredientsNum);
+  pColorG = (pColorG + fruit[ID].G) / (pIngredientsNum) * 255;
 
-  pColorB = (pColorB + fruit[ID].B) / (255 * pIngredientsNum);
+  pColorB = (pColorB + fruit[ID].B) / (pIngredientsNum) * 255;
   }
 
   if (ID > 23){
-  pColorR = (pColorR + veg[ID].R) / (255 * pIngredientsNum);
+  pColorR = (pColorR + veg[ID].R) / (pIngredientsNum) * 255;
 
-  pColorG = (pColorG + veg[ID].G) / (255 * pIngredientsNum);
+  pColorG = (pColorG + veg[ID].G) / (pIngredientsNum) * 255;
 
-  pColorB = (pColorB + veg[ID].B) / (255 * pIngredientsNum);
+  pColorB = (pColorB + veg[ID].B) / (pIngredientsNum) * 255;
   }
 }
 
