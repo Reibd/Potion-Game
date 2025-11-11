@@ -28,6 +28,7 @@ let bottleList = [];
 let mushroomNameList = [];
 let fruitNameList = [];
 let vegNameList = [];
+let ingredientList = [];
 let flowerNameList = [];
 var BigVialList = [];
 var BubblyBrewBottleRisingList = [];
@@ -348,18 +349,8 @@ function setIngedientList(mushroomNameList, fruitNameList, vegNameList){
 
   for (let i = 0; i < 12; i++) {
     ingredientNameList[i] = mushroomNameList[i];
-    ingredientNameList[i + 12]
-  }
-  for (let i = 0; i < mushroomNameList.length; i++){
-    ingredientNameList[i] = mushroomNameList[i];
-  }
-
-  for (let i = mushroomNameList.length; i < fruitNameList.length; i++){
-    ingredientNameList[i] = fruitNameList[i];
-  }
-
-  for (let i = mushroomNameList.length + fruitNameList.length; i < vegNameList.length; i++){
-    ingredientNameList[i] = vegNameList[i];
+    ingredientNameList[i + 12] = fruitNameList[i];
+    ingredientNameList[i + 24] = vegNameList[i];
   }
 
   return ingredientNameList;
@@ -411,8 +402,8 @@ function recipe(ingredientNameList, bottleList){
   return recipeIngredients;
 }
 
-function ingredientButton(shelfNumber, ID){
-  potionIngredients[potionIngredients.length] = ingredientNameList[shelfNumber +* ID];
+function ingredientButton(ID){
+  potionIngredients[potionIngredients.length] = ingredientNameList[(shelfNumber * 12) + ID];
 
   pIngredientsNum = potionIngredients.length;
 
@@ -602,7 +593,7 @@ function hideIngredientButtons(shelfNumber) {
 function selectIngredient(shelfNumber) {
 
   for (let i = 0; i < 12; i++) {
-    selectB[shelfNumber][i].mousePressed(() => ingredientButton(shelfNumber, i));
+    selectB[shelfNumber][i].mousePressed(() => ingredientButton((shelfNumber * 12) + i));
   }
 
 }
