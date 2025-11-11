@@ -249,16 +249,16 @@ class SVial extends Bottle {
   veg[10] = new Veg("Red\nCabbage", 0.99, 0.42, 0.97, 34, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/RedCabbage.png');
   veg[11] = new Veg("Hot\nPepper", 0.68, 0.14, 0.20, 35, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/HotPepper.png');
   
-  flower[0] = new Flower("Scilla", "Turquoise", 0); //flower 1 teal
-  flower[1] = new Flower("Solorion", "Yellow", 1); //flower 1 yellow
-  flower[2] = new Flower("Galax", "Teal", 2); //flower 2 teal
-  flower[3] = new Flower("Azura", "Blue", 3); //flower 4 blue
-  flower[4] = new Flower("Celosia", "Pink", 4); //flower 4 pink
-  flower[5] = new Flower("Alyssum", "Orange", 5); //flower 8 orange
-  flower[6] = new Flower("Vinca", "Purple", 6); //flower 9 purple
-  flower[7] = new Flower("Ixora", "Red", 7); //flower 9 red
-  flower[8] = new Flower("Aurumea", "Gold", 8); //floer 9 yellow
-  flower[9] = new Flower("Viridus", "Lime", 9); //flower 10 purple
+  flower[0] = new Flower("Scilla", "Turquoise", 0); //cropped F1 teal
+  flower[1] = new Flower("Solorion", "Yellow", 1); //cropped F1 yellow
+  flower[2] = new Flower("Galax", "Teal", 2); //cropped F2 teal
+  flower[3] = new Flower("Azura", "Blue", 3); //cropped F4 blue
+  flower[4] = new Flower("Celosia", "Pink", 4); //cropped F4 pink
+  flower[5] = new Flower("Alyssum", "Orange", 5); //cropped F8 orange
+  flower[6] = new Flower("Vinca", "Purple", 6); //cropped F9 purple
+  flower[7] = new Flower("Ixora", "Red", 7); //cropped F9 red
+  flower[8] = new Flower("Aurumea", "Gold", 8); //cropped F9 yellow
+  flower[9] = new Flower("Viridus", "Lime", 9); //cropped F10 purple
   flower[10] = new Flower("Frutex", "Green", 10); //bush 1 no flowers green
   flower[11] = new Flower("Calidus", "Brown", 11); //bush 1 no flowers warm green
 
@@ -435,6 +435,14 @@ function ingredientButton(ID){
 
   pColorB = (pColorB + veg[ID].B) / (pIngredientsNum) * 255;
   }
+}
+
+function bottleButton(){
+  
+}
+
+function flowerButton(){
+
 }
 
 function checkPotion(recipeIngredients){
