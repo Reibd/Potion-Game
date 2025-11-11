@@ -10,6 +10,7 @@ const mushroom = [];
 const fruit = [];
 const veg = [];
 var selectB = [];
+const flower = [];
 
 for (let i = 0; i < 3; i++) {
   selectB[i] = [];
@@ -27,6 +28,7 @@ let bottleList = [];
 let mushroomNameList = [];
 let fruitNameList = [];
 let vegNameList = [];
+let flowerNameList = [];
 var BigVialList = [];
 var BubblyBrewBottleRisingList = [];
 var ClassicJarList = [];
@@ -45,6 +47,7 @@ var pColorR = 0.0;
 var pColorG = 0.0;
 var pColorB = 0.0;
 var gamePoints = 0;
+var money = 0;
 
 
 class Mushroom {
@@ -75,6 +78,15 @@ class Veg {
   this.R = R;
   this.G = G;
   this.B = B;
+  this.ID = ID;
+  this.sprite = sprite;
+  }
+}
+
+class Flower {
+  constructor(name, colour, ID, sprite) {
+  this.name = name;
+  this.colour = colour;
   this.ID = ID;
   this.sprite = sprite;
   }
@@ -237,6 +249,19 @@ class SVial extends Bottle {
   veg[10] = new Veg("Red\nCabbage", 0.99, 0.42, 0.97, 34, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/RedCabbage.png');
   veg[11] = new Veg("Hot\nPepper", 0.68, 0.14, 0.20, 35, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/HotPepper.png');
   
+  flower[0] = new Flower("Scilla", "Turquoise", 0); //cropped F1 teal
+  flower[1] = new Flower("Solorion", "Yellow", 1); //cropped F1 yellow
+  flower[2] = new Flower("Galax", "Teal", 2); //cropped F2 teal
+  flower[3] = new Flower("Azura", "Blue", 3); //cropped F4 blue
+  flower[4] = new Flower("Celosia", "Pink", 4); //cropped F4 pink
+  flower[5] = new Flower("Alyssum", "Orange", 5); //cropped F8 orange
+  flower[6] = new Flower("Vinca", "Purple", 6); //cropped F9 purple
+  flower[7] = new Flower("Ixora", "Red", 7); //cropped F9 red
+  flower[8] = new Flower("Aurumea", "Gold", 8); //cropped F9 yellow
+  flower[9] = new Flower("Viridus", "Lime", 9); //cropped F10 purple
+  flower[10] = new Flower("Frutex", "Green", 10); //bush 1 no flowers green
+  flower[11] = new Flower("Calidus", "Brown", 11); //bush 1 no flowers warm green
+
 function setPotionList() {
 
   for (let i = 0; i < 11; i++) {
@@ -416,6 +441,14 @@ function ingredientButton(shelfNumber, ID){
   }
 }
 
+function bottleButton(){
+  
+}
+
+function flowerButton(){
+
+}
+
 function checkPotion(recipeIngredients){
   let check = [false];
   let trueCount = 0;
@@ -439,91 +472,13 @@ function checkPotion(recipeIngredients){
     }
   }
 
+  if (trueCount == potionIngredients.length){
+    money += 80;
+  }
+
   points = (trueCount/potionIngredients.length) * 1000;
 
   return points;
-}
-
-function BigVialB(){
-  potionIngredients[potionIngredients.length] = bottleList[0];
-
-  if (pColorR < 0.4 && pColorG < 0.4 && pColorB < 0.4){
-    return BVial.colourList[0];
-  } 
-  else if ((pColorG > 0.4 && pColorG < 0.7) && pColorR > 0.4 && pColorB < 0.6){
-    return BVial.colourList[8];
-  }
-  else if (pColorB < 0.6 && (pColorG > 0.6 && pColorG < 0.7) && pColorR > 0.6){
-    return BVial.colourList[5];
-  } 
-  else if ((pColorG > 0.7 && pColorG < 0.9) && pColorR > 0.4 && pColorB < 0.6){
-    return BVial.colourList[2];
-  }
-  else if (pColorG > 0.9 && pColorR > 0.9 && pColorB > 0.6){
-    return BVial.colourList[10];
-  }
-  else if (pColorG > 0.9 && (pColorR < 0.9 && pColorR > 0.51) && pColorB > 0.6){
-    return BVial.colourList[4];
-  }
-  else if (pColorB < 0.6 && pColorG > 0.4 && pColorR < 0.51){
-    return BVial.colourList[3];
-  }
-  else if (pColorB > 0.6 && pColorG > 0.6 && pColorR < 0.51){
-    return BVial.colourList[9];
-  }
-  else if (pColorB > 0.6 && pColorG < 0.6 && pColorR < 0.4){
-    return BVial.colourList[1];
-  }
-  else if (pColorB > 0.6 && pColorG < 0.6 && pColorR > 0.4){
-    return BVial.colourList[7];
-  }
-  else if (pColorB < 0.6 && pColorG < 0.6 && pColorR > 0.4){
-    return BVial.colourList[6];
-  }
-  else {
-    return BVial.colourList[0];
-  }
-}
-
-function BubblyBrewBottleRisingB(){
-  potionIngredients[potionIngredients.length] = bottleList[1];
-
-  if (pColorR < 0.4 && pColorG < 0.4 && pColorB < 0.4){
-    return BBBRBlack.name;
-  }
-  else if ((pColorG > 0.2 && pColorG < 0.5) && (pColorR > 0.4 && pColorR < 0.8) && pColorB < 0.6){
-    return BBBRBrown.name;
-  } 
-  else if ((pColorG > 0.4 && pColorG < 0.7) && pColorR > 0.4 && pColorB < 0.6){
-    return BBBRRed.name;
-  }
-  else if (pColorB < 0.6 && (pColorG > 0.6 && pColorG < 0.7) && pColorR > 0.6){
-    return BBBROrange.name;
-  } 
-  else if ((pColorG > 0.7 && pColorG < 0.9) && pColorR > 0.4 && pColorB < 0.6){
-    return BBBRGold.name;
-  }
-  else if (pColorG > 0.9 && pColorR > 0.9 && pColorB > 0.6){
-    return BBBRYellow.name;
-  }
-  else if (pColorB < 1 && pColorG > 0.4 && pColorR < 0.51){
-    return BBBRGreen.name;
-  }
-  else if (pColorB > 0.6 && pColorG > 0.6 && pColorR < 0.51){
-    return BBBRCyan.name;
-  }
-  else if (pColorB > 0.6 && pColorG < 0.6 && pColorR < 0.4){
-    return BBBRBlue.name;
-  }
-  else if (pColorB > 0.6 && pColorG < 0.6 && pColorR > 0.4){
-    return BBBRPurple.name;
-  }
-  else if (pColorB < 0.6 && pColorG < 0.6 && pColorR > 0.4){
-    return BBBRPink.name;
-  }
-  else {
-    return BBBRBlack.name;
-  }
 }
 
 function loadRoom() {
