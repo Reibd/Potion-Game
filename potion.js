@@ -47,6 +47,7 @@ var pIngredientsNum = potionIngredients.length;
 var pColorR = 0.0;
 var pColorG = 0.0;
 var pColorB = 0.0;
+var bType = 0;
 var gamePoints = 0;
 var money = 0;
 
@@ -94,12 +95,15 @@ class Flower {
 }
 
 class Bottle {
-  type = ["Big Vial", "Bubbly Brew Bottle Rising", "Classic Jar", "Encased Potion", "Glowing Potion", "Large Bottle", "Large Jar", "Large Tonic", "Round Potion", "Small Bottle", "Small Elixir", "Small Vial"];
+  static type = ["Big Vial", "Bubbly Brew Bottle Rising", "Classic Jar", "Encased Potion", "Glowing Potion", "Large Bottle", "Large Jar", "Large Tonic", "Round Potion", "Small Bottle", "Small Elixir", "Small Vial"];
   brandID = 0;
   colourList = ["Black", "Blue", "Gold", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Turquoise", "Yellow"];
   constructor(ID) {
   this.colour = colourList[ID];
   this.ID = ID + BrandID;
+  }
+  getBrandID(){
+    return brandID;
   }
 }
 
@@ -115,7 +119,7 @@ class BVial extends Bottle {
 class BBBR extends Bottle {
   type = "Bubbly Brew Bottle Rising";
   brandID = 11;
-  colourList = ["Black", "Blue", "Brown", "Cyan", "Gold", "Green", "Orange", "Pink", "Purple", "Red", "Yellow"];
+  colourList = ["Black", "Blue", "Brown", "Teal", "Gold", "Green", "Orange", "Pink", "Purple", "Red", "Yellow"];
   constructor(ID) {
     super(ID);
   }
@@ -142,7 +146,7 @@ class EPotion extends Bottle {
 class GPotion extends Bottle {
   type = "Glowing Potion";
   brandID = 38;
-  colourList = ["Black", "Blue", "Cyan", "Gold", "Green", "Lime", "Pink", "Purple", "Red", "Yellow"];
+  colourList = ["Black", "Blue", "Teal", "Gold", "Green", "Lime", "Pink", "Purple", "Red", "Yellow"];
   constructor(ID) {
     super(ID);
   }
@@ -178,7 +182,7 @@ class LTonic extends Bottle {
 class RPotion extends Bottle {
   type = "Round Potion";
   brandID = 80;
-  colourList = ["Black", "Blue", "Gold", "Green", "Lime", "Magenta", "Orange", "Purple", "Red", "Turquoise", "Yellow"];
+  colourList = ["Black", "Blue", "Gold", "Green", "Lime", "Pink", "Orange", "Purple", "Red", "Turquoise", "Yellow"];
   constructor(ID) {
     super(ID);
   }
@@ -196,7 +200,7 @@ class SBottle extends Bottle {
 class SElixir extends Bottle {
   type = "Small Elixir";
   brandID = 101;
-  colourList = ["Black", "Blue", "Cyan", "Gold", "Green", "Orange", "Pink", "Purple", "Red", "Yellow"];
+  colourList = ["Black", "Blue", "Teal", "Gold", "Green", "Orange", "Pink", "Purple", "Red", "Yellow"];
   constructor(ID) {
     super(ID);
   }
@@ -205,7 +209,7 @@ class SElixir extends Bottle {
 class SVial extends Bottle {
   type = "Small Vial";
   brandID = 111;
-  colourList = ["Black", "Blue", "Brown", "DarkGreen", "Gold", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Teal", "Turquoise", "Yellow"];
+  colourList = ["Black", "Blue", "Brown", "Gold", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Teal", "Turquoise", "Yellow"];
   constructor(ID) {
     super(ID);
   }
@@ -345,6 +349,7 @@ function setVegs(){
   return vegNameList;
 }
 
+<<<<<<< Updated upstream
 function setIngedientList(mushroomNameList, fruitNameList, vegNameList){
 
   for (let i = 0; i < 12; i++) {
@@ -356,14 +361,7 @@ function setIngedientList(mushroomNameList, fruitNameList, vegNameList){
   return ingredientNameList;
 }
 
-function setBottleList(){
-
-  bottleList = ["Big Vial", "Bubbly Brew Bottle Rising", "Classic Jar", "Encased Potion", "Glowing Potion", "Large Bottle", "Large Jar", "Large Tonic", "Round Potion", "Small Bottle", "Small Elixir", "Small Vial"];
-
-  return bottleList;
-}
-
-function recipe(ingredientNameList, bottleList){
+function recipe(ingredientNameList){
   let recipeIngredients = [];
   let ingredientLog = [];
   let ingredientTypeNum = 0;
@@ -373,7 +371,7 @@ function recipe(ingredientNameList, bottleList){
 
   ingredientTypeNum = Math.floor(Math.random() * 4) + 3;
 
-  recipeBottle = bottleList[Math.floor(Math.random() * 12)];
+  recipeBottle = Bottle.type[Math.floor(Math.random() * 12)];
 
   for (let i = 0; i < ingredientTypeNum; i++){
     ingredientQuantNum[i] = Math.floor(Math.random() * 3) + 1;
@@ -433,6 +431,10 @@ function ingredientButton(ID){
 }
 
 function bottleButton(){
+  potionIngredients[potionIngredients.length] = 
+
+  pIngredientsNum = potionIngredients.length;
+
   
 }
 
