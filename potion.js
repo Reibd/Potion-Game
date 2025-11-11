@@ -9,7 +9,7 @@ var shelfNumber = 0;
 const mushroom = [];
 const fruit = [];
 const veg = [];
-let selectB = [];
+var selectB = [];
 
 for (let i = 0; i < 3; i++) {
   selectB[i] = [];
@@ -20,7 +20,7 @@ for (let i = 0; i < 3; i++) {
   ingredientSprite[i] = [];
 }
 
-let roomB = [];
+var roomB = [];
 let recipeIngredients= [];
 let ingredientNameList = [];
 let bottleList = [];
@@ -321,6 +321,10 @@ function setVegs(){
 
 function setIngedientList(mushroomNameList, fruitNameList, vegNameList){
 
+  for (let i = 0; i < 12; i++) {
+    ingredientNameList[i] = mushroomNameList[i];
+    ingredientNameList[i + 12]
+  }
   for (let i = 0; i < mushroomNameList.length; i++){
     ingredientNameList[i] = mushroomNameList[i];
   }
@@ -382,8 +386,8 @@ function recipe(ingredientNameList, bottleList){
   return recipeIngredients;
 }
 
-function ingredientButton(ID){
-  potionIngredients[potionIngredients.length] = ingredientNameList[ID];
+function ingredientButton(shelfNumber, ID){
+  potionIngredients[potionIngredients.length] = ingredientNameList[shelfNumber +* ID];
 
   pIngredientsNum = potionIngredients.length;
 
@@ -560,31 +564,23 @@ function drawRoom() {
 
 }
 
-function drawIngredients(shelf) {
+function drawIngredients(shelfNumber) {
 
-  image(ingredientSprite[shelf][0], 40, 140, 64, 64);
-  image(ingredientSprite[shelf][1], 230, 140, 64, 64);
-  image(ingredientSprite[shelf][2], 415, 140, 64, 64);
-  image(ingredientSprite[shelf][3], 40, 235, 64, 64);
-  image(ingredientSprite[shelf][4], 230, 235, 64, 64);
-  image(ingredientSprite[shelf][5], 415, 235, 64, 64);
-  image(ingredientSprite[shelf][6], 40, 325, 64, 64);
-  image(ingredientSprite[shelf][7], 230, 325, 64, 64);
-  image(ingredientSprite[shelf][8], 415, 325, 64, 64);
-  image(ingredientSprite[shelf][9], 40, 415, 64, 64);
-  image(ingredientSprite[shelf][10], 230, 415, 64, 64);
-  image(ingredientSprite[shelf][11], 415, 415, 64, 64);
-
-}
-
-function hideIngredients(shelf) {
-
-
-  for (let i = 0; i < 12; i++) {
-    ingredientSprite[shelf][i].hide();
-  }
+  image(ingredientSprite[shelfNumber][0], 40, 140, 64, 64);
+  image(ingredientSprite[shelfNumber][1], 230, 140, 64, 64);
+  image(ingredientSprite[shelfNumber][2], 415, 140, 64, 64);
+  image(ingredientSprite[shelfNumber][3], 40, 235, 64, 64);
+  image(ingredientSprite[shelfNumber][4], 230, 235, 64, 64);
+  image(ingredientSprite[shelfNumber][5], 415, 235, 64, 64);
+  image(ingredientSprite[shelfNumber][6], 40, 325, 64, 64);
+  image(ingredientSprite[shelfNumber][7], 230, 325, 64, 64);
+  image(ingredientSprite[shelfNumber][8], 415, 325, 64, 64);
+  image(ingredientSprite[shelfNumber][9], 40, 415, 64, 64);
+  image(ingredientSprite[shelfNumber][10], 230, 415, 64, 64);
+  image(ingredientSprite[shelfNumber][11], 415, 415, 64, 64);
 
 }
+
 
 function createIngredientButtons() {
 
@@ -629,29 +625,29 @@ function hideIngredientButtons(shelfNumber) {
 
   if (shelfNumber != 0) {
     for (let i = 0; i < 12; i++) {
-    selectB[shelfNumber][0].hide();
+      selectB[0][i].hide();
     }
   }
 
   if (shelfNumber != 1) {
     for (let i = 0; i < 12; i++) {
-    selectB[shelfNumber][1].hide();
+      selectB[1][i].hide();
     }
   }
 
   if (shelfNumber != 2) {
     for (let i = 0; i < 12; i++) {
-    selectB[shelfNumber][2].hide();
+      selectB[2][i].hide();
     }
   }
   
 
 }
 
-function selectIngredient(shelf) {
+function selectIngredient(shelfNumber) {
 
   for (let i = 0; i < 12; i++) {
-    selectB[shelf][i].mousePressed(ingredientButton[shelf][i]);
+    selectB[shelfNumber][i].mousePressed(() => ingredientButton(shelfNumber, i));
   }
 
 }
@@ -664,14 +660,14 @@ function createShelfButtons() {
 
 }
 
-function drawShelfButtons(shelf) {
+function drawShelfButtons(shelfNumber) {
 
   for (let i = 0; i < 3; i++) {
     roomB[i].size(100, 40);
     roomB[i].style('background-color', 'white');
   }
 
-  roomB[shelf].style('background-color', 'yellow');
+  roomB[shelfNumber].style('background-color', 'yellow');
 
   roomB[0].position(65, 520);
   roomB[1].position(250, 520);
@@ -694,6 +690,9 @@ function setup() {
   createCanvas(1250, 550);
   createIngredientButtons();
   createShelfButtons();
+  for (let i = 0; i < 3; i++) {
+    hideIngredientButtons(i);
+  }
   
   selectShelfButton();
 
@@ -703,10 +702,13 @@ function draw() {
   
   
   drawRoom();
+  
   drawShelfButtons(shelfNumber);
   drawIngredients(shelfNumber);
   drawIngredientButtons(shelfNumber);
   hideIngredientButtons(shelfNumber);
+  
+  
 
 
 }
@@ -738,10 +740,6 @@ function game() {
   bottleList = setBottleList();
 
   recipeIngredients = recipe(ingredientNameList, bottleList);
-
-  selectIngredient();
-
-  selectShelfButton();
 
   
 
