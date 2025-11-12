@@ -458,7 +458,7 @@ function flowerButton(fID){
     }
   }
   else if (bType == 3){
-    if (fID != 4 || fID != 6 || fID != 7 || fID != 8 || fID != 10){
+    if (fID != 4 && fID != 6 && fID != 7 && fID != 8 && fID != 10){
       return "black";
     }
   }
