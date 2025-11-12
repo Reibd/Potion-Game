@@ -16,12 +16,14 @@ for (let i = 0; i < 3; i++) {
   selectB[i] = [];
 }
 
-let ingredientSprite = [];
+var ingredientSprite = [];
 for (let i = 0; i < 3; i++) {
   ingredientSprite[i] = [];
 }
 
 var roomB = [];
+var removeB;
+var removeAllB;
 let recipeIngredients= [];
 let ingredientNameList = [];
 let bottleList = [];
@@ -43,7 +45,8 @@ var SmallBottleList = [];
 var SmallElixirList = [];
 var SmallVialList = [];
 var potionIngredients = [];
-var pIngredientsNum = potionIngredients.length;
+var potionIngredientSprites = [];
+var pIngredientsNum = 0;
 var pColorR = 0.0;
 var pColorG = 0.0;
 var pColorB = 0.0;
@@ -345,11 +348,17 @@ function setVegs(){
   return vegNameList;
 }
 
-function setIngedientList(mushroomNameList, fruitNameList, vegNameList){
+function setIngredientList(mushroomNameList, fruitNameList, vegNameList){
 
   for (let i = 0; i < 12; i++) {
     ingredientNameList[i] = mushroomNameList[i];
+  }
+
+  for (let i = 0; i < 12; i++) {
     ingredientNameList[i + 12] = fruitNameList[i];
+  }
+
+  for (let i = 0; i < 12; i++) {
     ingredientNameList[i + 24] = vegNameList[i];
   }
 
@@ -402,12 +411,13 @@ function recipe(ingredientNameList, bottleList){
   return recipeIngredients;
 }
 
-function ingredientButton(ID){
-  potionIngredients[potionIngredients.length] = ingredientNameList[(shelfNumber * 12) + ID];
+function ingredientButton(shelfNumber, ID){
+  potionIngredients[pIngredientsNum] = ingredientNameList[(shelfNumber * 12) + ID];
+  potionIngredientSprites[pIngredientsNum] = ingredientSprite[shelfNumber][ID];
 
   pIngredientsNum = potionIngredients.length;
 
-  if (ID < 12){
+  /*if (ID < 12){
   pColorR = (pColorR + mushroom[ID].R) / (pIngredientsNum) * 255;
 
   pColorG = (pColorG + mushroom[ID].G) / (pIngredientsNum) * 255;
@@ -429,7 +439,7 @@ function ingredientButton(ID){
   pColorG = (pColorG + veg[ID].G) / (pIngredientsNum) * 255;
 
   pColorB = (pColorB + veg[ID].B) / (pIngredientsNum) * 255;
-  }
+  }*/
 }
 
 function bottleButton(){
@@ -590,10 +600,12 @@ function hideIngredientButtons(shelfNumber) {
 
 }
 
-function selectIngredient(shelfNumber) {
+function selectIngredient() {
 
-  for (let i = 0; i < 12; i++) {
-    selectB[shelfNumber][i].mousePressed(() => ingredientButton((shelfNumber * 12) + i));
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 12; j++) {
+      selectB[i][j].mousePressed(() => ingredientButton(i, j));
+    }
   }
 
 }
@@ -629,6 +641,21 @@ function selectShelfButton() {
 
 }
 
+function createRemoveButtons() {
+
+  removeB = createButton("Remove ingredient");
+  removeAllB = createButton("Remove all");
+
+}
+
+function drawIngredientList() {
+
+  for (let i = 0; i < potionIngredients.length; i++) {
+    image(potionIngredientSprites[i], 600 + i * 65, 215, 64, 64);
+  }
+
+}
+
 function setup() {
 
   loadRoom();
@@ -642,6 +669,11 @@ function setup() {
   
   selectShelfButton();
 
+  setIngredientList(mushroomNameList, fruitNameList, vegNameList);
+  bottleList = setBottleList();
+
+  createRemoveButtons
+  selectIngredient();
 }
 
 function draw() {
@@ -651,6 +683,7 @@ function draw() {
   
   drawShelfButtons(shelfNumber);
   drawIngredients(shelfNumber);
+  drawIngredientList();
   drawIngredientButtons(shelfNumber);
   hideIngredientButtons(shelfNumber);
   
@@ -664,26 +697,29 @@ function cauldrenColor(){
 }
 
 function deleteLast(){
+
   let pos = 0;
   
-  pos = potionIngredients.length - 1;
+  pos = pIngredientsNum - 1;
 
   potionIngredients.splice(pos, 1);
+  potionIngredientSprites.splice(pos, 1);
 
   pIngredientsNum = potionIngredients.length;
 }
 
 function deleteAll(){
-  potionIngredients.splice(0);
 
+  potionIngredients.splice(0);
+  potionIngredientSprites.splice(0);
   pIngredientsNum = potionIngredients.length;
 }
 
 function game() {
 
-  ingredientNameList(mushroomNameList, fruitNameList, vegNameList)
+  
 
-  bottleList = setBottleList();
+  
 
   recipeIngredients = recipe(ingredientNameList, bottleList);
 
