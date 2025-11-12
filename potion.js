@@ -368,12 +368,12 @@ function recipe(ingredientNameList){
   let ingredientTypeList = [];
   let recipeBottle = "string";
 
-  ingredientTypeNum = Math.floor(Math.random() * 4) + 3;
+  ingredientTypeNum = Math.floor(Math.random() * 5) + 3;
 
   recipeBottle = Bottle.type[Math.floor(Math.random() * 12)];
 
   for (let i = 0; i < ingredientTypeNum; i++){
-    ingredientQuantNum[i] = Math.floor(Math.random() * 3) + 1;
+    ingredientQuantNum[i] = Math.floor(Math.random() * 2) + 1;
   }
 
   for (let i = 0; i < ingredientTypeNum; i++){
@@ -440,8 +440,65 @@ function bottleButton(bID){
 function flowerButton(bType, fID){
   potionIngredients[potionIngredients.length] = flower[fID].name;
 
+  pIngredientsNum = potionIngredients.length;
+
   if (bType == 0){
-    
+    if (fID == 2 || fID == 11){
+      return "black";
+    }
+  }
+  else if (bType == 1){
+    if (fID == 0 || fID == 11){
+      return "black";
+    }
+  }
+  else if (bType == 2){
+    if (fID == 5 || fID == 9 || fID == 11){
+      return "black";
+    }
+  }
+  else if (bType == 3){
+    if (fID != 4 || fID != 6 || fID != 7 || fID != 8 || fID != 10){
+      return "black";
+    }
+  }
+  else if (bType == 4){
+    if (fID == 0 || fID == 5 || fID == 11){
+      return "black";
+    }
+  }
+  else if (bType == 5){
+    if (fID == 2 || fID == 8){
+      return "black";
+    }
+  }
+  else if (bType == 6){
+    if (fID == 2 || fID == 9 || fID == 11){
+      return "black";
+    }
+  }
+  else if (bType == 7){
+    if (fID == 2 || fID == 9 || fID == 11){
+      return "black";
+    }
+  }
+  else if (bType == 8){
+    if (fID == 2 || fID == 11){
+      return "black";
+    }
+  }
+  else if (bType == 9){
+    if (fID == 2 || fID == 9 || fID == 11){
+      return "black";
+    }
+  } 
+  else if (bType == 10){
+    if (fID == 0 || fID == 9 || fID == 11){
+      return "black";
+    }
+  }
+  else{
+    return flower[fID].colour;
   }
 }
 
