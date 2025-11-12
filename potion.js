@@ -437,7 +437,7 @@ function bottleButton(bID){
   bType = bID;
 }
 
-function flowerButton(bType, fID){
+function flowerButton(fID){
   potionIngredients[potionIngredients.length] = flower[fID].name;
 
   pIngredientsNum = potionIngredients.length;
