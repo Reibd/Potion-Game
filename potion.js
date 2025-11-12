@@ -43,7 +43,7 @@ var SmallBottleList = [];
 var SmallElixirList = [];
 var SmallVialList = [];
 var potionIngredients = [];
-var pIngredientsNum = potionIngredients.length;
+var pIngredientsNum = 0;
 var pColorR = 0.0;
 var pColorG = 0.0;
 var pColorB = 0.0;
@@ -349,7 +349,6 @@ function setVegs(){
   return vegNameList;
 }
 
-<<<<<<< Updated upstream
 function setIngedientList(mushroomNameList, fruitNameList, vegNameList){
 
   for (let i = 0; i < 12; i++) {
@@ -430,16 +429,20 @@ function ingredientButton(ID){
   }
 }
 
-function bottleButton(){
-  potionIngredients[potionIngredients.length] = 
+function bottleButton(bID){
+  potionIngredients[potionIngredients.length] = Bottle.type[bID];
 
   pIngredientsNum = potionIngredients.length;
 
-  
+  bType = bID;
 }
 
-function flowerButton(){
+function flowerButton(bType, fID){
+  potionIngredients[potionIngredients.length] = flower[fID].name;
 
+  if (bType == 0){
+    
+  }
 }
 
 function checkPotion(recipeIngredients){
@@ -528,7 +531,6 @@ function drawIngredients(shelfNumber) {
   image(ingredientSprite[shelfNumber][11], 415, 415, 64, 64);
 
 }
-
 
 function createIngredientButtons() {
 
