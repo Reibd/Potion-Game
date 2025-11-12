@@ -48,10 +48,9 @@ var pColorR = 0.0;
 var pColorG = 0.0;
 var pColorB = 0.0;
 var bType = 0;
-var gamePoints = 0;
 var money = 0;
 
-
+//the class for all mushroom ingredients
 class Mushroom {
   constructor(name, R, G, B, ID, sprite) {
   this.name = name;
@@ -62,7 +61,7 @@ class Mushroom {
   this.sprite = sprite;
   }
 }
-
+//the class for all fruit ingredients
 class Fruit {
   constructor(name, R, G, B, ID, sprite) {
   this.name = name;
@@ -73,7 +72,7 @@ class Fruit {
   this.sprite = sprite;
   }
 }
-
+//the class for all vegtible ingredients
 class Veg {
   constructor(name, R, G, B, ID, sprite) {
   this.name = name;
@@ -84,7 +83,7 @@ class Veg {
   this.sprite = sprite;
   }
 }
-
+//the class for all flower ingredients
 class Flower {
   constructor(name, colour, ID, sprite) {
   this.name = name;
@@ -93,7 +92,7 @@ class Flower {
   this.sprite = sprite;
   }
 }
-
+//the parent class for all bottles
 class Bottle {
   static type = ["Big Vial", "Bubbly Brew Bottle Rising", "Classic Jar", "Encased Potion", "Glowing Potion", "Large Bottle", "Large Jar", "Large Tonic", "Round Potion", "Small Bottle", "Small Elixir", "Small Vial"];
   brandID = 0;
@@ -106,7 +105,7 @@ class Bottle {
     return brandID;
   }
 }
-
+//the sub-classes for each bottle type
 class BVial extends Bottle {
   type = "Big Vial";
   brandID = 0;
@@ -115,7 +114,6 @@ class BVial extends Bottle {
     super(ID);
   }
 }
-
 class BBBR extends Bottle {
   type = "Bubbly Brew Bottle Rising";
   brandID = 11;
@@ -124,7 +122,6 @@ class BBBR extends Bottle {
     super(ID);
   }
 }
-
 class CJar extends Bottle {
   type = "Classic Jar";
   brandID = 22;
@@ -133,7 +130,6 @@ class CJar extends Bottle {
     super(ID);
   }
 }
-
 class EPotion extends Bottle {
   type = "Encased Potion";
   brandID = 32;
@@ -142,7 +138,6 @@ class EPotion extends Bottle {
     super(ID);
   }
 }
-
 class GPotion extends Bottle {
   type = "Glowing Potion";
   brandID = 38;
@@ -151,7 +146,6 @@ class GPotion extends Bottle {
     super(ID);
   }
 }
-
 class LBottle extends Bottle {
   type = "Large Bottle";
   brandID = 48;
@@ -160,7 +154,6 @@ class LBottle extends Bottle {
     super(ID);
   }
 }
-
 class LJar extends Bottle {
   type = "Large Jar";
   brandID = 59;
@@ -169,7 +162,6 @@ class LJar extends Bottle {
     super(ID);
   }
 }
-
 class LTonic extends Bottle {
   type = "Large Tonic";
   brandID = 69;
@@ -178,7 +170,6 @@ class LTonic extends Bottle {
     super(ID);
   }
 }
-
 class RPotion extends Bottle {
   type = "Round Potion";
   brandID = 80;
@@ -187,7 +178,6 @@ class RPotion extends Bottle {
     super(ID);
   }
 }
-
 class SBottle extends Bottle {
   type = "Small Bottle";
   brandID = 91;
@@ -196,7 +186,6 @@ class SBottle extends Bottle {
     super(ID);
   }
 }
-
 class SElixir extends Bottle {
   type = "Small Elixir";
   brandID = 101;
@@ -205,7 +194,6 @@ class SElixir extends Bottle {
     super(ID);
   }
 }
-
 class SVial extends Bottle {
   type = "Small Vial";
   brandID = 111;
@@ -215,6 +203,7 @@ class SVial extends Bottle {
   }
 }
 
+//Declaring all ingredients with names, color values, individual IDs and their sprites
   mushroom[0] = new Mushroom("Dawn\nSinger", 0.84, 0.24, 0.58, 0, 'Game Sprites/Pixel Mushroom Pack/Mushroom035.png'); //mushroom 35
   mushroom[1] = new Mushroom("Midnight\nFungus", 0.58, 0.68, 0.84, 1, 'Game Sprites/Pixel Mushroom Pack/Mushroom019.png'); //mushroom 19
   mushroom[2] = new Mushroom("Puffglow", 0.54, 0.67, 0.73, 2, 'Game Sprites/Pixel Mushroom Pack/Mushroom014.png'); //mushroom 14
@@ -254,6 +243,7 @@ class SVial extends Bottle {
   veg[10] = new Veg("Red\nCabbage", 0.99, 0.42, 0.97, 34, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/RedCabbage.png');
   veg[11] = new Veg("Hot\nPepper", 0.68, 0.14, 0.20, 35, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/HotPepper.png');
   
+  //declaring all flower ingredients, their names, and the color they make the potion if they can
   flower[0] = new Flower("Scilla", "Turquoise", 0); //cropped F1 teal
   flower[1] = new Flower("Solorion", "Yellow", 1); //cropped F1 yellow
   flower[2] = new Flower("Galax", "Teal", 2); //cropped F2 teal
@@ -267,6 +257,7 @@ class SVial extends Bottle {
   flower[10] = new Flower("Frutex", "Green", 10); //bush 1 no flowers green
   flower[11] = new Flower("Calidus", "Brown", 11); //bush 1 no flowers warm green
 
+//declares all the bottle values
 function setPotionList() {
 
   for (let i = 0; i < 11; i++) {
@@ -319,6 +310,7 @@ function setPotionList() {
 
 }
 
+//organises the ingredient types into lists of their names
 function setMushrooms(){
 
   for (let i = 0; i < 12; i++) {
@@ -328,7 +320,6 @@ function setMushrooms(){
 
   return mushroomNameList;
 }
-
 function setFruits(){
 
   for (let i = 0; i < 12; i++) {
@@ -338,7 +329,6 @@ function setFruits(){
 
   return fruitNameList;
 }
-
 function setVegs(){
 
   for (let i = 0; i < 12; i++) {
@@ -349,6 +339,7 @@ function setVegs(){
   return vegNameList;
 }
 
+//makes one long list of names in order of ingredient ID
 function setIngedientList(mushroomNameList, fruitNameList, vegNameList){
 
   for (let i = 0; i < 12; i++) {
@@ -360,6 +351,8 @@ function setIngedientList(mushroomNameList, fruitNameList, vegNameList){
   return ingredientNameList;
 }
 
+//creates a random recipe with 8 - 10 ingredients (mushrooms, fruits, or veg), one bottle type, and one flower takes in
+//the list of ingredient names and returns the list of names of the recipe
 function recipe(ingredientNameList){
   let recipeIngredients = [];
   let ingredientLog = [];
@@ -368,7 +361,7 @@ function recipe(ingredientNameList){
   let ingredientTypeList = [];
   let recipeBottle = "string";
 
-  ingredientTypeNum = Math.floor(Math.random() * 5) + 3;
+  ingredientTypeNum = Math.floor(Math.random() * 5) + 4;
 
   recipeBottle = Bottle.type[Math.floor(Math.random() * 12)];
 
@@ -394,11 +387,15 @@ function recipe(ingredientNameList){
     }
   }
 
-  recipeIngredients[recipeIngredients.length + 1] = recipeBottle;
+  recipeIngredients[recipeIngredients.length] = recipeBottle;
+
+  recipeIngredients[recipeIngredients.length] = flower[Math.floor(Math.random() * 12)].name;
 
   return recipeIngredients;
 }
 
+//adds the chosen ingredient to the list of ingedrients in the potion and changes the color of the potion
+//adds one to the number of ingredients in the potion
 function ingredientButton(ID){
   potionIngredients[potionIngredients.length] = ingredientNameList[(shelfNumber * 12) + ID];
 
@@ -429,6 +426,7 @@ function ingredientButton(ID){
   }
 }
 
+//adds the chosen bottle type to the list of ingedrients in the potion and adds one to the number of ingredients in the potion
 function bottleButton(bID){
   potionIngredients[potionIngredients.length] = Bottle.type[bID];
 
@@ -437,6 +435,8 @@ function bottleButton(bID){
   bType = bID;
 }
 
+//adds the chosen flower to the list of ingedrients in the potion and adds one to the number of ingredients in the potion
+//returns the name of the color of potion that should be viewed *TO CHANGE*
 function flowerButton(fID){
   potionIngredients[potionIngredients.length] = flower[fID].name;
 
@@ -502,10 +502,11 @@ function flowerButton(fID){
   }
 }
 
+//compares the list of ingredients in the potion to the list of ingredients in the recipe
+//returns the accuracy percentage rounded to nearest integer in money
 function checkPotion(recipeIngredients){
   let check = [false];
   let trueCount = 0;
-  let points = 0;
 
   for (let i = 0; i < potionIngredients.length; i++){
     check[i] = false;
@@ -525,13 +526,8 @@ function checkPotion(recipeIngredients){
     }
   }
 
-  if (trueCount == potionIngredients.length){
-    money += 80;
-  }
-
-  points = (trueCount/potionIngredients.length) * 1000;
-
-  return points;
+  
+  money += Math.floor((trueCount / pIngredientsNum) * 100);
 }
 
 function loadRoom() {
@@ -724,6 +720,7 @@ function cauldrenColor(){
   //the cauldron color is pColorR, pColorG, pColorB in RGB values
 }
 
+//removes the last ingredient added from the list of ingrdients in the potion and shortens the array
 function deleteLast(){
   let pos = 0;
   
@@ -734,6 +731,7 @@ function deleteLast(){
   pIngredientsNum = potionIngredients.length;
 }
 
+//removes all ingredients from the list of ingredients in the potion and makes the array 0 long
 function deleteAll(){
   potionIngredients.splice(0);
 
