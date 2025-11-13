@@ -25,8 +25,6 @@ var roomB = [];
 var removeB;
 var removeAllB;
 let recipeIngredients= [];
-let ingredientNameList = [];
-let bottleList = [];
 let mushroomNameList = [];
 let fruitNameList = [];
 let vegNameList = [];
@@ -313,81 +311,51 @@ function setPotionList() {
 
 }
 
-//organises the ingredient types into lists of their names
-function setMushrooms(){
-
-  for (let i = 0; i < 12; i++) {
-
-    mushroomNameList[i] = mushroom[i].name;
-  }
-
-  return mushroomNameList;
-}
-function setFruits(){
-
-  for (let i = 0; i < 12; i++) {
-
-    fruitNameList[i] = fruit[i].name;
-  }
-
-  return fruitNameList;
-}
-function setVegs(){
-
-  for (let i = 0; i < 12; i++) {
-
-    vegNameList[i] = veg[i].name;
-  }
-
-  return vegNameList;
-}
-
 //makes one long list of names in order of ingredient ID
-function setIngredientList(mushroomNameList, fruitNameList, vegNameList){
+function setIngredientList(){
 
   for (let i = 0; i < 12; i++) {
-    ingredientNameList[i] = mushroomNameList[i];
+    ingredientList[0][i] = mushroom[i];
+    ingredientList[1][i] = fruit[i];
+    ingredientList[2][i] = veg[i];
   }
 
-  for (let i = 0; i < 12; i++) {
-    ingredientNameList[i + 12] = fruitNameList[i];
-  }
-
-  for (let i = 0; i < 12; i++) {
-    ingredientNameList[i + 24] = vegNameList[i];
-  }
-
-  return ingredientNameList;
+  return ingredientList;
 }
 
 //creates a random recipe with 8 - 10 ingredients (mushrooms, fruits, or veg), one bottle type, and one flower takes in
 //the list of ingredient names and returns the list of names of the recipe
-function recipe(ingredientNameList){
+function recipe(ingredientList){
   let recipeIngredients = [];
   let ingredientLog = [];
-  let ingredientTypeNum = 0;
+  let ingredientTypeNum = [];
   let ingredientQuantNum = [];
   let ingredientTypeList = [];
   let recipeBottle = "string";
 
-  ingredientTypeNum = Math.floor(Math.random() * 5) + 4;
+  ingredientTypeNum[0] = Math.floor(Math.random() * 2) + 1;
+  ingredientTypeNum[1] = Math.floor(Math.random() * 2) + 1;
+  ingredientTypeNum[2] = 1;
 
   recipeBottle = Bottle.type[Math.floor(Math.random() * 12)];
 
-  for (let i = 0; i < ingredientTypeNum; i++){
+  for (let i = 0; i < ingredientTypeNum[0] + ingredientTypeNum[1] + 1; i++){
     ingredientQuantNum[i] = Math.floor(Math.random() * 2) + 1;
   }
 
-  for (let i = 0; i < ingredientTypeNum; i++){
-    let temp = Math.floor(Math.random() * 36);
-    for (let j = 0; j < ingredientLog.length; j++){
-        if (temp == ingredientLog[j]){
-            temp = Math.floor(Math.random() * 36);
-            j = 0;
-        }
+  for (let k = 0; k < 3; k++){
+    ingredientLog.splice(0);
+    for (let i = 0; i < ingredientTypeNum[k]; i++){
+      let temp = Math.floor(Math.random() * 12);
+      for (let j = 0; j < ingredientLog.length; j++){
+          if (temp == ingredientLog[j]){
+              temp = Math.floor(Math.random() * 12);
+              j = 0;
+          }
+      }
+      ingredientTypeList[i] = ingredientList[k][temp];
+      ingredientLog[i] = temp;
     }
-    ingredientTypeList[i] = ingredientNameList[temp];
-    ingredientLog[i] = temp;
   }
 
   for (let i = 0; i < ingredientTypeList.length; i++){
@@ -406,34 +374,21 @@ function recipe(ingredientNameList){
 //adds the chosen ingredient to the list of ingedrients in the potion and changes the color of the potion
 //adds one to the number of ingredients in the potion
 function ingredientButton(shelfNumber, ID){
-  potionIngredients[pIngredientsNum] = ingredientNameList[(shelfNumber * 12) + ID];
-  potionIngredientSprites[pIngredientsNum] = ingredientSprite[shelfNumber][ID];
+  potionIngredients[pIngredientsNum] = ingredientList[shelfNumber][ID].name;
+  potionIngredientSprites[pIngredientsNum] = ingredientSprite[shelfNumber][ID].sprite;
 
   pIngredientsNum = potionIngredients.length;
 
-  /*if (ID < 12){
-  pColorR = (pColorR + mushroom[ID].R) / (pIngredientsNum) * 255;
+  for (let i = 0; i < 3; i++){
+    for (let j = 0; j < 12; j++){
+      pColorR = (pColorR + ingredientList[i][j].R) / (pIngredientsNum) * 255;
 
-  pColorG = (pColorG + mushroom[ID].G) / (pIngredientsNum) * 255;
+      pColorG = (pColorG + ingredientList[i][j].R) / (pIngredientsNum) * 255;
 
-  pColorB = (pColorB + mushroom[ID].B) / (pIngredientsNum) * 255;
+      pColorB = (pColorB + ingredientList[i][j].R) / (pIngredientsNum) * 255;
+    }
   }
-
-  if (ID < 24 && ID > 11){
-  pColorR = (pColorR + fruit[ID].R) / (pIngredientsNum) * 255;
-
-  pColorG = (pColorG + fruit[ID].G) / (pIngredientsNum) * 255;
-
-  pColorB = (pColorB + fruit[ID].B) / (pIngredientsNum) * 255;
-  }
-
-  if (ID > 23){
-  pColorR = (pColorR + veg[ID].R) / (pIngredientsNum) * 255;
-
-  pColorG = (pColorG + veg[ID].G) / (pIngredientsNum) * 255;
-
-  pColorB = (pColorB + veg[ID].B) / (pIngredientsNum) * 255;
-  }*/
+  
 }
 
 //adds the chosen bottle type to the list of ingedrients in the potion and adds one to the number of ingredients in the potion
@@ -457,7 +412,7 @@ function flowerButton(fID){
       return "black";
     }
   }
-  else if (bType == 1){
+  else if (bType == 1 || bType == 8){
     if (fID == 0 || fID == 11){
       return "black";
     }
@@ -482,26 +437,11 @@ function flowerButton(fID){
       return "black";
     }
   }
-  else if (bType == 6){
+  else if (bType == 6 || bType == 7 || bType == 9){
     if (fID == 2 || fID == 9 || fID == 11){
       return "black";
     }
   }
-  else if (bType == 7){
-    if (fID == 2 || fID == 9 || fID == 11){
-      return "black";
-    }
-  }
-  else if (bType == 8){
-    if (fID == 2 || fID == 11){
-      return "black";
-    }
-  }
-  else if (bType == 9){
-    if (fID == 2 || fID == 9 || fID == 11){
-      return "black";
-    }
-  } 
   else if (bType == 10){
     if (fID == 0 || fID == 9 || fID == 11){
       return "black";
@@ -553,18 +493,11 @@ function loadRoom() {
 
 function loadIngredients() {
 
-  for (let i = 0; i < 12; i++) {
-    ingredientSprite[0][i] = loadImage(mushroom[i].sprite);
+  for (let j = 0; j < 3; j++){
+    for (let i = 0; i < 12; i++) {
+      ingredientSprite[j][i] = loadImage(ingredientList[j][i].sprite);
+    }
   }
-
-  for (let i = 0; i < 12; i++) {
-    ingredientSprite[1][i] = loadImage(fruit[i].sprite);
-  }
-
-  for (let i = 0; i < 12; i++) {
-    ingredientSprite[2][i] = loadImage(veg[i].sprite);
-  }
-
 }
 
 function drawRoom() {
@@ -579,36 +512,30 @@ function drawRoom() {
 }
 
 function drawIngredients(shelfNumber) {
+  let x = [40, 230, 415];
+  let y = [140, 235, 325, 415];
 
-  image(ingredientSprite[shelfNumber][0], 40, 140, 64, 64);
-  image(ingredientSprite[shelfNumber][1], 230, 140, 64, 64);
-  image(ingredientSprite[shelfNumber][2], 415, 140, 64, 64);
-  image(ingredientSprite[shelfNumber][3], 40, 235, 64, 64);
-  image(ingredientSprite[shelfNumber][4], 230, 235, 64, 64);
-  image(ingredientSprite[shelfNumber][5], 415, 235, 64, 64);
-  image(ingredientSprite[shelfNumber][6], 40, 325, 64, 64);
-  image(ingredientSprite[shelfNumber][7], 230, 325, 64, 64);
-  image(ingredientSprite[shelfNumber][8], 415, 325, 64, 64);
-  image(ingredientSprite[shelfNumber][9], 40, 415, 64, 64);
-  image(ingredientSprite[shelfNumber][10], 230, 415, 64, 64);
-  image(ingredientSprite[shelfNumber][11], 415, 415, 64, 64);
-
+  for (let i = 0; i < 12; i++){
+    image(ingredientSprite[shelfNumber][Math.floor(i%3)], x[i], y[Math.floor(i/3)], 64, 64);
+  }
 }
 
+//Please test not sure if it works :)
 function createIngredientButtons() {
 
   for (let i = 0; i < 12; i++) {
-    selectB[0][i] = createButton(mushroom[i].name);
+    selectB[0][i] = createButton(ingredientList[i].name);
+    selectB[1][i] = createButton(ingredientList[i].name);
+    selectB[2][i] = createButton(ingredientList[i].name);
+  }
+ /* for (let i = 0; i < 12; i++) {
+    
   }
 
   for (let i = 0; i < 12; i++) {
-    selectB[1][i] = createButton(fruit[i].name);
+    
   }
-
-  for (let i = 0; i < 12; i++) {
-    selectB[2][i] = createButton(veg[i].name);
-  }
-  
+  */
 }
 
 function drawIngredientButtons(shelfNumber) {
