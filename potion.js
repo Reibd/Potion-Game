@@ -11,19 +11,13 @@ const fruit = [];
 const veg = [];
 var selectB = [];
 const flower = [];
-
-for (let i = 0; i < 3; i++) {
-  selectB[i] = [];
-}
-
 var ingredientSprite = [];
-for (let i = 0; i < 3; i++) {
-  ingredientSprite[i] = [];
-}
-
+var shelfB = [];
 var roomB = [];
 var removeB;
 var removeAllB;
+var backB;
+var roomNumber;
 let recipeIngredients= [];
 let ingredientNameList = [];
 let bottleList = [];
@@ -52,6 +46,7 @@ var pColorG = 0.0;
 var pColorB = 0.0;
 var bType = 0;
 var money = 0;
+
 
 //the class for all mushroom ingredients
 class Mushroom {
@@ -613,10 +608,9 @@ function createIngredientButtons() {
 
 function drawIngredientButtons(shelfNumber) {
 
-  for (let i = 0; i < 12; i++) {
-    selectB[shelfNumber][i].size(60, 60);
-    selectB[shelfNumber][i].show();
-  }
+    for (let i = 0; i < 12; i++) {
+      selectB[shelfNumber][i].size(60, 60).show();
+    }
 
   for (let i = 0; i < 4; i++) {
     for (let j = 0; j < 3; j++) {
@@ -636,24 +630,13 @@ function drawIngredientButtons(shelfNumber) {
 
 function hideIngredientButtons(shelfNumber) {
 
-  if (shelfNumber != 0) {
-    for (let i = 0; i < 12; i++) {
-      selectB[0][i].hide();
+  for (let j = 0; j < 3; j++) {
+    if (shelfNumber != j) {
+      for (let i = 0; i < 12; i++) {
+        selectB[j][i].hide();
+      }
     }
-  }
-
-  if (shelfNumber != 1) {
-    for (let i = 0; i < 12; i++) {
-      selectB[1][i].hide();
-    }
-  }
-
-  if (shelfNumber != 2) {
-    for (let i = 0; i < 12; i++) {
-      selectB[2][i].hide();
-    }
-  }
-  
+  }  
 
 }
 
@@ -669,51 +652,121 @@ function selectIngredient() {
 
 function createShelfButtons() {
 
-  roomB[0] = createButton("See Mushrooms");
-  roomB[1] = createButton("See Fruits");
-  roomB[2] = createButton("See Vegetables");
+  shelfB[0] = createButton("See Mushrooms");
+  shelfB[1] = createButton("See Fruits");
+  shelfB[2] = createButton("See Vegetables");
 
 }
 
-function drawShelfButtons(shelfNumber) {
+function drawShelfButtons(shelfNumber, roomNumber) {
 
-  for (let i = 0; i < 3; i++) {
-    roomB[i].size(100, 40);
-    roomB[i].style('background-color', 'white');
+  if (!roomNumber) {
+    for (let i = 0; i < 3; i++) {
+      shelfB[i].size(100, 40).style('background-color', 'white').show();
+    }
+
+    shelfB[shelfNumber].style('background-color', 'yellow');
+
+    shelfB[0].position(65, 520);
+    shelfB[1].position(250, 520);
+    shelfB[2].position(435, 520);
   }
-
-  roomB[shelfNumber].style('background-color', 'yellow');
-
-  roomB[0].position(65, 520);
-  roomB[1].position(250, 520);
-  roomB[2].position(435, 520);
-
+  else {
+    for (let i = 0; i < 3; i++) {
+      shelfB[i].hide();
+    }
+  }
 }
 
 function selectShelfButton() {
 
   for (let i = 0; i < 3; i++) {
-    roomB[i].mousePressed(() => shelfNumber = i);
+    shelfB[i].mousePressed(() => shelfNumber = i);
   }
 
 }
 
 function createRemoveButtons() {
 
-  removeB = createButton("Remove ingredient");
-  removeAllB = createButton("Remove all");
+  removeB = createButton("Remove\nOne");
+  removeAllB = createButton("Remove\nAll");
 
 }
 
-function drawIngredientList() {
+function drawRemoveButtons(roomNumber) {
 
-  for (let i = 0; i < potionIngredients.length; i++) {
-    image(potionIngredientSprites[i], 600 + i * 65, 215, 64, 64);
+  if (!roomNumber) {
+    removeB.position(655, 390).size(100, 40).show();
+    removeAllB.position(760, 390).size(100, 40).show();
+  }
+  else {
+    removeB.hide();
+    removeAllB.hide();
+  }
+}
+
+function selectRemoveButtons() {
+
+  removeB.mousePressed(() => removeLast());
+  removeAllB.mousePressed(() => removeAll());
+}
+
+function createTransitionButtons() {
+
+  roomB[0] = createButton("To\nPotion\nRoom");
+  roomB[1] = createButton("Select\na\nFlower");
+  roomB[2] = createButton("Finish\nPotion");
+
+  backB = createButton("Back");
+
+}
+
+function drawTransitionButtons(roomNumber) {
+
+  for (let i = 0; i < 3; i++) {
+    roomB[i].hide().position(1115, 390).size(100, 40);
+    if (roomNumber == i) {
+      roomB[i].show();
+    }
+  }
+
+  if (roomNumber && roomNumber != 3) {
+
+    backB.position(1115, 520).size(100, 40).show();
+  }
+  else {
+    backB.hide();
+  }
+
+}
+
+function selectTransitionButtons() {
+
+  roomB[0].mousePressed(() => roomNumber = 1);
+  roomB[1].mousePressed(() => roomNumber = 2);
+  roomB[2].mousePressed(() => roomNumber = 3);
+
+  backB.mousePressed(() => roomNumber--);
+}
+
+function drawIngredientList(roomNumber) {
+
+  if (!roomNumber) {
+    for (let i = 0; i < potionIngredients.length; i++) {
+      image(potionIngredientSprites[i], 600 + i * 65, 215, 64, 64);
+    }
   }
 
 }
 
 function setup() {
+
+  for (let i = 0; i < 3; i++) {
+    ingredientSprite[i] = [];
+    ingredientList[i] = [];
+    selectB[i] = [];
+  }
+  roomNumber = 0;
 
   loadRoom();
   loadIngredients();
@@ -723,14 +776,18 @@ function setup() {
   for (let i = 0; i < 3; i++) {
     hideIngredientButtons(i);
   }
-  
+    
   selectShelfButton();
 
   setIngredientList(mushroomNameList, fruitNameList, vegNameList);
-  bottleList = setBottleList();
+    
+  createTransitionButtons();
 
-  createRemoveButtons
+  createRemoveButtons();
+  selectTransitionButtons();
+  selectRemoveButtons();
   selectIngredient();
+
 }
 
 function draw() {
@@ -738,11 +795,13 @@ function draw() {
   
   drawRoom();
   
-  drawShelfButtons(shelfNumber);
+  drawShelfButtons(shelfNumber, roomNumber);
   drawIngredients(shelfNumber);
-  drawIngredientList();
+  drawIngredientList(roomNumber);
   drawIngredientButtons(shelfNumber);
   hideIngredientButtons(shelfNumber);
+  drawRemoveButtons(roomNumber);
+  drawTransitionButtons(roomNumber);
   
   
 
@@ -754,7 +813,7 @@ function cauldrenColor(){
 }
 
 //removes the last ingredient added from the list of ingrdients in the potion and shortens the array
-function deleteLast(){
+function removeLast(){
 
   let pos = 0;
   
@@ -767,7 +826,7 @@ function deleteLast(){
 }
 
 //removes all ingredients from the list of ingredients in the potion and makes the array 0 long
-function deleteAll(){
+function removeAll(){
 
   potionIngredients.splice(0);
   potionIngredientSprites.splice(0);
