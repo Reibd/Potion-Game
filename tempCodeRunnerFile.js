@@ -1,1 +1,1 @@
-drawRoom();
+drawShelfButtons

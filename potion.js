@@ -22,7 +22,7 @@ let recipeIngredients= [];
 let mushroomNameList = [];
 let fruitNameList = [];
 let vegNameList = [];
-let ingredientList = [];
+var ingredientList = [];
 let flowerNameList = [];
 var BigVialList = [];
 var BubblyBrewBottleRisingList = [];
@@ -91,6 +91,7 @@ class Flower {
 //the parent class for all bottles
 class Bottle {
   static type = ["Big Vial", "Bubbly Brew Bottle Rising", "Classic Jar", "Encased Potion", "Glowing Potion", "Large Bottle", "Large Jar", "Large Tonic", "Round Potion", "Small Bottle", "Small Elixir", "Small Vial"];
+  //static sprite = 'Game Sprites/Pixel Potion Pack/Pixel Potion Pack - FINISHED/ALL Potions - First Frame/${type} - BLACK - 0000.png';
   brandID = 0;
   colourList = ["Black", "Blue", "Gold", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Turquoise", "Yellow"];
   constructor(ID) {
@@ -103,7 +104,7 @@ class Bottle {
 }
 //the sub-classes for each bottle type
 class BVial extends Bottle {
-  type = "Big Vial";
+  static type = "Big Vial";
   brandID = 0;
   colourList = ["Black", "Blue", "Gold", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Turquoise", "Yellow"];
   constructor(ID) {
@@ -111,7 +112,7 @@ class BVial extends Bottle {
   }
 }
 class BBBR extends Bottle {
-  type = "Bubbly Brew Bottle Rising";
+  static type = "Bubbly Brew Bottle Rising";
   brandID = 11;
   colourList = ["Black", "Blue", "Brown", "Teal", "Gold", "Green", "Orange", "Pink", "Purple", "Red", "Yellow"];
   constructor(ID) {
@@ -119,7 +120,7 @@ class BBBR extends Bottle {
   }
 }
 class CJar extends Bottle {
-  type = "Classic Jar";
+  static type = "Classic Jar";
   brandID = 22;
   colourList = ["Black_Gold", "Blue_Gold", "Gold", "Green", "Pink", "Purple", "Red_Gold", "Teal", "Turquoise_Gold", "Yellow"];
   constructor(ID) {
@@ -127,7 +128,7 @@ class CJar extends Bottle {
   }
 }
 class EPotion extends Bottle {
-  type = "Encased Potion";
+  static type = "Encased Potion";
   brandID = 32;
   colourList = ["Black_Gold", "Brown_Purple", "Brown_Green", "Gold", "Lime_Purple", "Yellow_Red"];
   constructor(ID) {
@@ -135,7 +136,7 @@ class EPotion extends Bottle {
   }
 }
 class GPotion extends Bottle {
-  type = "Glowing Potion";
+  static type = "Glowing Potion";
   brandID = 38;
   colourList = ["Black", "Blue", "Teal", "Gold", "Green", "Lime", "Pink", "Purple", "Red", "Yellow"];
   constructor(ID) {
@@ -143,7 +144,7 @@ class GPotion extends Bottle {
   }
 }
 class LBottle extends Bottle {
-  type = "Large Bottle";
+  static type = "Large Bottle";
   brandID = 48;
   colourList = ["Black", "Blue", "Brown", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Turquoise", "Yellow"];
   constructor(ID) {
@@ -151,7 +152,7 @@ class LBottle extends Bottle {
   }
 }
 class LJar extends Bottle {
-  type = "Large Jar";
+  static type = "Large Jar";
   brandID = 59;
   colourList = ["Black_Gold", "Blue_Gold", "Gold", "Green", "Pink", "Purple", "Red_Gold", "Teal", "Turquoise_Gold", "Yellow"];
   constructor(ID) {
@@ -159,7 +160,7 @@ class LJar extends Bottle {
   }
 }
 class LTonic extends Bottle {
-  type = "Large Tonic";
+  static type = "Large Tonic";
   brandID = 69;
   colourList = ["Black", "Blue", "Gold", "Green", "Orange", "Pink", "Purple", "Red", "Turquoise", "Yellow"];
   constructor(ID) {
@@ -167,7 +168,7 @@ class LTonic extends Bottle {
   }
 }
 class RPotion extends Bottle {
-  type = "Round Potion";
+  static type = "Round Potion";
   brandID = 80;
   colourList = ["Black", "Blue", "Gold", "Green", "Lime", "Pink", "Orange", "Purple", "Red", "Turquoise", "Yellow"];
   constructor(ID) {
@@ -175,7 +176,7 @@ class RPotion extends Bottle {
   }
 }
 class SBottle extends Bottle {
-  type = "Small Bottle";
+  static type = "Small Bottle";
   brandID = 91;
   colourList = ["Black_Gold", "Blue", "Gold", "Green", "Orange", "Pink", "Purple", "Red_Yellow", "Teal_Gold", "Yellow"];
   constructor(ID) {
@@ -183,7 +184,7 @@ class SBottle extends Bottle {
   }
 }
 class SElixir extends Bottle {
-  type = "Small Elixir";
+  static type = "Small Elixir";
   brandID = 101;
   colourList = ["Black", "Blue", "Teal", "Gold", "Green", "Orange", "Pink", "Purple", "Red", "Yellow"];
   constructor(ID) {
@@ -191,7 +192,7 @@ class SElixir extends Bottle {
   }
 }
 class SVial extends Bottle {
-  type = "Small Vial";
+  static type = "Small Vial";
   brandID = 111;
   colourList = ["Black", "Blue", "Brown", "Gold", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Teal", "Turquoise", "Yellow"];
   constructor(ID) {
@@ -315,7 +316,7 @@ function setIngredientList(){
     ingredientList[2][i] = veg[i];
   }
 
-  return ingredientList;
+  
 }
 
 //creates a random recipe with 8 - 10 ingredients (mushrooms, fruits, or veg), one bottle type, and one flower takes in
@@ -342,14 +343,14 @@ function recipe(ingredientList){
     ingredientLog.splice(0);
     for (let i = 0; i < ingredientTypeNum[k]; i++){
       let temp = Math.floor(Math.random() * 12);
-      for (let j = 0; j < ingredientLog.length; j++){
-          if (temp == ingredientLog[j]){
+    for (let j = 0; j < ingredientLog.length; j++){
+        if (temp == ingredientLog[j]){
               temp = Math.floor(Math.random() * 12);
-              j = 0;
-          }
-      }
+            j = 0;
+        }
+    }
       ingredientTypeList[i] = ingredientList[k][temp];
-      ingredientLog[i] = temp;
+    ingredientLog[i] = temp;
     }
   }
 
@@ -378,9 +379,9 @@ function ingredientButton(shelfNumber, ID){
     for (let j = 0; j < 12; j++){
       pColorR = (pColorR + ingredientList[i][j].R) / (pIngredientsNum) * 255;
 
-      pColorG = (pColorG + ingredientList[i][j].R) / (pIngredientsNum) * 255;
+      pColorG = (pColorG + ingredientList[i][j].G) / (pIngredientsNum) * 255;
 
-      pColorB = (pColorB + ingredientList[i][j].R) / (pIngredientsNum) * 255;
+      pColorB = (pColorB + ingredientList[i][j].B) / (pIngredientsNum) * 255;
     }
   }
   
@@ -388,7 +389,7 @@ function ingredientButton(shelfNumber, ID){
 
 //adds the chosen bottle type to the list of ingedrients in the potion and adds one to the number of ingredients in the potion
 function bottleButton(bID){
-  potionIngredients[potionIngredients.length] = Bottle.type[bID];
+  potionIngredients[pIngredientsNum] = Bottle.type[bID];
 
   pIngredientsNum = potionIngredients.length;
 
@@ -398,7 +399,7 @@ function bottleButton(bID){
 //adds the chosen flower to the list of ingedrients in the potion and adds one to the number of ingredients in the potion
 //returns the name of the color of potion that should be viewed *TO CHANGE*
 function flowerButton(fID){
-  potionIngredients[potionIngredients.length] = flower[fID].name;
+  potionIngredients[pIngredientsNum] = flower[fID].name;
 
   pIngredientsNum = potionIngredients.length;
 
@@ -436,7 +437,7 @@ function flowerButton(fID){
     if (fID == 2 || fID == 9 || fID == 11){
       return "black";
     }
-  }
+  } 
   else if (bType == 10){
     if (fID == 0 || fID == 9 || fID == 11){
       return "black";
@@ -450,23 +451,23 @@ function flowerButton(fID){
 //compares the list of ingredients in the potion to the list of ingredients in the recipe
 //returns the accuracy percentage rounded to nearest integer in money
 function checkPotion(recipeIngredients){
-  let check = [false];
+  let check = [];
   let trueCount = 0;
 
-  for (let i = 0; i < potionIngredients.length; i++){
+  for (let i = 0; i < pIngredientsNum; i++){
     check[i] = false;
   }
 
-  for (let i = 0; i < potionIngredients.length; i++){
-    for (let j = 0; j < recipeIngredients.length; j++){
+  for (let i = 0; i < pIngredientsNum; i++){
+    for (let j = 0; j < pIngredientsNum; j++){
       if (potionIngredients[i] == recipeIngredients[j]){
         check[i] = true;
       }
     }
   }
 
-  for (let i = 0; i < potionIngredients.length; i++){
-    if (check[i] == true){
+  for (let i = 0; i < pIngredientsNum; i++){
+    if (check[i]){
       trueCount++;
     }
   }
@@ -489,9 +490,9 @@ function loadRoom() {
 function loadIngredients() {
 
   for (let j = 0; j < 3; j++){
-    for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 12; i++) {
       ingredientSprite[j][i] = loadImage(ingredientList[j][i].sprite);
-    }
+  }
   }
 }
 
@@ -511,26 +512,18 @@ function drawIngredients(shelfNumber) {
   let y = [140, 235, 325, 415];
 
   for (let i = 0; i < 12; i++){
-    image(ingredientSprite[shelfNumber][Math.floor(i%3)], x[i], y[Math.floor(i/3)], 64, 64);
+    image(ingredientSprite[shelfNumber][i], x[i % 3], y[Math.floor(i / 3)], 64, 64);
   }
 }
 
 //Please test not sure if it works :)
 function createIngredientButtons() {
 
-  for (let i = 0; i < 12; i++) {
-    selectB[0][i] = createButton(ingredientList[i].name);
-    selectB[1][i] = createButton(ingredientList[i].name);
-    selectB[2][i] = createButton(ingredientList[i].name);
+  for (let j = 0; j < 3; j++) {
+    for (let i = 0; i < 12; i++) {
+      selectB[j][i] = createButton(ingredientList[j][i].name);
+    }
   }
- /* for (let i = 0; i < 12; i++) {
-    
-  }
-
-  for (let i = 0; i < 12; i++) {
-    
-  }
-  */
 }
 
 function drawIngredientButtons(shelfNumber) {
@@ -553,10 +546,6 @@ function drawIngredientButtons(shelfNumber) {
     }
   }
 
-}
-
-function hideIngredientButtons(shelfNumber) {
-
   for (let j = 0; j < 3; j++) {
     if (shelfNumber != j) {
       for (let i = 0; i < 12; i++) {
@@ -566,6 +555,7 @@ function hideIngredientButtons(shelfNumber) {
   }  
 
 }
+
 
 function selectIngredient() {
 
@@ -679,7 +669,7 @@ function selectTransitionButtons() {
 function drawIngredientList(roomNumber) {
 
   if (!roomNumber) {
-    for (let i = 0; i < potionIngredients.length; i++) {
+    for (let i = 0; i < pIngredientsNum; i++) {
       image(potionIngredientSprites[i], 600 + i * 65, 215, 64, 64);
     }
   }
@@ -694,19 +684,17 @@ function setup() {
     selectB[i] = [];
   }
   roomNumber = 0;
+  setIngredientList();
 
   loadRoom();
   loadIngredients();
   createCanvas(1250, 550);
   createIngredientButtons();
   createShelfButtons();
-  for (let i = 0; i < 3; i++) {
-    hideIngredientButtons(i);
-  }
     
   selectShelfButton();
 
-  setIngredientList(mushroomNameList, fruitNameList, vegNameList);
+  
     
   createTransitionButtons();
 
@@ -726,7 +714,6 @@ function draw() {
   drawIngredients(shelfNumber);
   drawIngredientList(roomNumber);
   drawIngredientButtons(shelfNumber);
-  hideIngredientButtons(shelfNumber);
   drawRemoveButtons(roomNumber);
   drawTransitionButtons(roomNumber);
   
@@ -735,12 +722,12 @@ function draw() {
 
 }
 
-function cauldrenColor(){
+function cauldrenColor() {
   //the cauldron color is pColorR, pColorG, pColorB in RGB values
 }
 
 //removes the last ingredient added from the list of ingrdients in the potion and shortens the array
-function removeLast(){
+function removeLast() {
 
   let pos = 0;
   
@@ -753,23 +740,9 @@ function removeLast(){
 }
 
 //removes all ingredients from the list of ingredients in the potion and makes the array 0 long
-function removeAll(){
+function removeAll() {
 
   potionIngredients.splice(0);
   potionIngredientSprites.splice(0);
-  pIngredientsNum = potionIngredients.length;
-}
-
-function game() {
-
-  
-
-  
-
-  recipeIngredients = recipe(ingredientNameList, bottleList);
-
-  
-
-  
-  gamePoints += checkPotion(recipeIngredients); 
+  pIngredientsNum = 0;
 }
