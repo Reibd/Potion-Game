@@ -510,7 +510,7 @@ function drawIngredients(shelfNumber) {
   let x = [40, 230, 415];
   let y = [140, 235, 325, 415];
 
-  for (let i = 0; i < 12; i++){
+  for(let i = 0; i < 12; i++){
     image(ingredientSprite[shelfNumber][Math.floor(i%3)], x[i], y[Math.floor(i/3)], 64, 64);
   }
 }
