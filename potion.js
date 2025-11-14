@@ -44,33 +44,24 @@ var money = 0;
 
 //the class for all mushroom ingredients
 class Mushroom {
-  constructor(name, R, G, B, ID, sprite) {
+  constructor(name, ID, sprite) {
   this.name = name;
-  this.R = R;
-  this.G = G;
-  this.B = B;
   this.ID = ID;
   this.sprite = sprite;
   }
 }
 //the class for all fruit ingredients
 class Fruit {
-  constructor(name, R, G, B, ID, sprite) {
+  constructor(name, ID, sprite) {
   this.name = name;
-  this.R = R;
-  this.G = G;
-  this.B = B;
   this.ID = ID;
   this.sprite = sprite;
   }
 }
 //the class for all vegtible ingredients
 class Veg {
-  constructor(name, R, G, B, ID, sprite) {
+  constructor(name, ID, sprite) {
   this.name = name;
-  this.R = R;
-  this.G = G;
-  this.B = B;
   this.ID = ID;
   this.sprite = sprite;
   }
@@ -197,44 +188,44 @@ class SVial extends Bottle {
 }
 
 //Declaring all ingredients with names, color values, individual IDs and their sprites
-  mushroom[0] = new Mushroom("Dawn\nSinger", 0.84, 0.24, 0.58, 0, 'Game Sprites/Pixel Mushroom Pack/Mushroom035.png'); //mushroom 35
-  mushroom[1] = new Mushroom("Midnight\nFungus", 0.58, 0.68, 0.84, 1, 'Game Sprites/Pixel Mushroom Pack/Mushroom019.png'); //mushroom 19
-  mushroom[2] = new Mushroom("Puffglow", 0.54, 0.67, 0.73, 2, 'Game Sprites/Pixel Mushroom Pack/Mushroom014.png'); //mushroom 14
-  mushroom[3] = new Mushroom("Capling", 0.86, 0.71, 0.62, 3, 'Game Sprites/Pixel Mushroom Pack/Mushroom000.png'); //mushroom 00
-  mushroom[4] = new Mushroom("Scarlet\nSpore", 0.99, 0.34, 0.26, 4, 'Game Sprites/Pixel Mushroom Pack/Mushroom002.png'); //mushroom 02
-  mushroom[5] = new Mushroom("Spore\nSpark", 0.83, 0.78, 0.73, 5, 'Game Sprites/Pixel Mushroom Pack/Mushroom004.png'); //mushroom 04
-  mushroom[6] = new Mushroom("Glowtop", 0.94, 0.92, 0.34, 6, 'Game Sprites/Pixel Mushroom Pack/Mushroom005.png'); //mushroom 05
-  mushroom[7] = new Mushroom("Bark\nShine", 0.63, 0.38, 0.15, 7, 'Game Sprites/Pixel Mushroom Pack/Mushroom011.png'); //mushroom 11
-  mushroom[8] = new Mushroom("Crimson\nCap", 0.78, 0.14, 0.03, 8, 'Game Sprites/Pixel Mushroom Pack/Mushroom016.png'); //mushroom 16
-  mushroom[9] = new Mushroom("Starlit\nShroom", 0.82, 0.50, 0.92, 9, 'Game Sprites/Pixel Mushroom Pack/Mushroom022.png'); //mushroom 22
-  mushroom[10] = new Mushroom("Mossy\nGill", 0.52, 0.76, 0.11, 10, 'Game Sprites/Pixel Mushroom Pack/Mushroom029.png'); //mushroom 29
-  mushroom[11] = new Mushroom("Feather\nShroom", 0.96, 0.78, 0.36, 11, 'Game Sprites/Pixel Mushroom Pack/Mushroom034.png'); //mushroom 34
+  mushroom[0] = new Mushroom("Dawn\nSinger", 0, 'Game Sprites/Pixel Mushroom Pack/Mushroom035.png'); //mushroom 35
+  mushroom[1] = new Mushroom("Midnight\nFungus", 1, 'Game Sprites/Pixel Mushroom Pack/Mushroom019.png'); //mushroom 19
+  mushroom[2] = new Mushroom("Puffglow", 2, 'Game Sprites/Pixel Mushroom Pack/Mushroom014.png'); //mushroom 14
+  mushroom[3] = new Mushroom("Capling", 3, 'Game Sprites/Pixel Mushroom Pack/Mushroom000.png'); //mushroom 00
+  mushroom[4] = new Mushroom("Scarlet\nSpore", 4, 'Game Sprites/Pixel Mushroom Pack/Mushroom002.png'); //mushroom 02
+  mushroom[5] = new Mushroom("Spore\nSpark", 5, 'Game Sprites/Pixel Mushroom Pack/Mushroom004.png'); //mushroom 04
+  mushroom[6] = new Mushroom("Glowtop", 6, 'Game Sprites/Pixel Mushroom Pack/Mushroom005.png'); //mushroom 05
+  mushroom[7] = new Mushroom("Bark\nShine", 7, 'Game Sprites/Pixel Mushroom Pack/Mushroom011.png'); //mushroom 11
+  mushroom[8] = new Mushroom("Crimson\nCap", 8, 'Game Sprites/Pixel Mushroom Pack/Mushroom016.png'); //mushroom 16
+  mushroom[9] = new Mushroom("Starlit\nShroom", 9, 'Game Sprites/Pixel Mushroom Pack/Mushroom022.png'); //mushroom 22
+  mushroom[10] = new Mushroom("Mossy\nGill", 10, 'Game Sprites/Pixel Mushroom Pack/Mushroom029.png'); //mushroom 29
+  mushroom[11] = new Mushroom("Feather\nShroom", 11, 'Game Sprites/Pixel Mushroom Pack/Mushroom034.png'); //mushroom 34
 
-  fruit[0] = new Fruit("Pome-\ngranate", 0.87, 0.22, 0.23, 12, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/PomegranateSLICE.png'); //slice
-  fruit[1] = new Fruit("Passion\nFruit", 0.98, 0.76, 0.17, 13, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/PassionfruitSLICE.png'); //slice
-  fruit[2] = new Fruit("Dragon\nFruit", 0.99, 0.82, 0.87, 14, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/DragonFruitSLICE.png'); //slice
-  fruit[3] = new Fruit("Pine-\napple", 0.98, 0.83, 0.17, 15, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/PineappleSLICE.png'); //slice
-  fruit[4] = new Fruit("Lemon", 0.98, 0.97, 0.71, 16, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/LemonSLICE.png'); //slice
-  fruit[5] = new Fruit("Kiwi", 0.56, 0.85, 0.41, 17, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/kiwiSLICE.png'); //slice
-  fruit[6] = new Fruit("Lychee", 0.87, 0.26, 0.43, 18, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Lychee.png'); //full
-  fruit[7] = new Fruit("Rasp-\nberry", 0.53, 0.02, 0.18, 19, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Raspberry.png'); //full
-  fruit[8] = new Fruit("Black-\ncurrant", 0.27, 0.35, 0.63, 20, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Blackcurrant.png'); //full
-  fruit[9] = new Fruit("Starfruit", 0.93, 0.94, 0.32, 21, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Starfruit.png'); //full
-  fruit[10] = new Fruit("Papaya", 0.93, 0.38, 0.24, 22, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Papaya.png'); //full
-  fruit[11] = new Fruit("Jackfruit", 0.57, 0.59, 0.25, 23, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Jackfruit.png'); //full
+  fruit[0] = new Fruit("Pome-\ngranate", 12, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/PomegranateSLICE.png'); //slice
+  fruit[1] = new Fruit("Passion\nFruit", 13, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/PassionfruitSLICE.png'); //slice
+  fruit[2] = new Fruit("Dragon\nFruit", 14, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/DragonFruitSLICE.png'); //slice
+  fruit[3] = new Fruit("Pine-\napple", 15, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/PineappleSLICE.png'); //slice
+  fruit[4] = new Fruit("Lemon", 16, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/LemonSLICE.png'); //slice
+  fruit[5] = new Fruit("Kiwi", 17, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/SLICES/SLICES_LINE/kiwiSLICE.png'); //slice
+  fruit[6] = new Fruit("Lychee", 18, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Lychee.png'); //full
+  fruit[7] = new Fruit("Rasp-\nberry", 19, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Raspberry.png'); //full
+  fruit[8] = new Fruit("Black-\ncurrant", 20, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Blackcurrant.png'); //full
+  fruit[9] = new Fruit("Starfruit", 21, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Starfruit.png'); //full
+  fruit[10] = new Fruit("Papaya", 22, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Papaya.png'); //full
+  fruit[11] = new Fruit("Jackfruit", 23, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/FRUITS/FRUIT_LINE/Jackfruit.png'); //full
   
-  veg[0] = new Veg("Beetroot", 0.52, 0.05, 0.12, 24, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Beetroot.png');
-  veg[1] = new Veg("Garlic", 0.98, 0.97, 0.94, 25, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Garlic.png');
-  veg[2] = new Veg("Ginger", 0.76, 0.71, 0.55, 26, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Ginger.png');
-  veg[3] = new Veg("Kohlrabi", 0.46, 0.70, 0.33, 27, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Kohlrabi.png');
-  veg[4] = new Veg("Leek", 0.73, 0.87, 0.46, 28, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Leek.png');
-  veg[5] = new Veg("Turnip", 0.43, 0.08, 0.31, 29, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Turnip.png');
-  veg[6] = new Veg("Radish", 0.68, 0.14, 0.20, 30, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Radish.png');
-  veg[7] = new Veg("Parsnip", 0.94, 0.84, 0.55, 31, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Parsnip.png');
-  veg[8] = new Veg("Olive", 0.78, 0.71, 0.01, 32, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Olive.png');
-  veg[9] = new Veg("Onion", 0.83, 0.82, 0.64, 33, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/RedOnion.png'); //red onion
-  veg[10] = new Veg("Red\nCabbage", 0.99, 0.42, 0.97, 34, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/RedCabbage.png');
-  veg[11] = new Veg("Hot\nPepper", 0.68, 0.14, 0.20, 35, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/HotPepper.png');
+  veg[0] = new Veg("Beetroot", 24, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Beetroot.png');
+  veg[1] = new Veg("Garlic", 25, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Garlic.png');
+  veg[2] = new Veg("Ginger", 26, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Ginger.png');
+  veg[3] = new Veg("Kohlrabi", 27, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Kohlrabi.png');
+  veg[4] = new Veg("Leek", 28, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Leek.png');
+  veg[5] = new Veg("Turnip", 29, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Turnip.png');
+  veg[6] = new Veg("Radish", 30, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Radish.png');
+  veg[7] = new Veg("Parsnip", 31, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Parsnip.png');
+  veg[8] = new Veg("Olive", 32, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/Olive.png');
+  veg[9] = new Veg("Onion", 33, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/RedOnion.png'); //red onion
+  veg[10] = new Veg("Red\nCabbage", 34, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/RedCabbage.png');
+  veg[11] = new Veg("Hot\nPepper", 35, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/HotPepper.png');
   
   //declaring all flower ingredients, their names, and the color they make the potion if they can
   flower[0] = new Flower("Scilla", "Turquoise", 0); //cropped F1 teal
@@ -372,20 +363,13 @@ function recipe(ingredientList){
 //adds one to the number of ingredients in the potion
 function ingredientButton(shelfNumber, ID){
   
-  potionIngredients[pIngredientsNum] = ingredientList[shelfNumber][ID].name;
-  
-  potionIngredientSprites[pIngredientsNum] = ingredientSprite[shelfNumber][ID];
-  
-  pIngredientsNum = potionIngredients.length;
-  
-
-  pColorR = (pColorR + ingredientList[shelfNumber][ID].R) / (pIngredientsNum) * 255;
-
-  pColorG = (pColorG + ingredientList[shelfNumber][ID].G) / (pIngredientsNum) * 255;
-
-  pColorB = (pColorB + ingredientList[shelfNumber][ID].B) / (pIngredientsNum) * 255;
+  if (pIngredientsNum < 10){
+    potionIngredients[pIngredientsNum] = ingredientList[shelfNumber][ID].name;
     
-  
+    potionIngredientSprites[pIngredientsNum] = ingredientSprite[shelfNumber][ID];
+    
+    pIngredientsNum = potionIngredients.length;
+  }
 }
 
 //adds the chosen bottle type to the list of ingedrients in the potion and adds one to the number of ingredients in the potion
