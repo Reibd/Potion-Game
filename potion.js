@@ -19,11 +19,7 @@ var removeAllB;
 var backB;
 var roomNumber;
 let recipeIngredients= [];
-let mushroomNameList = [];
-let fruitNameList = [];
-let vegNameList = [];
 let ingredientList = [];
-let flowerNameList = [];
 var BigVialList = [];
 var BubblyBrewBottleRisingList = [];
 var ClassicJarList = [];
@@ -327,6 +323,11 @@ function recipe(ingredientList){
   let ingredientQuantNum = [];
   let ingredientTypeList = [];
   let recipeBottle = "string";
+  let counter = 0;
+
+  for (let i = 0; i < 3; i++) {
+    ingredientLog[i] = [];
+  }
 
   ingredientTypeNum[0] = Math.floor(Math.random() * 2) + 1;
   ingredientTypeNum[1] = Math.floor(Math.random() * 2) + 1;
@@ -339,17 +340,17 @@ function recipe(ingredientList){
   }
 
   for (let k = 0; k < 3; k++){
-    ingredientLog.splice(0);
     for (let i = 0; i < ingredientTypeNum[k]; i++){
       let temp = Math.floor(Math.random() * 12);
-      for (let j = 0; j < ingredientLog.length; j++){
-          if (temp == ingredientLog[j]){
+      for (let j = 0; j < counter; j++){
+          if (temp == ingredientLog[k][j]){
               temp = Math.floor(Math.random() * 12);
               j = 0;
           }
       }
       ingredientTypeList[i] = ingredientList[k][temp];
-      ingredientLog[i] = temp;
+      ingredientLog[j][i] = temp;
+      counter++;
     }
   }
 
@@ -374,15 +375,12 @@ function ingredientButton(shelfNumber, ID){
 
   pIngredientsNum = potionIngredients.length;
 
-  for (let i = 0; i < 3; i++){
-    for (let j = 0; j < 12; j++){
-      pColorR = (pColorR + ingredientList[i][j].R) / (pIngredientsNum) * 255;
+  pColorR = (pColorR + ingredientList[shelfNumber][ID].R) / (pIngredientsNum) * 255;
 
-      pColorG = (pColorG + ingredientList[i][j].R) / (pIngredientsNum) * 255;
+  pColorG = (pColorG + ingredientList[shelfNumber][ID].G) / (pIngredientsNum) * 255;
 
-      pColorB = (pColorB + ingredientList[i][j].R) / (pIngredientsNum) * 255;
-    }
-  }
+  pColorB = (pColorB + ingredientList[shelfNumber][ID].B) / (pIngredientsNum) * 255;
+    
   
 }
 
@@ -450,7 +448,7 @@ function flowerButton(fID){
 //compares the list of ingredients in the potion to the list of ingredients in the recipe
 //returns the accuracy percentage rounded to nearest integer in money
 function checkPotion(recipeIngredients){
-  let check = [false];
+  let check = [];
   let trueCount = 0;
 
   for (let i = 0; i < potionIngredients.length; i++){
@@ -511,7 +509,7 @@ function drawIngredients(shelfNumber) {
   let y = [140, 235, 325, 415];
 
   for(let i = 0; i < 12; i++){
-    image(ingredientSprite[shelfNumber][Math.floor(i%3)], x[i], y[Math.floor(i/3)], 64, 64);
+    image(ingredientSprite[shelfNumber][i], x[Math.floor(i%3)], y[Math.floor(i/3)], 64, 64);
   }
 }
 
@@ -519,9 +517,9 @@ function drawIngredients(shelfNumber) {
 function createIngredientButtons() {
 
   for (let i = 0; i < 12; i++) {
-    selectB[0][i] = createButton(ingredientList[i].name);
-    selectB[1][i] = createButton(ingredientList[i].name);
-    selectB[2][i] = createButton(ingredientList[i].name);
+    selectB[0][i] = createButton(ingredientList[0][i].name);
+    selectB[1][i] = createButton(ingredientList[1][i].name);
+    selectB[2][i] = createButton(ingredientList[2][i].name);
   }
  /* for (let i = 0; i < 12; i++) {
     
@@ -758,18 +756,4 @@ function removeAll(){
   potionIngredients.splice(0);
   potionIngredientSprites.splice(0);
   pIngredientsNum = potionIngredients.length;
-}
-
-function game() {
-
-  
-
-  
-
-  recipeIngredients = recipe(ingredientNameList, bottleList);
-
-  
-
-  
-  gamePoints += checkPotion(recipeIngredients); 
 }
