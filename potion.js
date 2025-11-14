@@ -11,8 +11,6 @@ const fruit = [];
 const veg = [];
 var selectB = [];
 const flower = [];
-var potionIngredients = [];
-var potionIngredientSprites = [];
 var ingredientSprite = [];
 var shelfB = [];
 var roomB = [];
@@ -20,7 +18,7 @@ var removeB;
 var removeAllB;
 var backB;
 var roomNumber;
-var recipeIngredients= [];
+let recipeIngredients= [];
 var ingredientList = [];
 var BigVialList = [];
 var BubblyBrewBottleRisingList = [];
@@ -34,6 +32,8 @@ var RoundPotionList = [];
 var SmallBottleList = [];
 var SmallElixirList = [];
 var SmallVialList = [];
+var potionIngredients = [];
+var potionIngredientSprites = [];
 var pIngredientsNum = 0;
 var pColorR = 0.0;
 var pColorG = 0.0;
@@ -41,37 +41,38 @@ var pColorB = 0.0;
 var bType = 0;
 var money = 0;
 
+
 //the class for all mushroom ingredients
 class Mushroom {
   constructor(name, R, G, B, ID, sprite) {
-    this.name = name;
-    this.R = R;
-    this.G = G;
-    this.B = B;
-    this.ID = ID;
-    this.sprite = sprite;
+  this.name = name;
+  this.R = R;
+  this.G = G;
+  this.B = B;
+  this.ID = ID;
+  this.sprite = sprite;
   }
 }
 //the class for all fruit ingredients
 class Fruit {
   constructor(name, R, G, B, ID, sprite) {
-    this.name = name;
-    this.R = R;
-    this.G = G;
-    this.B = B;
-    this.ID = ID;
-    this.sprite = sprite;
+  this.name = name;
+  this.R = R;
+  this.G = G;
+  this.B = B;
+  this.ID = ID;
+  this.sprite = sprite;
   }
 }
 //the class for all vegtible ingredients
 class Veg {
   constructor(name, R, G, B, ID, sprite) {
-    this.name = name;
-    this.R = R;
-    this.G = G;
-    this.B = B;
-    this.ID = ID;
-    this.sprite = sprite;
+  this.name = name;
+  this.R = R;
+  this.G = G;
+  this.B = B;
+  this.ID = ID;
+  this.sprite = sprite;
   }
 }
 //the class for all flower ingredients
@@ -305,13 +306,12 @@ function setPotionList() {
 //makes one long list of names in order of ingredient ID
 function setIngredientList(){
 
-  for (let j = 0; j < 3; j++){
-    for (let i = 0; i < 12; i++) {
-      ingredientList[j][i] = mushroom[i];
-      ingredientList[j][i] = fruit[i];
-      ingredientList[j][i] = veg[i];
-    }
+  for (let i = 0; i < 12; i++) {
+    ingredientList[0][i] = mushroom[i];
+    ingredientList[1][i] = fruit[i];
+    ingredientList[2][i] = veg[i];
   }
+
   
 }
 
@@ -364,19 +364,26 @@ function recipe(ingredientList){
   recipeIngredients[recipeIngredients.length] = recipeBottle;
 
   recipeIngredients[recipeIngredients.length] = flower[Math.floor(Math.random() * 12)].name;
+
+  return recipeIngredients;
 }
 
 //adds the chosen ingredient to the list of ingedrients in the potion and changes the color of the potion
 //adds one to the number of ingredients in the potion
-function ingredientButton(shelfnumber, ID){
-  potionIngredients[pIngredientsNum] = ingredientList[shelfnumber][ID].name;
-  potionIngredientSprites[pIngredientsNum] = ingredientSprite[shelfnumber][ID].sprite;
-
+function ingredientButton(shelfNumber, ID){
+  
+  potionIngredients[pIngredientsNum] = ingredientList[shelfNumber][ID].name;
+  
+  potionIngredientSprites[pIngredientsNum] = ingredientSprite[shelfNumber][ID];
+  
   pIngredientsNum = potionIngredients.length;
+  
 
-  pColorR = (pColorR + ingredientList[shelfnumber][ID].R) / (pIngredientsNum) * 255;
-  pColorG = (pColorG + ingredientList[shelfnumber][ID].G) / (pIngredientsNum) * 255;
-  pColorB = (pColorB + ingredientList[shelfnumber][ID].B) / (pIngredientsNum) * 255;
+  pColorR = (pColorR + ingredientList[shelfNumber][ID].R) / (pIngredientsNum) * 255;
+
+  pColorG = (pColorG + ingredientList[shelfNumber][ID].G) / (pIngredientsNum) * 255;
+
+  pColorB = (pColorB + ingredientList[shelfNumber][ID].B) / (pIngredientsNum) * 255;
     
   
 }
@@ -671,13 +678,12 @@ function drawIngredientList(roomNumber) {
 }
 
 function setup() {
-  
-for (let i = 0; i < 3; i++) {
+
+  for (let i = 0; i < 3; i++) {
     ingredientSprite[i] = [];
     ingredientList[i] = [];
     selectB[i] = [];
   }
-
   roomNumber = 0;
   setIngredientList();
 
