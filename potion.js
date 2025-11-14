@@ -371,10 +371,13 @@ function recipe(ingredientList){
 //adds the chosen ingredient to the list of ingedrients in the potion and changes the color of the potion
 //adds one to the number of ingredients in the potion
 function ingredientButton(shelfNumber, ID){
+  
   potionIngredients[pIngredientsNum] = ingredientList[shelfNumber][ID].name;
-  potionIngredientSprites[pIngredientsNum] = ingredientSprite[shelfNumber][ID].sprite;
-
+  
+  potionIngredientSprites[pIngredientsNum] = ingredientSprite[shelfNumber][ID];
+  
   pIngredientsNum = potionIngredients.length;
+  
 
   pColorR = (pColorR + ingredientList[shelfNumber][ID].R) / (pIngredientsNum) * 255;
 
