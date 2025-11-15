@@ -359,7 +359,7 @@ function recipe(ingredientList){
   return recipeIngredients;
 }
 
-//adds the chosen ingredient to the list of ingedrients in the potion and changes the color of the potion
+//adds the chosen ingredient to the list of ingedrients in the potion with a max of 10 ingredients
 //adds one to the number of ingredients in the potion
 function ingredientButton(shelfNumber, ID){
   
@@ -540,7 +540,6 @@ function drawIngredientButtons(shelfNumber) {
   }  
 
 }
-
 
 function selectIngredient() {
 
