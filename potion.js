@@ -4,6 +4,7 @@ let bgUp;
 let bgDown;
 let board;
 let cauldren;
+let cauldrenGIF;
 
 var shelfNumber = 0;
 const mushroom = [];
@@ -486,8 +487,8 @@ function loadRoom() {
   bgUp = loadImage('Game Sprites/Bar Pack/individuals sprite/wall_bar.png');
   board = loadImage('Game Sprites/Bar Pack/individuals sprite/Greenboard_weird_writing.png');
   bgDown = loadImage('Game Sprites/Bar Pack/individuals sprite/floor_bar.png');
-  cauldren = loadImage('Game Sprites/Cauldren Set/Red Cauldren Gif.gif');
-
+  cauldrenGIF = createImg("Game Sprites/Cauldren Set/Red Cauldren Gif.gif");
+  
 }
 
 function loadIngredients() {
@@ -503,15 +504,16 @@ function drawRoom() {
 
   image(bgUp, 0, 0, width, height - 150);
   image(bgDown, -235, height - 150, width + 470, 150);
-  image(board, width - 285, 0, 235, 145);
+  image(board, width - 585, 0, 535, 145);
   image(bar, 615, 265, 635, 235);
   if (roomNumber != 3) {
     image(shelf, 0, 95, 585, 405);
+    cauldrenGIF.hide();
   }
 
   if (roomNumber == 3) {
 
-    image(cauldren, 195, 305, 192, 192);
+    cauldrenGIF.position(195, 325).size(192, 192).show();
   }
 
 }
