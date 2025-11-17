@@ -14,21 +14,28 @@ const flower = [];
 var ingredientSprite = [];
 var shelfB = [];
 var potionB = [];
+var flowerB = [];
 var roomB = [];
 var removeB;
 var removeAllB;
 var backB;
 var roomNumber;
+var selectedPotion;
+var selectedFlower;
+var selectedPotionSprite = 0;
+var selectedFlowerSprite = 0;
 let recipeIngredients= [];
 var ingredientList = [];
 const potionList = [];
 var potionSprites = [];
+var flowerSprites = [];
 var potionIngredients = [];
 var potionIngredientSprites = [];
 var pIngredientsNum = 0;
 var pColorR = 0.0;
 var pColorG = 0.0;
 var pColorB = 0.0;
+var fType = 0;
 var bType = 0;
 var money = 0;
 
@@ -218,18 +225,18 @@ class SVial extends Bottle {
   veg[11] = new Veg("Hot\nPepper", 35, 'Game Sprites/Helm3ts_32x32_fruit_veggie_asset_pack/VEGGIES/VEGGIES_LINE/HotPepper.png');
   
   //declaring all flower ingredients, their names, and the color they make the potion if they can
-  flower[0] = new Flower("Scilla", "Turquoise", 0); //cropped F1 teal
-  flower[1] = new Flower("Solorion", "Yellow", 1); //cropped F1 yellow
-  flower[2] = new Flower("Galax", "Teal", 2); //cropped F2 teal
-  flower[3] = new Flower("Azura", "Blue", 3); //cropped F4 blue
-  flower[4] = new Flower("Celosia", "Pink", 4); //cropped F4 pink
-  flower[5] = new Flower("Alyssum", "Orange", 5); //cropped F8 orange
-  flower[6] = new Flower("Vinca", "Purple", 6); //cropped F9 purple
-  flower[7] = new Flower("Ixora", "Red", 7); //cropped F9 red
-  flower[8] = new Flower("Aurumea", "Gold", 8); //cropped F9 yellow
-  flower[9] = new Flower("Viridus", "Lime", 9); //cropped F10 purple
-  flower[10] = new Flower("Frutex", "Green", 10); //bush 1 no flowers green
-  flower[11] = new Flower("Calidus", "Brown", 11); //bush 1 no flowers warm green
+  flower[0] = new Flower("Scilla", "Turquoise", 0, 'Game Sprites/Pixel Art Flower Pack/Pixel Art Flower Pack/Cropped Flowers/F1Teal.png'); //cropped F1 teal
+  flower[1] = new Flower("Solorion", "Yellow", 1, 'Game Sprites/Pixel Art Flower Pack/Pixel Art Flower Pack/Cropped Flowers/F1Yellow.png'); //cropped F1 yellow
+  flower[2] = new Flower("Galax", "Teal", 2, 'Game Sprites/Pixel Art Flower Pack/Pixel Art Flower Pack/Cropped Flowers/F2Teal.png'); //cropped F2 teal
+  flower[3] = new Flower("Azura", "Blue", 3, 'Game Sprites/Pixel Art Flower Pack/Pixel Art Flower Pack/Cropped Flowers/F4Blue.png'); //cropped F4 blue
+  flower[4] = new Flower("Celosia", "Pink", 4, 'Game Sprites/Pixel Art Flower Pack/Pixel Art Flower Pack/Cropped Flowers/F4Pink.png'); //cropped F4 pink
+  flower[5] = new Flower("Alyssum", "Orange", 5, 'Game Sprites/Pixel Art Flower Pack/Pixel Art Flower Pack/Cropped Flowers/F8Orange.png'); //cropped F8 orange
+  flower[6] = new Flower("Vinca", "Purple", 6, 'Game Sprites/Pixel Art Flower Pack/Pixel Art Flower Pack/Cropped Flowers/F9Purple.png'); //cropped F9 purple
+  flower[7] = new Flower("Ixora", "Red", 7, 'Game Sprites/Pixel Art Flower Pack/Pixel Art Flower Pack/Cropped Flowers/F9Red.png'); //cropped F9 red
+  flower[8] = new Flower("Aurumea", "Gold", 8, 'Game Sprites/Pixel Art Flower Pack/Pixel Art Flower Pack/Cropped Flowers/F9Yellow.png'); //cropped F9 yellow
+  flower[9] = new Flower("Viridus", "Lime", 9, 'Game Sprites/Pixel Art Flower Pack/Pixel Art Flower Pack/Cropped Flowers/F10Purple.png'); //cropped F10 purple
+  flower[10] = new Flower("Frutex", "Green", 10, 'Game Sprites/Pixel Art Flower Pack/Pixel Art Flower Pack/Bush 1 (No Flowers)/Bush 1 (no flowers) - GREEN.png'); //bush 1 no flowers green
+  flower[11] = new Flower("Calidus", "Brown", 11, 'Game Sprites/Pixel Art Flower Pack/Pixel Art Flower Pack/Bush 1 (No Flowers)/Bush 1 (no flowers) - WARM GREEN.png'); //bush 1 no flowers warm green
 
 //declares all the bottle values
 function setPotionList() {
@@ -367,78 +374,90 @@ function ingredientButton(shelfNumber, ID){
 }
 
 //adds the chosen bottle type to the list of ingedrients in the potion and adds one to the number of ingredients in the potion
-function bottleButton(bID){
-  potionIngredients[pIngredientsNum] = Bottle.type[bID];
+function bottleButton(bID) {
 
-  pIngredientsNum = potionIngredients.length;
-
+  selectedPotion = Bottle.type[bID];
+  selectedPotionSprite = potionSprites[bID];
   bType = bID;
+
 }
 
 //adds the chosen flower to the list of ingedrients in the potion and adds one to the number of ingredients in the potion
 //returns the name of the color of potion that should be viewed *TO CHANGE*
-function flowerButton(fID){
-  potionIngredients[pIngredientsNum] = flower[fID].name;
+function flowerButton(fID) {
 
-  pIngredientsNum = potionIngredients.length;
+  selectedFlower = flower[fID].name;
+  selectedFlowerSprite = flowerSprites[fID];
+  fType = fID;
+  
+}
+
+function checkColour() {
 
   if (bType == 0){
-    if (fID == 2 || fID == 11){
+    if (fType == 2 || fType == 11){
       return "black";
     }
   }
   else if (bType == 1 || bType == 8){
-    if (fID == 0 || fID == 11){
+    if (fType == 0 || fType == 11){
       return "black";
     }
   }
   else if (bType == 2){
-    if (fID == 5 || fID == 9 || fID == 11){
+    if (fType == 5 || fType == 9 || fType == 11){
       return "black";
     }
   }
   else if (bType == 3){
-    if (fID != 4 && fID != 6 && fID != 7 && fID != 8 && fID != 10){
+    if (fType != 4 && fType != 6 && fType != 7 && fType != 8 && fType != 10){
       return "black";
     }
   }
   else if (bType == 4){
-    if (fID == 0 || fID == 5 || fID == 11){
+    if (fType == 0 || fType == 5 || fType == 11){
       return "black";
     }
   }
   else if (bType == 5){
-    if (fID == 2 || fID == 8){
+    if (fType == 2 || fType == 8){
       return "black";
     }
   }
   else if (bType == 6 || bType == 7 || bType == 9){
-    if (fID == 2 || fID == 9 || fID == 11){
+    if (fType == 2 || fType == 9 || fType == 11){
       return "black";
     }
   } 
   else if (bType == 10){
-    if (fID == 0 || fID == 9 || fID == 11){
+    if (fType == 0 || fType == 9 || fType == 11){
       return "black";
     }
   }
   else{
-    return flower[fID].colour;
+    return flower[fType].colour;
   }
+
 }
 
 //compares the list of ingredients in the potion to the list of ingredients in the recipe
 //returns the accuracy percentage rounded to nearest integer in money
-function checkPotion(recipeIngredients){
+function checkPotion(recipeIngredients) {
+
   let check = [];
   let trueCount = 0;
+
+  potionIngredients[pIngredientsNum] = selectedPotion;
+  pIngredientsNum = potionIngredients.length;
+  potionIngredients[pIngredientsNum] = selectedFlower;
+  pIngredientsNum = potionIngredients.length;
 
   for (let i = 0; i < pIngredientsNum; i++){
     check[i] = false;
   }
 
   for (let i = 0; i < pIngredientsNum; i++){
-    for (let j = 0; j < pIngredientsNum; j++){
+    for (let j = 0; j < recipeIngredients.length; j++){
       if (potionIngredients[i] == recipeIngredients[j]){
         check[i] = true;
       }
@@ -450,9 +469,14 @@ function checkPotion(recipeIngredients){
       trueCount++;
     }
   }
-
   
   money += Math.floor((trueCount / pIngredientsNum) * 100);
+}
+
+function drawFinishedPotion(potionColour) {
+
+  roomNumber = 3;
+  //potionGif = loadGif(`Game Sprites/Pixel Potion Pack/Pixel Potion Pack - FINISHED/Potion Gifs/BBBR/${potionColour} ${Bottle.type[bType]}.gif`);
 }
 
 function loadRoom() {
@@ -462,7 +486,7 @@ function loadRoom() {
   bgUp = loadImage('Game Sprites/Bar Pack/individuals sprite/wall_bar.png');
   board = loadImage('Game Sprites/Bar Pack/individuals sprite/Greenboard_weird_writing.png');
   bgDown = loadImage('Game Sprites/Bar Pack/individuals sprite/floor_bar.png');
-  //cauldren = loadGif('Game Sprites/Cauldren Set/Red Cauldren Gif.gif');
+  cauldren = loadImage('Game Sprites/Cauldren Set/Red Cauldren Gif.gif');
 
 }
 
@@ -479,10 +503,16 @@ function drawRoom() {
 
   image(bgUp, 0, 0, width, height - 150);
   image(bgDown, -235, height - 150, width + 470, 150);
-  image(shelf, 0, 95, 585, 405);
-  image(bar, 615, 265, 635, 235);
   image(board, width - 285, 0, 235, 145);
-  //image(cauldren, 600, 100, 96, 96);
+  image(bar, 615, 265, 635, 235);
+  if (roomNumber != 3) {
+    image(shelf, 0, 95, 585, 405);
+  }
+
+  if (roomNumber == 3) {
+
+    image(cauldren, 195, 305, 192, 192);
+  }
 
 }
 
@@ -504,7 +534,7 @@ function createIngredientButtons() {
   }
 }
 
-function drawIngredientButtons(shelfNumber) {
+function drawIngredientButtons(shelfNumber, roomNumber) {
 
     for (let i = 0; i < 12; i++) {
       selectB[shelfNumber][i].size(60, 60).show();
@@ -525,7 +555,7 @@ function drawIngredientButtons(shelfNumber) {
   }
 
   for (let j = 0; j < 3; j++) {
-    if (shelfNumber != j) {
+    if (shelfNumber != j || roomNumber) {
       for (let i = 0; i < 12; i++) {
         selectB[j][i].hide();
       }
@@ -656,6 +686,73 @@ function drawPotionButtons(roomNumber) {
 
 }
 
+function selectPotionButtons() {
+
+  for (let i = 0; i < 12; i++) {
+    potionB[i].mousePressed(() => bottleButton(i));
+  }
+
+}
+
+function loadFlowers() {
+
+  for (let i = 0; i < 12; i++) {
+      flowerSprites[i] = loadImage(flower[i].sprite);
+  }
+}
+
+function drawFlowers() {
+  let x = [40, 230, 415];
+  let y = [140, 235, 325, 415];
+
+  for (let i = 0; i < 12; i++){
+    image(flowerSprites[i], x[i % 3], y[Math.floor(i / 3)], 64, 64);
+  }
+}
+
+function createFlowerButtons() {
+
+  for (let i = 0; i < 12; i++) {
+    flowerB[i] = createButton(flower[i].name);
+  }
+}
+
+function drawFlowerButtons(roomNumber) {
+
+  for (let i = 0; i < 12; i++) {
+      flowerB[i].size(60, 60).show();
+    }
+
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < 3; j++) {
+      let x = 120 + j * 190 - 5 * j;
+      if (j == 0) {
+        x -= 5;
+      }
+      let y = 155 + i * 90;
+      if (i == 3) {
+        y += 5;
+      }
+      flowerB[i * 3 + j].position(x, y);
+    }
+  }
+
+  if (roomNumber != 2) {
+    for (let i = 0; i < 12; i++) {
+      flowerB[i].hide();
+    }
+  }       
+
+}
+
+function selectFlowerButtons() {
+
+  for (let i = 0; i < 12; i++) {
+    flowerB[i].mousePressed(() => flowerButton(i));
+  }
+
+}
+
 function createTransitionButtons() {
 
   roomB[0] = createButton("To\nPotion\nRoom");
@@ -689,17 +786,33 @@ function selectTransitionButtons() {
 
   roomB[0].mousePressed(() => roomNumber = 1);
   roomB[1].mousePressed(() => roomNumber = 2);
-  roomB[2].mousePressed(() => roomNumber = 3);
+  roomB[2].mousePressed(() => drawFinishedPotion(checkColour()));
 
   backB.mousePressed(() => roomNumber--);
 }
 
 function drawIngredientList(roomNumber) {
 
-  if (!roomNumber) {
+  if (roomNumber == 0) {
     for (let i = 0; i < pIngredientsNum; i++) {
       image(potionIngredientSprites[i], 600 + i * 65, 215, 64, 64);
     }
+  }
+
+}
+
+function drawSelectedPotion(roomNumber) {
+
+  if (roomNumber == 1 && selectedPotionSprite) {
+      image(selectedPotionSprite, 665, 215, 64, 64);
+  }
+
+}
+
+function drawSelectedFlower(roomNumber) {
+
+  if (roomNumber == 2 && selectedFlowerSprite) {
+      image(selectedFlowerSprite, 665, 215, 64, 64);
   }
 
 }
@@ -717,51 +830,59 @@ function setup() {
   loadRoom();
   loadIngredients();
   loadPotions();
+  loadFlowers();
+
   createCanvas(1250, 550);
+
   createIngredientButtons();
   createShelfButtons();
-    
-  selectShelfButton();
-
   createPotionButtons();
-  
+  createFlowerButtons();
   createTransitionButtons();
-
   createRemoveButtons();
+
   selectTransitionButtons();
   selectRemoveButtons();
   selectIngredient();
+  selectPotionButtons();
+  selectFlowerButtons();
+  selectShelfButton();
 
-  console.log(potionList[0][0]);
+  drawFlowerButtons(roomNumber);
   drawPotionButtons(roomNumber);
-  
-  console.log(potionList[0][0]);
 }
 
 function draw() {
   
   
-  drawRoom();
+  drawRoom(roomNumber);
   if (roomNumber == 0) {
+
     drawIngredients(shelfNumber);
     drawIngredientList(roomNumber);
   }
+
   drawTransitionButtons(roomNumber);
   drawPotionButtons(roomNumber);
-  drawIngredientButtons(shelfNumber);
+  drawFlowerButtons(roomNumber);
+  drawIngredientButtons(shelfNumber, roomNumber);
   drawRemoveButtons(roomNumber);
   drawShelfButtons(shelfNumber, roomNumber);
+
   if (roomNumber == 1) {
     
     drawPotions();
+    drawSelectedPotion(roomNumber);
+  }
+
+  if (roomNumber == 2) {
+
+    drawFlowers();
+    drawSelectedFlower(roomNumber);
   }
   
 
 
-}
-
-function cauldrenColor() {
-  //the cauldron color is pColorR, pColorG, pColorB in RGB values
 }
 
 //removes the last ingredient added from the list of ingrdients in the potion and shortens the array
