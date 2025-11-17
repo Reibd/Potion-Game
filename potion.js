@@ -13,6 +13,7 @@ var selectB = [];
 const flower = [];
 var ingredientSprite = [];
 var shelfB = [];
+var potionB = [];
 var roomB = [];
 var removeB;
 var removeAllB;
@@ -20,18 +21,8 @@ var backB;
 var roomNumber;
 let recipeIngredients= [];
 var ingredientList = [];
-var BigVialList = [];
-var BubblyBrewBottleRisingList = [];
-var ClassicJarList = [];
-var EncasedPotionList = [];
-var GlowingPotionList = [];
-var LargeBottleList = [];
-var LargeJarList = [];
-var LargeTonicList = [];
-var RoundPotionList = [];
-var SmallBottleList = [];
-var SmallElixirList = [];
-var SmallVialList = [];
+const potionList = [];
+var potionSprites = [];
 var potionIngredients = [];
 var potionIngredientSprites = [];
 var pIngredientsNum = 0;
@@ -87,12 +78,11 @@ class Flower {
 //the parent class for all bottles
 class Bottle {
   static type = ["Big Vial", "Bubbly Brew Bottle Rising", "Classic Jar", "Encased Potion", "Glowing Potion", "Large Bottle", "Large Jar", "Large Tonic", "Round Potion", "Small Bottle", "Small Elixir", "Small Vial"];
-  //static sprite = 'Game Sprites/Pixel Potion Pack/Pixel Potion Pack - FINISHED/ALL Potions - First Frame/${type} - BLACK - 0000.png';
+  static colourList = ["Black", "Blue", "Gold", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Turquoise", "Yellow"];
   brandID = 0;
-  colourList = ["Black", "Blue", "Gold", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Turquoise", "Yellow"];
   constructor(ID) {
-  this.colour = colourList[ID];
-  this.ID = ID + BrandID;
+    this.colour = Bottle.colourList[ID];
+    this.ID = ID + this.brandID;
   }
   getBrandID(){
     return brandID;
@@ -102,7 +92,7 @@ class Bottle {
 class BVial extends Bottle {
   static type = "Big Vial";
   brandID = 0;
-  colourList = ["Black", "Blue", "Gold", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Turquoise", "Yellow"];
+  static colourList = ["Black", "Blue", "Gold", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Turquoise", "Yellow"];
   constructor(ID) {
     super(ID);
   }
@@ -110,7 +100,7 @@ class BVial extends Bottle {
 class BBBR extends Bottle {
   static type = "Bubbly Brew Bottle Rising";
   brandID = 11;
-  colourList = ["Black", "Blue", "Brown", "Teal", "Gold", "Green", "Orange", "Pink", "Purple", "Red", "Yellow"];
+  static colourList = ["Black", "Blue", "Brown", "Teal", "Gold", "Green", "Orange", "Pink", "Purple", "Red", "Yellow"];
   constructor(ID) {
     super(ID);
   }
@@ -118,7 +108,7 @@ class BBBR extends Bottle {
 class CJar extends Bottle {
   static type = "Classic Jar";
   brandID = 22;
-  colourList = ["Black_Gold", "Blue_Gold", "Gold", "Green", "Pink", "Purple", "Red_Gold", "Teal", "Turquoise_Gold", "Yellow"];
+  static colourList = ["Black_Gold", "Blue_Gold", "Gold", "Green", "Pink", "Purple", "Red_Gold", "Teal", "Turquoise_Gold", "Yellow"];
   constructor(ID) {
     super(ID);
   }
@@ -126,7 +116,7 @@ class CJar extends Bottle {
 class EPotion extends Bottle {
   static type = "Encased Potion";
   brandID = 32;
-  colourList = ["Black_Gold", "Brown_Purple", "Brown_Green", "Gold", "Lime_Purple", "Yellow_Red"];
+  static colourList = ["Black_Gold", "Brown_Purple", "Brown_Green", "Gold", "Lime_Purple", "Yellow_Red"];
   constructor(ID) {
     super(ID);
   }
@@ -134,7 +124,7 @@ class EPotion extends Bottle {
 class GPotion extends Bottle {
   static type = "Glowing Potion";
   brandID = 38;
-  colourList = ["Black", "Blue", "Teal", "Gold", "Green", "Lime", "Pink", "Purple", "Red", "Yellow"];
+  static colourList = ["Black", "Blue", "Teal", "Gold", "Green", "Lime", "Pink", "Purple", "Red", "Yellow"];
   constructor(ID) {
     super(ID);
   }
@@ -142,7 +132,7 @@ class GPotion extends Bottle {
 class LBottle extends Bottle {
   static type = "Large Bottle";
   brandID = 48;
-  colourList = ["Black", "Blue", "Brown", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Turquoise", "Yellow"];
+  static colourList = ["Black", "Blue", "Brown", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Turquoise", "Yellow"];
   constructor(ID) {
     super(ID);
   }
@@ -150,7 +140,7 @@ class LBottle extends Bottle {
 class LJar extends Bottle {
   static type = "Large Jar";
   brandID = 59;
-  colourList = ["Black_Gold", "Blue_Gold", "Gold", "Green", "Pink", "Purple", "Red_Gold", "Teal", "Turquoise_Gold", "Yellow"];
+  static colourList = ["Black_Gold", "Blue_Gold", "Gold", "Green", "Pink", "Purple", "Red_Gold", "Teal", "Turquoise_Gold", "Yellow"];
   constructor(ID) {
     super(ID);
   }
@@ -158,7 +148,7 @@ class LJar extends Bottle {
 class LTonic extends Bottle {
   static type = "Large Tonic";
   brandID = 69;
-  colourList = ["Black", "Blue", "Gold", "Green", "Orange", "Pink", "Purple", "Red", "Turquoise", "Yellow"];
+  static colourList = ["Black", "Blue", "Gold", "Green", "Orange", "Pink", "Purple", "Red", "Turquoise", "Yellow"];
   constructor(ID) {
     super(ID);
   }
@@ -166,7 +156,7 @@ class LTonic extends Bottle {
 class RPotion extends Bottle {
   static type = "Round Potion";
   brandID = 80;
-  colourList = ["Black", "Blue", "Gold", "Green", "Lime", "Pink", "Orange", "Purple", "Red", "Turquoise", "Yellow"];
+  static colourList = ["Black", "Blue", "Gold", "Green", "Lime", "Pink", "Orange", "Purple", "Red", "Turquoise", "Yellow"];
   constructor(ID) {
     super(ID);
   }
@@ -174,7 +164,7 @@ class RPotion extends Bottle {
 class SBottle extends Bottle {
   static type = "Small Bottle";
   brandID = 91;
-  colourList = ["Black_Gold", "Blue", "Gold", "Green", "Orange", "Pink", "Purple", "Red_Yellow", "Teal_Gold", "Yellow"];
+  static colourList = ["Black_Gold", "Blue", "Gold", "Green", "Orange", "Pink", "Purple", "Red_Yellow", "Teal_Gold", "Yellow"];
   constructor(ID) {
     super(ID);
   }
@@ -182,7 +172,7 @@ class SBottle extends Bottle {
 class SElixir extends Bottle {
   static type = "Small Elixir";
   brandID = 101;
-  colourList = ["Black", "Blue", "Teal", "Gold", "Green", "Orange", "Pink", "Purple", "Red", "Yellow"];
+  static colourList = ["Black", "Blue", "Teal", "Gold", "Green", "Orange", "Pink", "Purple", "Red", "Yellow"];
   constructor(ID) {
     super(ID);
   }
@@ -190,7 +180,7 @@ class SElixir extends Bottle {
 class SVial extends Bottle {
   static type = "Small Vial";
   brandID = 111;
-  colourList = ["Black", "Blue", "Brown", "Gold", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Teal", "Turquoise", "Yellow"];
+  static colourList = ["Black", "Blue", "Brown", "Gold", "Green", "Lime", "Orange", "Pink", "Purple", "Red", "Teal", "Turquoise", "Yellow"];
   constructor(ID) {
     super(ID);
   }
@@ -253,52 +243,56 @@ class SVial extends Bottle {
 //declares all the bottle values
 function setPotionList() {
 
-  for (let i = 0; i < 11; i++) {
-    BigVialList[i] = new BVial(i);
+  for (let i = 0; i < 12; i++) {
+    potionList[i] = [];
   }
 
   for (let i = 0; i < 11; i++) {
-    BubblyBrewBottleRisingList[i] = new BBBR(i);
+    potionList[0][i] = new BVial(i);
+  }
+
+  for (let i = 0; i < 11; i++) {
+    potionList[1][i] = new BBBR(i);
   }
 
   for (let i = 0; i < 10; i++) {
-    ClassicJarList[i] = new CJar(i);
+    potionList[2][i] = new CJar(i);
   }
 
   for (let i = 0; i < 6; i++) {
-    EncasedPotionList[i] = new EPotion(i);
+    potionList[3][i] = new EPotion(i);
   }
 
   for (let i = 0; i < 10; i++) {
-    GlowingPotionList[i] = new GPotion(i);
+    potionList[4][i] = new GPotion(i);
   }
 
   for (let i = 0; i < 11; i++) {
-    LargeBottleList[i] = new LBottle(i);
+    potionList[5][i] = new LBottle(i);
   }
 
   for (let i = 0; i < 10; i++) {
-    LargeJarList[i] = new LJar(i);
+    potionList[6][i] = new LJar(i);
   }
 
   for (let i = 0; i < 11; i++) {
-    LargeTonicList[i] = new LTonic(i);
+    potionList[7][i] = new LTonic(i);
   }
 
   for (let i = 0; i < 11; i++) {
-    RoundPotionList[i] = new RPotion(i);
+    potionList[8][i] = new RPotion(i);
   }
 
   for (let i = 0; i < 10; i++) {
-    SmallBottleList[i] = new SBottle(i);
+    potionList[9][i] = new SBottle(i);
   }
 
   for (let i = 0; i < 10; i++) {
-    SmallElixirList[i] = new SElixir(i);
+    potionList[10][i] = new SElixir(i);
   }
 
   for (let i = 0; i < 14; i++) {
-    SmallVialList[i] = new SVial(i);
+    potionList[11][i] = new SVial(i);
   }
 
 }
@@ -517,7 +511,6 @@ function drawIngredients(shelfNumber) {
   }
 }
 
-//Please test not sure if it works :)
 function createIngredientButtons() {
 
   for (let j = 0; j < 3; j++) {
@@ -629,6 +622,57 @@ function selectRemoveButtons() {
   removeAllB.mousePressed(() => removeAll());
 }
 
+function loadPotions() {
+
+  for (let i = 0; i < 12; i++) {
+      potionSprites[i] = loadImage(`Game Sprites/Pixel Potion Pack/Pixel Potion Pack - FINISHED/ALL Potions - First Frame/${Bottle.type[i]} - BLACK - 0000.png`);
+  }
+}
+
+function drawPotions() {
+  let x = [40, 230, 415];
+  let y = [140, 235, 325, 415];
+
+  for (let i = 0; i < 12; i++){
+    image(potionSprites[i], x[i % 3], y[Math.floor(i / 3)], 64, 64);
+  }
+}
+
+function createPotionButtons() {
+
+  for (let i = 0; i < 12; i++) {
+    potionB[i] = createButton(Bottle.type[i]);
+  }
+}
+
+function drawPotionButtons(roomNumber) {
+
+  for (let i = 0; i < 12; i++) {
+      potionB[i].size(60, 60).show();
+    }
+
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < 3; j++) {
+      let x = 120 + j * 190 - 5 * j;
+      if (j == 0) {
+        x -= 5;
+      }
+      let y = 155 + i * 90;
+      if (i == 3) {
+        y += 5;
+      }
+      potionB[i * 3 + j].position(x, y);
+    }
+  }
+
+  if (roomNumber != 1) {
+    for (let i = 0; i < 12; i++) {
+      potionB[i].hide();
+    }
+  }       
+
+}
+
 function createTransitionButtons() {
 
   roomB[0] = createButton("To\nPotion\nRoom");
@@ -686,17 +730,18 @@ function setup() {
   }
   roomNumber = 0;
   setIngredientList();
-
+  setPotionList();
   loadRoom();
   loadIngredients();
+  loadPotions();
   createCanvas(1250, 550);
   createIngredientButtons();
   createShelfButtons();
     
   selectShelfButton();
 
+  createPotionButtons();
   
-    
   createTransitionButtons();
 
   createRemoveButtons();
@@ -704,20 +749,29 @@ function setup() {
   selectRemoveButtons();
   selectIngredient();
 
+  console.log(potionList[0][0]);
+  drawPotionButtons(roomNumber);
+  
+  console.log(potionList[0][0]);
 }
 
 function draw() {
   
   
   drawRoom();
-  
-  drawShelfButtons(shelfNumber, roomNumber);
-  drawIngredients(shelfNumber);
-  drawIngredientList(roomNumber);
+  if (roomNumber == 0) {
+    drawIngredients(shelfNumber);
+    drawIngredientList(roomNumber);
+  }
+  drawTransitionButtons(roomNumber);
+  drawPotionButtons(roomNumber);
   drawIngredientButtons(shelfNumber);
   drawRemoveButtons(roomNumber);
-  drawTransitionButtons(roomNumber);
-  
+  drawShelfButtons(shelfNumber, roomNumber);
+  if (roomNumber == 1) {
+    
+    drawPotions();
+  }
   
 
 
