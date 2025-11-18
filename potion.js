@@ -20,12 +20,13 @@ var roomB = [];
 var removeB;
 var removeAllB;
 var backB;
+var recipeButton;
 var roomNumber;
 var selectedPotion;
 var selectedFlower;
 var selectedPotionSprite = 0;
 var selectedFlowerSprite = 0;
-let recipeIngredients= [];
+var recipeIngredients= [];
 var ingredientList = [];
 const potionList = [];
 var potionSprites = [];
@@ -310,14 +311,15 @@ function setIngredientList(){
 
 //creates a random recipe with 8 - 10 ingredients (mushrooms, fruits, or veg), one bottle type, and one flower takes in
 //the list of ingredient names and returns the list of names of the recipe
-function recipe(ingredientList){
-  let recipeIngredients = [];
+function recipe(){
   let ingredientLog = [];
   let ingredientTypeNum = [];
   let ingredientQuantNum = [];
   let ingredientTypeList = [];
   let recipeBottle = "string";
+  let temp = 0;
   let counter = 0;
+  let filler = 0;
 
   for (let i = 0; i < 3; i++) {
     ingredientLog[i] = [];
@@ -327,38 +329,46 @@ function recipe(ingredientList){
   ingredientTypeNum[1] = Math.floor(Math.random() * 2) + 1;
   ingredientTypeNum[2] = 1;
 
+  for (let i = 0; i < 3; i++){
+    temp += ingredientTypeNum[i];
+  }
   recipeBottle = Bottle.type[Math.floor(Math.random() * 12)];
 
-  for (let i = 0; i < ingredientTypeNum[0] + ingredientTypeNum[1] + 1; i++){
+  for (let i = 0; i < temp; i++){
     ingredientQuantNum[i] = Math.floor(Math.random() * 2) + 1;
   }
 
   for (let k = 0; k < 3; k++){
     for (let i = 0; i < ingredientTypeNum[k]; i++){
-      let temp = Math.floor(Math.random() * 12);
+      temp = Math.floor(Math.random() * 12);
       for (let j = 0; j < counter; j++){
           if (temp == ingredientLog[k][j]){
               temp = Math.floor(Math.random() * 12);
             j = 0;
+          }
         }
-    }
-      ingredientTypeList[i] = ingredientList[k][temp];
-      ingredientLog[j][i] = temp;
+            
+    
+      ingredientTypeList[filler] = ingredientList[k][temp].name;
+      ingredientLog[k][i] = temp;
+      filler++;
       counter++;
     }
   }
 
+  filler = 0;
+
   for (let i = 0; i < ingredientTypeList.length; i++){
     for (let j = 0; j < ingredientQuantNum[i]; j++){
-      recipeIngredients[j] = ingredientTypeList[i];
+      recipeIngredients[filler] = ingredientTypeList[i];
+      filler++;
+      }
     }
-  }
+  
 
   recipeIngredients[recipeIngredients.length] = recipeBottle;
 
   recipeIngredients[recipeIngredients.length] = flower[Math.floor(Math.random() * 12)].name;
-
-  return recipeIngredients;
 }
 
 //adds the chosen ingredient to the list of ingedrients in the potion with a max of 10 ingredients
@@ -443,7 +453,7 @@ function checkColour() {
 
 //compares the list of ingredients in the potion to the list of ingredients in the recipe
 //returns the accuracy percentage rounded to nearest integer in money
-function checkPotion(recipeIngredients) {
+function checkPotion() {
 
   let check = [];
   let trueCount = 0;
@@ -504,7 +514,7 @@ function drawRoom() {
 
   image(bgUp, 0, 0, width, height - 150);
   image(bgDown, -235, height - 150, width + 470, 150);
-  image(board, width - 585, 0, 535, 145);
+  //image(board, width - 585, 0, 535, 145);
   image(bar, 615, 265, 635, 235);
   if (roomNumber != 3) {
     image(shelf, 0, 95, 585, 405);
@@ -516,6 +526,19 @@ function drawRoom() {
     cauldrenGIF.position(195, 325).size(192, 192).show();
   }
 
+}
+
+function createRecipeButton(){
+  let temp = "";
+  for (let i = 0; i < recipeIngredients.length; i++){
+    temp += recipeIngredients[i];
+    temp += "<br>"; 
+  }
+  recipeButton = createButton(temp);
+}
+
+function drawRecipeButton(){
+  recipeButton.position(1100, 30).size(120, 190).show();
 }
 
 function drawIngredients(shelfNumber) {
@@ -829,6 +852,7 @@ function setup() {
   roomNumber = 0;
   setIngredientList();
   setPotionList();
+  recipe();
   loadRoom();
   loadIngredients();
   loadPotions();
@@ -842,6 +866,7 @@ function setup() {
   createFlowerButtons();
   createTransitionButtons();
   createRemoveButtons();
+  createRecipeButton();
 
   selectTransitionButtons();
   selectRemoveButtons();
@@ -870,6 +895,7 @@ function draw() {
   drawIngredientButtons(shelfNumber, roomNumber);
   drawRemoveButtons(roomNumber);
   drawShelfButtons(shelfNumber, roomNumber);
+  drawRecipeButton();
 
   if (roomNumber == 1) {
     
