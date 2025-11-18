@@ -395,49 +395,57 @@ function flowerButton(fID) {
 
 function checkColour() {
 
+  /* must fix:
+   turquoise small bottle
+   teal round potion
+   orange large jar
+   orange large bottle
+   pink encased potion
+   lime bubbly brew bottle rising
+   turquoise big vial
+  */
+
   if (bType == 0){
     if (fType == 2 || fType == 11){
-      return "black";
+      return "Black";
     }
   }
   else if (bType == 1 || bType == 8){
     if (fType == 0 || fType == 11){
-      return "black";
+      return "Black";
     }
   }
   else if (bType == 2){
     if (fType == 5 || fType == 9 || fType == 11){
-      return "black";
+      return "Black";
     }
   }
   else if (bType == 3){
     if (fType != 4 && fType != 6 && fType != 7 && fType != 8 && fType != 10){
-      return "black";
+      return "Black";
     }
   }
   else if (bType == 4){
     if (fType == 0 || fType == 5 || fType == 11){
-      return "black";
+      return "Black";
     }
   }
   else if (bType == 5){
     if (fType == 2 || fType == 8){
-      return "black";
+      return "Black";
     }
   }
   else if (bType == 6 || bType == 7 || bType == 9){
     if (fType == 2 || fType == 9 || fType == 11){
-      return "black";
+      return "Black";
     }
   } 
   else if (bType == 10){
     if (fType == 0 || fType == 9 || fType == 11){
-      return "black";
+      return "Black";
     }
   }
-  else{
-    return flower[fType].colour;
-  }
+  return flower[fType].colour;
 
 }
 
@@ -474,10 +482,15 @@ function checkPotion(recipeIngredients) {
   money += Math.floor((trueCount / pIngredientsNum) * 100);
 }
 
-function drawFinishedPotion(potionColour) {
+function createFinishedPotion(potionColour) {
 
   roomNumber = 3;
-  //potionGif = loadGif(`Game Sprites/Pixel Potion Pack/Pixel Potion Pack - FINISHED/Potion Gifs/BBBR/${potionColour} ${Bottle.type[bType]}.gif`);
+  potionGif = createImg(`Game Sprites/Pixel Potion Pack/Pixel Potion Pack - FINISHED/Potion Gifs/${Bottle.type[bType]}/${potionColour} ${Bottle.type[bType]}.gif`);
+}
+
+function drawFinishedPotion() {
+
+  potionGif.position(415, 435).size(64, 64);
 }
 
 function loadRoom() {
@@ -788,7 +801,7 @@ function selectTransitionButtons() {
 
   roomB[0].mousePressed(() => roomNumber = 1);
   roomB[1].mousePressed(() => roomNumber = 2);
-  roomB[2].mousePressed(() => drawFinishedPotion(checkColour()));
+  roomB[2].mousePressed(() => createFinishedPotion(checkColour()));
 
   backB.mousePressed(() => roomNumber--);
 }
@@ -881,6 +894,11 @@ function draw() {
 
     drawFlowers();
     drawSelectedFlower(roomNumber);
+  }
+
+  if (roomNumber == 3) {
+
+    drawFinishedPotion();
   }
   
 
