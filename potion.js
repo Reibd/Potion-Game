@@ -408,22 +408,27 @@ function flowerButton(fID) {
 function checkColour() {
 
   /* must fix:
-   turquoise small bottle
-   teal round potion
-   orange large jar
-   orange large bottle
-   pink encased potion
-   lime bubbly brew bottle rising
-   turquoise big vial
+   turquoise small bottle-
+   teal round potion-
+   orange large jar-
+   orange large bottle-
+   pink encased potion*
+   lime bubbly brew bottle rising-
+   turquoise big vial-
   */
 
   if (bType == 0){
-    if (fType == 2 || fType == 11){
+    if (fType == 2 || fType == 11 || fType == 0){
       return "Black";
     }
   }
-  else if (bType == 1 || bType == 8){
-    if (fType == 0 || fType == 11){
+  else if (bType == 1){
+    if (fType == 0 || fType == 11 || fType == 9){
+      return "Black";
+    }
+  }
+  else if (bType == 8){
+    if (fType == 0 || fType == 11 || fType == 2){
       return "Black";
     }
   }
@@ -443,15 +448,25 @@ function checkColour() {
     }
   }
   else if (bType == 5){
-    if (fType == 2 || fType == 8){
+    if (fType == 2 || fType == 8 || fType == 5){
       return "Black";
     }
   }
-  else if (bType == 6 || bType == 7 || bType == 9){
+  else if (bType == 6){
+    if (fType == 2 || fType == 5 || fType == 9 || fType == 11){
+      return "Black";
+    }
+  }
+  else if (bType == 7){
     if (fType == 2 || fType == 9 || fType == 11){
       return "Black";
     }
-  } 
+  }
+  else if (bType == 9){
+    if (fType == 0 || fType == 2 || fType == 9 || fType == 11){
+      return "Black";
+    }
+  }
   else if (bType == 10){
     if (fType == 0 || fType == 9 || fType == 11){
       return "Black";
