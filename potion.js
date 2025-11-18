@@ -534,11 +534,11 @@ function createRecipeButton(){
     temp += recipeIngredients[i];
     temp += "<br>"; 
   }
-  recipeButton = createButton(temp);
+  recipeButton = createButton("Recipe" + "<br>" + "<br>" + temp);
 }
 
 function drawRecipeButton(){
-  recipeButton.position(1090, 30).size(140, 190).show();
+  recipeButton.position(1090, 30).size(140, 225).show();
 }
 
 function drawIngredients(shelfNumber) {
