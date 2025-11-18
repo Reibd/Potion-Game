@@ -41,7 +41,7 @@ var pColorG = 0.0;
 var pColorB = 0.0;
 var fType = 0;
 var bType = 0;
-var money = 0;
+var score = 0;
 
 
 //the class for all mushroom ingredients
@@ -407,16 +407,6 @@ function flowerButton(fID) {
 
 function checkColour() {
 
-  /* must fix:
-   turquoise small bottle
-   teal round potion
-   orange large jar
-   orange large bottle
-   pink encased potion
-   lime bubbly brew bottle rising
-   turquoise big vial
-  */
-
   if (bType == 0){
     if (fType == 2 || fType == 11){
       return "Black";
@@ -462,7 +452,7 @@ function checkColour() {
 }
 
 //compares the list of ingredients in the potion to the list of ingredients in the recipe
-//returns the accuracy percentage rounded to nearest integer in money
+//returns the accuracy percentage rounded to nearest integer in score
 function checkPotion() {
 
   let check = [];
@@ -491,18 +481,21 @@ function checkPotion() {
     }
   }
   
-  money += Math.floor((trueCount / pIngredientsNum) * 100);
+  score += Math.floor((trueCount / pIngredientsNum) * 100);
 }
 
 function createFinishedPotion(potionColour) {
 
   roomNumber = 3;
+  checkPotion();
+  finishScore = createButton(`Potion Created! You made a ${potionColour} ${Bottle.type[bType]}!\nYour score is ${score}/100!`);
   potionGif = createImg(`Game Sprites/Pixel Potion Pack/Pixel Potion Pack - FINISHED/Potion Gifs/${Bottle.type[bType]}/${potionColour} ${Bottle.type[bType]}.gif`);
 }
 
 function drawFinishedPotion() {
 
-  potionGif.position(410, 400).size(96, 96);
+  finishScore.position(30, 30).size(400, 200).style('font-size', '32px');
+  potionGif.position(465, 55).size(150, 150);
 }
 
 function loadRoom() {
