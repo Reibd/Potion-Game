@@ -538,7 +538,7 @@ function createRecipeButton(){
 }
 
 function drawRecipeButton(){
-  recipeButton.position(1100, 30).size(120, 190).show();
+  recipeButton.position(1090, 30).size(140, 190).show();
 }
 
 function drawIngredients(shelfNumber) {
