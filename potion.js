@@ -42,6 +42,9 @@ var pColorB = 0.0;
 var fType = 0;
 var bType = 0;
 var money = 0;
+var pName = [];
+
+pName = ["Nightvision Potion", "Regeneration Potion", "Fire Resistence Potion", "Strength Potion", "Invisibility Potion", "Potion of Sudden Death", "Beauty Potion", "Bottled Sunlight Potion", "Seven Sins Potion", "Potion of Misery"];
 
 
 //the class for all mushroom ingredients
