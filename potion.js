@@ -3,8 +3,10 @@ let bar;
 let bgUp;
 let bgDown;
 let board;
-let cauldren;
 let cauldrenGIF;
+let witchChargeGIF;
+let witchIdleGIF;
+
 
 var shelfNumber = 0;
 const mushroom = [];
@@ -500,7 +502,7 @@ function createFinishedPotion(potionColour) {
 
 function drawFinishedPotion() {
 
-  potionGif.position(415, 435).size(64, 64);
+  potionGif.position(410, 400).size(96, 96);
 }
 
 function loadRoom() {
@@ -541,7 +543,28 @@ function drawRoom() {
 
 }
 
-function createRecipeButton(){
+function createWitch() {
+
+  witchChargeGIF = createImg("Game Sprites/Blue Witch/Blue_witch/witch charge.gif");
+  witchIdleGIF = createImg("Game Sprites/Blue Witch/Blue_witch/witch idle.gif");
+}
+
+function drawWitch(roomNumber) {
+
+  if (roomNumber != 3 ) {
+
+    witchIdleGIF.size(160, 240).position(900, 340).show();
+    witchChargeGIF.hide();
+  }
+
+  if (roomNumber == 3) {
+
+    witchChargeGIF.size(240, 240). position(0, 290).show();
+    witchIdleGIF.hide();
+  }
+}
+
+function createRecipeButton() {
   let temp = "";
   for (let i = 0; i < recipeIngredients.length; i++){
     temp += recipeIngredients[i];
@@ -550,7 +573,8 @@ function createRecipeButton(){
   recipeButton = createButton("Recipe" + "<br>" + "<br>" + temp);
 }
 
-function drawRecipeButton(){
+function drawRecipeButton() {
+
   recipeButton.position(1090, 30).size(140, 225).show();
 }
 
@@ -624,10 +648,10 @@ function drawShelfButtons(shelfNumber, roomNumber) {
 
   if (!roomNumber) {
     for (let i = 0; i < 3; i++) {
-      shelfB[i].size(100, 40).style('background-color', 'white').show();
+      shelfB[i].size(100, 40).removeAttribute('disabled').show();
     }
 
-    shelfB[shelfNumber].style('background-color', 'yellow');
+    shelfB[shelfNumber].attribute('disabled', '');
 
     shelfB[0].position(65, 520);
     shelfB[1].position(250, 520);
@@ -658,8 +682,12 @@ function createRemoveButtons() {
 function drawRemoveButtons(roomNumber) {
 
   if (!roomNumber) {
-    removeB.position(655, 390).size(100, 40).show();
-    removeAllB.position(760, 390).size(100, 40).show();
+    removeB.position(655, 390).size(100, 40).show().removeAttribute('disabled');
+    removeAllB.position(760, 390).size(100, 40).show().removeAttribute('disabled');
+    if (!pIngredientsNum) {
+      removeB.attribute('disabled', '');
+      removeAllB.attribute('disabled', '');
+    }
   }
   else {
     removeB.hide();
@@ -806,15 +834,35 @@ function drawTransitionButtons(roomNumber) {
   for (let i = 0; i < 3; i++) {
     roomB[i].hide().position(1115, 390).size(100, 40);
     if (roomNumber == i) {
-      roomB[i].show();
+      roomB[i].show().removeAttribute('disabled');
     }
   }
 
-  if (roomNumber && roomNumber != 3) {
+  if (!pIngredientsNum) {
 
-    backB.position(1115, 520).size(100, 40).show();
+    roomB[0].attribute('disabled', '');
+  }
+
+  if (!selectedPotion) {
+
+    roomB[1].attribute('disabled', '');
+  }
+
+  if (!selectedFlower) {
+
+    roomB[2].attribute('disabled', '');
+  }
+
+  if (roomNumber) {
+
+    backB.position(1115, 520).size(100, 40).removeAttribute('disabled');
   }
   else {
+    backB.position(1115, 520).size(100, 40).attribute('disabled', '');
+  }
+
+  if (roomNumber == 3) {
+
     backB.hide();
   }
 
@@ -880,6 +928,7 @@ function setup() {
   createTransitionButtons();
   createRemoveButtons();
   createRecipeButton();
+  createWitch();
 
   selectTransitionButtons();
   selectRemoveButtons();
@@ -909,6 +958,7 @@ function draw() {
   drawRemoveButtons(roomNumber);
   drawShelfButtons(shelfNumber, roomNumber);
   drawRecipeButton();
+  drawWitch(roomNumber);
 
   if (roomNumber == 1) {
     
