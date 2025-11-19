@@ -44,7 +44,7 @@ var bType = 0;
 var score = 0;
 var pName = [];
 
-pName = ["Nightvision Potion", "Regeneration Potion", "Fire Resistence Potion", "Strength Potion", "Invisibility Potion", "Potion of Sudden Death", "Beauty Potion", "Bottled Sunlight Potion", "Seven Sins Potion", "Potion of Misery"];
+pName = ["Nightvision Potion", "Regeneration Potion", "Fire Resistence Potion", "Strength Potion", "Invisibility Potion", "Potion of Sudden Death", "Beauty Potion", "Bottled Sunlight Potion", "Potion of Ash", "Potion of Misery"];
 
 
 //the class for all mushroom ingredients
@@ -506,7 +506,7 @@ function createFinishedPotion(potionColour) {
 
   roomNumber = 3;
   checkPotion();
-  finishScore = createButton(`Potion Created! You made a ${potionColour} ${Bottle.type[bType]}!\nYour score is ${score}/100!`);
+  finishScore = createButton(`Potion Created! You made a ${pName[pIngredientsNum -  3]}!\nYour score is ${score}/100!`);
   potionGif = createImg(`Game Sprites/Pixel Potion Pack/Pixel Potion Pack - FINISHED/Potion Gifs/${Bottle.type[bType]}/${potionColour} ${Bottle.type[bType]}.gif`);
 }
 
