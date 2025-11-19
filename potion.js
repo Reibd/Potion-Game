@@ -475,17 +475,24 @@ function checkPotion() {
 
   let check = [];
   let trueCount = 0;
+  let temp = 0;
 
   potionIngredients[pIngredientsNum] = selectedPotion;
   pIngredientsNum = potionIngredients.length;
   potionIngredients[pIngredientsNum] = selectedFlower;
   pIngredientsNum = potionIngredients.length;
 
-  for (let i = 0; i < pIngredientsNum; i++){
+  if (pIngredientsNum > recipeIngredients.length){
+    temp = pIngredientsNum;
+  } else {
+    temp = recipeIngredients.length;
+  }
+
+  for (let i = 0; i < temp; i++){
     check[i] = false;
   }
 
-  for (let i = 0; i < pIngredientsNum; i++){
+  for (let i = 0; i < temp; i++){
     for (let j = 0; j < recipeIngredients.length; j++){
       if (potionIngredients[i] == recipeIngredients[j]){
         check[i] = true;
@@ -493,13 +500,13 @@ function checkPotion() {
     }
   }
 
-  for (let i = 0; i < pIngredientsNum; i++){
+  for (let i = 0; i < temp; i++){
     if (check[i]){
       trueCount++;
     }
   }
-  
-  score += Math.floor((trueCount / pIngredientsNum) * 100);
+
+  score += Math.floor((trueCount / temp) * 100);
 }
 
 function createFinishedPotion(potionColour) {
