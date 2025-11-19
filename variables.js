@@ -1,0 +1,46 @@
+// Declaring furniture and character variables
+let shelf;
+let bar;
+let bgUp;
+let bgDown;
+let cauldrenGIF;
+let witchChargeGIF;
+let witchIdleGIF;
+
+// Declaring lists and button
+var shelfNumber = 0;
+const mushroom = [];
+const fruit = [];
+const veg = [];
+var selectB = [];
+const flower = [];
+var ingredientSprite = [];
+var shelfB = [];
+var potionB = [];
+var flowerB = [];
+var roomB = [];
+var removeB;
+var removeAllB;
+var backB;
+var recipeButton;
+var roomNumber;
+var selectedPotion;
+var selectedFlower;
+var selectedPotionSprite = 0;
+var selectedFlowerSprite = 0;
+var recipeIngredients= [];
+var ingredientList = [];
+const potionList = [];
+var potionSprites = [];
+var flowerSprites = [];
+var potionIngredients = [];
+var potionIngredientSprites = [];
+var pIngredientsNum = 0;
+var pColorR = 0.0;
+var pColorG = 0.0;
+var pColorB = 0.0;
+var fType = 0;
+var bType = 0;
+var score = 0;
+var pName = [];
+pName = ["Nightvision Potion", "Regeneration Potion", "Fire Resistence Potion", "Strength Potion", "Invisibility Potion", "Potion of Sudden Death", "Beauty Potion", "Bottled Sunlight Potion", "Potion of Ash", "Potion of Misery"];
