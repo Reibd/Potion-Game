@@ -613,24 +613,32 @@ function checkPotion() {
 
   let check = [];
   let trueCount = 0;
+  let temp = 0;
 
   potionIngredients[pIngredientsNum] = selectedPotion;
   pIngredientsNum = potionIngredients.length;
   potionIngredients[pIngredientsNum] = selectedFlower;
   pIngredientsNum = potionIngredients.length;
 
-  for (let i = 0; i < pIngredientsNum; i++) {
+  if (pIngredientsNum > recipeIngredients.length) {
 
-    check[i] = false;
+    temp = pIngredientsNum;
+  } 
   
+  else {
+    temp = recipeIngredients.length;
   }
 
-  for (let i = 0; i < pIngredientsNum; i++) {
+  for (let i = 0; i < temp; i++) {
+    check[i] = false;
+  }
+
+  for (let i = 0; i < temp; i++) {
 
     for (let j = 0; j < recipeIngredients.length; j++) {
 
       if (potionIngredients[i] == recipeIngredients[j]) {
-
+        
         check[i] = true;
       
       }
@@ -639,18 +647,18 @@ function checkPotion() {
   
   }
 
-  for (let i = 0; i < pIngredientsNum; i++) {
+  for (let i = 0; i < temp; i++) {
 
     if (check[i]) {
-
+      
       trueCount++;
     
     }
   
   }
-  
-  score += Math.floor((trueCount / pIngredientsNum) * 100);
 
+  score += Math.floor((trueCount / temp) * 100);
+  
 }
 
 // Takes in a potion colour and creates a potion with the colour and selected bottle type
@@ -1315,5 +1323,5 @@ function removeAll() {
   potionIngredients.splice(0);
   potionIngredientSprites.splice(0);
   pIngredientsNum = 0;
-  
+
 }
